@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Notes on logs, retries, dashboards, and recovery-minded engineering."
+    />
+    <title>Designing for recovery before designing for scale | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#atlas">Atlas</a>
+        <a href="../index.html#technical">Technical</a>
+        <a href="../index.html#personal">Personal</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#technical">Back to home</a>
+        <p class="eyebrow">Systems / 7 min read</p>
+        <h1>Designing for recovery before designing for scale</h1>
+        <p class="reader-dek">
+          Notes on logs, retries, dashboards, and the boring tools that make
+          ambitious work less fragile.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            This placeholder gives Codex a ready article page to replace when a
+            real post is ready. The page already has the reader path: title,
+            context, share action, body, and a direct route back home.
+          </p>
+          <h2>The recovery question</h2>
+          <p>
+            Before asking whether a system can handle more users, ask whether it
+            can help you understand and recover from the first confusing failure.
+          </p>
+          <h2>Useful signals</h2>
+          <p>
+            A good recovery path usually starts with readable logs, a small number
+            of meaningful dashboards, and enough context to tell whether a retry is
+            safe or just noise.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
