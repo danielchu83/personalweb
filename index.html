@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Daniel Chu writes technical field notes, Atlas learnings, personal essays, and project reflections."
+      content="Product person working on AI, agents, and enterprise workflows."
     />
-    <title>Daniel Chu | Notes, Systems, Taste</title>
-    <link rel="preconnect" href="https://images.unsplash.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Daniel Chu" />
+    <meta
+      property="og:description"
+      content="Product person working on AI, agents, and enterprise workflows."
+    />
+    <meta property="og:url" content="https://danielchu83.github.io/personalweb/" />
+    <meta property="og:site_name" content="Daniel Chu" />
+    <title>Daniel Chu</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
@@ -20,182 +28,175 @@
         <span>Daniel Chu</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#atlas">Atlas</a>
-        <a href="#technical">Technical</a>
-        <a href="#personal">Personal</a>
+        <a href="#notes">Writing</a>
+        <a href="#projects">Projects</a>
         <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="intro-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Technical notes and personal essays</p>
-          <h1 id="intro-title">
-            <span>A public</span>
-            <span>notebook for</span>
-            <span>work that is still</span>
-            <span>becoming clear.</span>
-          </h1>
-          <p class="lead">
-            I write about building Atlas, learning in public without leaking private
-            source code, and the small observations that change how I think.
-          </p>
-          <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#atlas">Read Atlas notes</a>
-            <a class="button secondary" href="#personal">Browse personal writing</a>
-          </div>
-        </div>
-
-        <div class="index-strip" aria-hidden="true">
-          <span>Systems</span>
-          <span>Learning</span>
-          <span>Field notes</span>
+        <p class="kicker">Product person working on AI, agents, and enterprise workflows.</p>
+        <h1 id="intro-title">
+          I’m interested in why AI products work in demos but break in real workflows.
+        </h1>
+        <p class="lead">
+          I’m a product person working on AI, agents, productivity, and enterprise
+          workflows. I like studying the messy parts of product development: user
+          trust, tool reliability, context, permissions, evaluation, and the gap
+          between what a model can do and what people will actually use.
+        </p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="#notes">Read notes</a>
+          <a class="button secondary" href="#projects">See projects</a>
+          <a class="button secondary" href="#contact">Contact</a>
         </div>
       </section>
 
-      <section class="section thesis-section" aria-labelledby="thesis-title">
-        <div class="section-kicker">What this place is for</div>
-        <h2 id="thesis-title">
-          A portfolio of judgment: what I tried, what broke, what I learned, and
-          what I would do differently.
-        </h2>
-      </section>
-
-      <section class="section atlas-section" id="atlas" aria-labelledby="atlas-title">
+      <section class="section notes-section" id="notes" aria-labelledby="notes-title">
         <div class="section-heading">
-          <p class="eyebrow">Atlas field notes</p>
-          <h2 id="atlas-title">Technical writing without publishing private code</h2>
-          <p>
-            Atlas can become a learning journal: architecture decisions, debugging
-            stories, privacy boundaries, operational tradeoffs, and design thinking.
-            The point is to show taste and rigor, not dump a repository.
+          <p class="kicker">Notes</p>
+          <h2 id="notes-title">A few things I’m trying to understand better.</h2>
+          <p class="section-intro">
+            Sanitized technical notes from Atlas, my private AI workflow system.
+            The details are generalized, but the failure modes are real.
           </p>
         </div>
 
-        <div class="atlas-layout">
-          <a class="feature-card article-link" href="articles/building-around-sensitive-data.html">
-            <div class="feature-image atlas-image" aria-hidden="true"></div>
-            <div class="feature-body">
-              <p class="card-meta">Atlas / technical essay</p>
-              <h3>Building around sensitive data</h3>
-              <p>
-                A post about redaction, synthetic examples, and how to discuss a
-                system honestly when the real inputs should stay private.
-              </p>
-              <span class="text-link">Draft outline</span>
-            </div>
+        <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
+        <div class="note-grid">
+          <a class="note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
+            <h3>When an agent says it used a tool, that is not evidence</h3>
+            <p>
+              A lesson from an agent that cited commands, produced plausible
+              answers, and still routed around the system it was supposed to use.
+            </p>
           </a>
-
-          <div class="note-stack" aria-label="Atlas note ideas">
-            <article class="mini-note">
-              <span>01</span>
-              <h3>Architecture sketches that explain the system, not the secrets</h3>
-            </article>
-            <article class="mini-note">
-              <span>02</span>
-              <h3>What I learned from designing a clean ingestion pipeline</h3>
-            </article>
-            <article class="mini-note">
-              <span>03</span>
-              <h3>Debugging notes: turning vague failures into useful signals</h3>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section writing-section" id="technical" aria-labelledby="technical-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow">Technical blog</p>
-            <h2 id="technical-title">Learning logs for systems, AI, and product engineering</h2>
-          </div>
-          <p>
-            Short enough to read, concrete enough to prove the work happened.
-          </p>
-        </div>
-
-        <div class="article-grid">
-          <a class="article-card article-link" href="articles/designing-for-recovery.html">
-            <div class="article-cover cover-systems" aria-hidden="true"></div>
-            <div class="article-body">
-              <p class="card-meta">Systems / 7 min read</p>
-              <h3>Designing for recovery before designing for scale</h3>
-              <p>
-                Notes on logs, retries, dashboards, and the boring tools that make
-                ambitious work less fragile.
-              </p>
-            </div>
+          <a class="note-card" href="articles/agents-debug-symptoms-not-systems.html">
+            <h3>AI agents debug symptoms before systems</h3>
+            <p>
+              How a stale workspace, a tiny taxonomy bug, and mismatched queries
+              turned into a very convincing wrong theory.
+            </p>
           </a>
-
-          <a class="article-card article-link" href="articles/assistant-ask-act-stay-quiet.html">
-            <div class="article-cover cover-ai" aria-hidden="true"></div>
-            <div class="article-body">
-              <p class="card-meta">AI product / 6 min read</p>
-              <h3>When an assistant should ask, act, or stay quiet</h3>
-              <p>
-                A product note about agency, user trust, and designing workflows
-                that feel helpful instead of noisy.
-              </p>
-            </div>
+          <a class="note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
+            <h3>When more powerful tools make agents worse</h3>
+            <p>
+              Replacing narrow tools with a generalized scenario engine made
+              Atlas more capable, but also easier for the agent to misuse.
+            </p>
           </a>
-
-          <a class="article-card article-link" href="articles/debugging-as-writing.html">
-            <div class="article-cover cover-debug" aria-hidden="true"></div>
-            <div class="article-body">
-              <p class="card-meta">Engineering / 5 min read</p>
-              <h3>Debugging as a writing exercise</h3>
-              <p>
-                How clearer notes turned a messy investigation into a reusable
-                playbook for the next confusing bug.
-              </p>
-            </div>
+          <a class="note-card" href="articles/evals-should-test-real-workflows.html">
+            <h3>Evals should test the workflow, not the demo</h3>
+            <p>
+              The agent can know the right rule and still fail because the eval
+              missed screenshots, session state, file writes, or side effects.
+            </p>
+          </a>
+          <a class="note-card" href="articles/ai-products-need-recovery-paths.html">
+            <h3>If an AI can write data, it needs a recovery path</h3>
+            <p>
+              Confirm-before-commit, undo tools, audit trails, and out-of-band
+              controls are product features, not implementation details.
+            </p>
           </a>
         </div>
       </section>
 
-      <section class="section personal-section" id="personal" aria-labelledby="personal-title">
-        <div class="personal-copy">
-          <p class="eyebrow">Personal blog</p>
-          <h2 id="personal-title">Recently learned, still settling</h2>
-          <p>
-            Essays for ideas that do not fit a project repo: books, habits,
-            taste, attention, work, and the occasional sharp little lesson from
-            ordinary life.
+      <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="kicker">Projects</p>
+          <h2 id="projects-title">Systems and product explorations.</h2>
+          <p class="section-intro">
+            Longer-running work that gives the notes context. Atlas is the main
+            project for now; the other ideas are smaller explorations.
           </p>
         </div>
 
-        <div class="personal-list">
-          <a href="articles/learning-in-seasons.html">
-            <p class="card-meta">Life / reflection</p>
-            <h3>Notes on learning in seasons</h3>
-            <p>Some weeks are for collecting fragments. Some are for making the shape visible.</p>
+        <div class="project-list">
+          <a class="project-card project-card-link" href="projects/atlas.html">
+            <p class="project-meta">Primary project</p>
+            <h3>Atlas</h3>
+            <p>
+              A private AI workflow system for personal operations: CLI-first
+              tools, a cloud VM daemon, agent workflows, evals, and a careful
+              boundary around sensitive data.
+            </p>
+            <div class="related-links" aria-label="Related Atlas notes">
+              <span>Related notes</span>
+              <span>Tool use</span>
+              <span>Evals</span>
+              <span>Recovery</span>
+            </div>
           </a>
-          <a href="articles/polished-and-considered.html">
-            <p class="card-meta">Taste / craft</p>
-            <h3>The difference between polished and considered</h3>
-            <p>A short essay on why good work feels inevitable only after many small choices.</p>
-          </a>
-          <a href="articles/stop-rushing-first-draft.html">
-            <p class="card-meta">Work / attention</p>
-            <h3>What I noticed when I stopped rushing the first draft</h3>
-            <p>A practical note about slowness, clarity, and making better decisions sooner.</p>
-          </a>
+          <!-- TODO: Expand into a project page if this becomes useful. -->
+          <article class="project-card">
+            <h3>AI-native messaging concepts</h3>
+            <p>
+              Exploring what messaging might look like if people, files, events,
+              and emails were treated as structured context instead of just text.
+            </p>
+          </article>
+          <!-- TODO: Expand into a project page if this becomes useful. -->
+          <article class="project-card">
+            <h3>Enterprise AI workflow patterns</h3>
+            <p>
+              A collection of patterns I keep seeing in applied AI products:
+              handoff problems, missing context, unclear ownership, and brittle
+              evaluation.
+            </p>
+          </article>
         </div>
+      </section>
+
+      <section class="section questions-section" aria-labelledby="questions-title">
+        <div class="section-heading">
+          <p class="kicker">Product questions</p>
+          <h2 id="questions-title">Questions I keep coming back to.</h2>
+        </div>
+
+        <ul class="question-list">
+          <li>What should an AI product refuse to automate?</li>
+          <li>When does adding flexibility make a system harder to trust?</li>
+          <li>How do you design for recovery when the model is wrong?</li>
+          <li>What should the user control, and what should the system infer?</li>
+          <li>How do you evaluate an agent when the task itself is ambiguous?</li>
+          <li>What makes a workflow feel trustworthy enough to become a habit?</li>
+        </ul>
       </section>
 
       <section class="section about-section" id="about" aria-labelledby="about-title">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2 id="about-title">I build, study, and write until the idea becomes usable.</h2>
+        <div class="section-heading">
+          <p class="kicker">About</p>
+          <h2 id="about-title">I’m Daniel, a product manager working on AI and enterprise software.</h2>
         </div>
         <div class="about-copy">
           <p>
-            This site is intentionally not just a portfolio shelf. It is a record
-            of how I think: technical enough to show depth, personal enough to
-            show taste, and careful enough to respect private work.
+            I’m Daniel, a product manager working on AI and enterprise software.
+            I’m interested in the practical side of AI products: how they fit
+            into real workflows, where they fail, and how to make them useful
+            without making users feel like they’re managing another complicated
+            system.
           </p>
-          <a class="button primary" href="mailto:hello@example.com">Email Daniel</a>
+          <p>
+            This site is a place for notes, product explorations, and occasional
+            writing about AI, agents, productivity, and software design.
+          </p>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="kicker">Contact</p>
+          <h2 id="contact-title">If something here overlaps with what you’re working on, I’d be happy to connect.</h2>
+        </div>
+        <div class="contact-links" aria-label="Contact links">
+          <!-- TODO: Replace placeholder profile URLs, email, and resume link. -->
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn profile">LinkedIn</a>
+          <a href="https://x.com/" aria-label="X profile">X</a>
+          <a href="mailto:hello@example.com">Email</a>
+          <a href="#" aria-disabled="true">Resume</a>
         </div>
       </section>
     </main>

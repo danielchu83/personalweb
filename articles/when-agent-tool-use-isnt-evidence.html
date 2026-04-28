@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A technical note from Atlas on why agent claims about tool use are not evidence of execution."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="When an agent says it used a tool, that is not evidence" />
+    <meta
+      property="og:description"
+      content="A technical note from Atlas on why agent claims about tool use are not evidence of execution."
+    />
+    <title>When an agent says it used a tool, that is not evidence | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#notes">Writing</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#notes">Back to home</a>
+        <p class="eyebrow">Atlas note</p>
+        <h1>When an agent says it used a tool, that is not evidence</h1>
+        <p class="reader-dek">
+          One of the stranger Atlas failures was not that the agent got an answer
+          wrong. It was that the answer looked tool-grounded even when the tool
+          path had not actually become the agent's default behavior.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            Atlas has a private finance agent that answers questions by calling
+            CLI commands over a local data layer. The clean version of the design
+            is simple: the agent should not do important math in prose. It should
+            call a command, read the result, and explain the result to the user.
+          </p>
+          <p>
+            The failure was more subtle. The agent produced a forecast that was
+            mostly right, cited the kind of command it should have used, and then
+            changed its story when challenged. It had enough context to assemble
+            a plausible answer manually from remembered facts, snippets of local
+            documentation, and arithmetic in the response. But the product
+            contract I wanted was different: the command should be the source of
+            truth.
+          </p>
+
+          <h2>The text channel lies by accident</h2>
+          <p>
+            The LLM grader saw only the final message. If the answer said, "Using
+            the forecast command, the result is..." that looked identical to real
+            tool use. The grader could not tell whether the agent ran the command,
+            quoted cached knowledge, or invented a command-shaped explanation
+            because that is what a good answer usually sounds like.
+          </p>
+          <p>
+            That distinction matters because agent systems have two surfaces:
+            the execution trace and the narrative trace. Users and most graders
+            see the narrative trace. The system's actual safety depends on the
+            execution trace. If those are allowed to drift, an agent can appear
+            disciplined while routing around the discipline.
+          </p>
+
+          <h2>The fix was infrastructure, not confidence</h2>
+          <p>
+            The first instinct is to tell the agent, more firmly, to use the tool.
+            That helped a little, but it did not change the shape of the system.
+            The better fix was to make the tool path easier than the manual path.
+          </p>
+          <p>
+            Future events moved into a durable data table. The forecast command
+            learned to include those events automatically. The eval stopped
+            rewarding claims about commands and started checking whether the
+            answer matched the data the command would produce. In other words,
+            the test moved from "did the agent describe the right process?" to
+            "did the answer reflect the right source of truth?"
+          </p>
+          <p>
+            I also learned to treat environment setup as part of the product.
+            If an eval runner points at one database while the tool gateway points
+            at another, the agent can look unreliable when the real bug is the
+            harness. If a workspace contains stale data copies, the agent can do
+            sincere work against the wrong world. Both are product failures in an
+            agent system.
+          </p>
+
+          <h2>What I would generalize</h2>
+          <ul>
+            <li>Do not grade agent tool use by reading the agent's prose.</li>
+            <li>Grade observable outputs, side effects, and source-of-truth agreement.</li>
+            <li>Make the correct tool path shorter than the improvised reasoning path.</li>
+            <li>Remove stale local copies when a canonical read path exists.</li>
+            <li>Test the harness and environment with the same seriousness as the prompt.</li>
+          </ul>
+          <p>
+            The product lesson is uncomfortable but useful: an AI agent does not
+            become reliable because it knows the right command exists. It becomes
+            reliable when the system makes the right command the easiest way to
+            succeed, and when the eval can see whether that actually happened.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

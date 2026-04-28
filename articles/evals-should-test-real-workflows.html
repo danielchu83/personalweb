@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A technical note from Atlas on why AI evals should test real workflows, not just idealized prompts."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Evals should test the workflow, not the demo" />
+    <meta
+      property="og:description"
+      content="A technical note from Atlas on why AI evals should test real workflows, not just idealized prompts."
+    />
+    <title>Evals should test the workflow, not the demo | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#notes">Writing</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#notes">Back to home</a>
+        <p class="eyebrow">Atlas note</p>
+        <h1>Evals should test the workflow, not the demo</h1>
+        <p class="reader-dek">
+          Atlas kept teaching me the same lesson: an agent can pass the prompt
+          and still fail the product if the eval leaves out state, files,
+          side effects, or the user's real input format.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            My first evals for Atlas were mostly question-answer tests. Ask the
+            agent a question, grade the answer, improve the prompt or the tool,
+            run it again. That was useful. It caught obvious gaps. It also gave
+            me too much confidence.
+          </p>
+          <p>
+            The real system was not a clean prompt. It was a workflow: messages,
+            screenshots, local files, database writes, long-running sessions,
+            follow-up questions, and a human who expected the system to remember
+            what it had actually done. Once I tested that whole loop, new failure
+            modes appeared.
+          </p>
+
+          <h2>The input modality matters</h2>
+          <p>
+            A text eval can pass while the product fails on screenshots, PDFs, or
+            forwarded messages. That is not a small implementation detail. The
+            user's real input format is part of the task. If the eval only tests
+            the cleaned-up version, it is grading a demo path.
+          </p>
+          <p>
+            Atlas improved when evals included the messy inputs the system really
+            saw. It also improved when "wrong examples" were made explicit. Not
+            just "parse this correctly," but "do not turn this label, axis, or
+            annotation into a real record." Negative examples matter because
+            agents are eager to be helpful.
+          </p>
+
+          <h2>State leaks across tests</h2>
+          <p>
+            Multi-turn agents carry memory. Databases carry writes. Gateways
+            carry sessions. If an eval mutates state and the next question reads
+            that state, the second question is no longer independent. It may fail
+            because the first test succeeded.
+          </p>
+          <p>
+            This changed how I think about eval infrastructure. Resetting the
+            chat session is not enough. You may also need to reset tool memory,
+            database rows, generated files, and any local cache the agent can
+            inspect. The eval harness is part of the system under test.
+          </p>
+
+          <h2>The grader can only grade what it can observe</h2>
+          <p>
+            One Atlas eval expected the agent to write a safety banner into a
+            generated file. The behavior was correct: the file contained the
+            banner. But the grader only saw the chat response, not the file. From
+            the grader's point of view, the banner was missing.
+          </p>
+          <p>
+            That plateau was useful because it separated product correctness from
+            eval observability. If the behavior lives in a file, database row, or
+            downstream message, the grader needs access to that artifact. Asking
+            the agent to summarize the artifact back into chat can change the
+            product just to satisfy the eval.
+          </p>
+
+          <h2>Better eval questions</h2>
+          <ul>
+            <li>Did the right side effect happen, not just the right explanation?</li>
+            <li>Can the grader see the artifact the rubric is checking?</li>
+            <li>Does the test use the user's real input format?</li>
+            <li>Is state reset between runs, including memory and generated files?</li>
+            <li>Are expected answers resolved from live data when the data changes?</li>
+          </ul>
+          <p>
+            The practical lesson is that evals should feel less like trivia and
+            more like replay. Start from a real failure, preserve the workflow
+            shape, and grade the observable contract. Otherwise you get a system
+            that is excellent at the demo and still unreliable in daily use.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

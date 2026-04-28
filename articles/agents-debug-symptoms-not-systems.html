@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A technical note from Atlas on why AI agents often debug plausible symptoms before checking system boundaries."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI agents debug symptoms before systems" />
+    <meta
+      property="og:description"
+      content="A technical note from Atlas on why AI agents often debug plausible symptoms before checking system boundaries."
+    />
+    <title>AI agents debug symptoms before systems | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#notes">Writing</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#notes">Back to home</a>
+        <p class="eyebrow">Atlas note</p>
+        <h1>AI agents debug symptoms before systems</h1>
+        <p class="reader-dek">
+          A capable agent can produce a very sophisticated explanation for the
+          wrong failure. The missing habit is often simpler: first prove which
+          world you are looking at.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            One Atlas incident started with a basic mismatch: one view of the
+            system reported a number that did not agree with another view. The
+            agent investigated for a while and produced a plausible database
+            theory. It sounded technical. It fit the symptom. It was wrong.
+          </p>
+          <p>
+            The actual problem was not one bug. It was three small boundary
+            failures stacked together: a stale workspace copy of the database,
+            a taxonomy mismatch that tests had accidentally normalized, and a
+            query that used a slightly different definition than the headline
+            number. None of those is exotic. Together they created a confusing
+            world where the agent could explain the symptom without touching the
+            cause.
+          </p>
+
+          <h2>The agent skipped the boring checks</h2>
+          <p>
+            Human debugging often starts with boring questions. Am I looking at
+            the right environment? Is this the same database the app uses? Are
+            these two screens applying the same filter? Did a constant drift
+            from the underlying data?
+          </p>
+          <p>
+            Agents tend to start one layer deeper. They are good at producing a
+            coherent mechanism once they see a symptom. That strength becomes a
+            weakness when the first job is to verify the boundary of the system.
+            A stale file can look like a persistence bug. A naming mismatch can
+            look like missing data. Two definitions of the same metric can look
+            like a race condition.
+          </p>
+
+          <h2>Make provenance visible</h2>
+          <p>
+            The repair pattern was to reduce the number of places an agent could
+            inspect private state directly. Raw workspace copies are tempting
+            because they make an agent feel self-sufficient. They are also a
+            maintenance trap. Once copied, they become another version of truth.
+          </p>
+          <p>
+            Atlas moved more reads behind canonical CLI commands. Those commands
+            know where the live data is, apply the shared business definitions,
+            and return a shape designed for machine use. The agent can still
+            reason, but it reasons over a source that the rest of the system also
+            trusts.
+          </p>
+          <p>
+            I also like commands that print enough provenance to debug the
+            answer: the data source, the time window, the filters, and the
+            semantic definition being applied. It is not glamorous UI, but it
+            gives the agent fewer degrees of freedom to narrate the wrong system.
+          </p>
+
+          <h2>The product lesson</h2>
+          <p>
+            "Agent debugging" sounds like an intelligence problem. A lot of the
+            time it is a product-surface problem. The system needs to make the
+            boring checks cheap and obvious:
+          </p>
+          <ul>
+            <li>Prefer canonical commands over copied workspace state.</li>
+            <li>Centralize definitions like spending, income, active, or current.</li>
+            <li>Show provenance in tool output, especially filters and data source.</li>
+            <li>Write tests against real contracts, not shared mistaken constants.</li>
+            <li>Teach the agent to verify the environment before explaining the symptom.</li>
+          </ul>
+          <p>
+            The deeper point is that agents need help developing taste about
+            debugging order. They can reason through a system, but the product
+            has to make "am I looking at the right system?" the first-class move.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

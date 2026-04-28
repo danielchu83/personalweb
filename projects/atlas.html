@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A public-safe overview of Atlas, Daniel Chu's private AI workflow system for agents, evals, automation, and personal operations."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Atlas | Daniel Chu" />
+    <meta
+      property="og:description"
+      content="A public-safe overview of Atlas, Daniel Chu's private AI workflow system for agents, evals, automation, and personal operations."
+    />
+    <title>Atlas | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Project navigation">
+        <a href="../index.html#notes">Writing</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page project-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#projects">Back to projects</a>
+        <p class="eyebrow">Project</p>
+        <h1>Atlas</h1>
+        <p class="reader-dek">
+          Atlas is my private AI workflow system. I use it to explore how agents
+          become useful in daily work: how they call tools, preserve context,
+          recover from mistakes, and operate around sensitive personal data.
+        </p>
+        <div class="reader-actions">
+          <a class="button primary" href="#architecture">View architecture</a>
+          <a class="button secondary" href="#related">Read related notes</a>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            I do not publish Atlas source code or raw data. The useful public
+            version is the system shape: what I tried, what broke, and what the
+            failures taught me about AI product design.
+          </p>
+          <p>
+            The project started as CLI-first personal software and grew into a
+            practical testbed for agentic workflows. The durable lesson has been
+            that AI products are less about impressive one-off answers and more
+            about boring reliability: source-of-truth discipline, safe writes,
+            eval harnesses, recovery paths, and interfaces that make the right
+            action easy for the agent.
+          </p>
+
+          <h2 id="architecture">Architecture</h2>
+          <p>
+            The public diagram below is intentionally simplified. It shows the
+            setup without exposing private schemas, credentials, raw records, or
+            operational secrets.
+          </p>
+
+          <div class="architecture-diagram" role="img" aria-label="Simplified Atlas architecture diagram">
+            <div class="arch-node arch-user">
+              <strong>User</strong>
+              <span>Questions, commands, screenshots, and review decisions</span>
+            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-node">
+              <strong>Chat and agent layer</strong>
+              <span>Agent sessions, skills, model routing, and tool calls</span>
+            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-node arch-core">
+              <strong>Atlas CLI</strong>
+              <span>Canonical commands for reads, writes, scenarios, and audits</span>
+            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-node">
+              <strong>Private data layer</strong>
+              <span>Local database, generated context, and domain records</span>
+            </div>
+            <div class="arch-node arch-vm">
+              <strong>Azure VM</strong>
+              <span>Always-on daemon, scheduled jobs, health checks, and alerts</span>
+            </div>
+            <div class="arch-arrow arch-arrow-up" aria-hidden="true">↑</div>
+            <div class="arch-node">
+              <strong>Eval harness</strong>
+              <span>Replay failures, grade behavior, reset state, and catch regressions</span>
+            </div>
+          </div>
+
+          <h2>How the pieces fit</h2>
+          <p>
+            The CLI is the product's spine. Agents are encouraged to call
+            commands instead of doing important reasoning from memory or raw
+            database queries. That makes the system easier to test and gives the
+            agent a smaller, more trustworthy surface.
+          </p>
+          <p>
+            The Azure VM runs the always-on pieces: scheduled jobs, a daemon,
+            health checks, and notifications. The VM is not interesting because
+            it is complex. It is interesting because it forces product questions:
+            what should run automatically, what should require confirmation, and
+            what should still work when the AI layer is unavailable?
+          </p>
+          <p>
+            The eval harness exists because prompts alone were not enough. Atlas
+            replays real failure shapes, checks source-of-truth behavior, and
+            catches cases where the agent sounds right but uses the wrong path.
+            Over time, the evals became as important as the agent itself.
+          </p>
+
+          <h2>Product questions Atlas keeps raising</h2>
+          <ul>
+            <li>How do you make a tool the path of least resistance for an agent?</li>
+            <li>When should an AI ask for confirmation before writing data?</li>
+            <li>How do you evaluate behavior that happens in files or side effects, not chat?</li>
+            <li>What belongs in always-loaded context, and what belongs in a command?</li>
+            <li>How do you design recovery when the AI is the thing that failed?</li>
+          </ul>
+
+          <h2 id="related">Related notes</h2>
+          <div class="related-article-list">
+            <a href="../articles/when-agent-tool-use-isnt-evidence.html">
+              <span>Tool use</span>
+              <strong>When an agent says it used a tool, that is not evidence</strong>
+            </a>
+            <a href="../articles/agents-debug-symptoms-not-systems.html">
+              <span>Debugging</span>
+              <strong>AI agents debug symptoms before systems</strong>
+            </a>
+            <a href="../articles/why-powerful-tools-can-make-agents-worse.html">
+              <span>Tool design</span>
+              <strong>When more powerful tools make agents worse</strong>
+            </a>
+            <a href="../articles/evals-should-test-real-workflows.html">
+              <span>Evals</span>
+              <strong>Evals should test the workflow, not the demo</strong>
+            </a>
+            <a href="../articles/ai-products-need-recovery-paths.html">
+              <span>Trust</span>
+              <strong>If an AI can write data, it needs a recovery path</strong>
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

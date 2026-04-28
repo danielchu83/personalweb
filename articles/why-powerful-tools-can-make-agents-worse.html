@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A technical note from Atlas on why generalized tools can make AI agents less predictable without tighter product constraints."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="When more powerful tools make agents worse" />
+    <meta
+      property="og:description"
+      content="A technical note from Atlas on why generalized tools can make AI agents less predictable without tighter product constraints."
+    />
+    <title>When more powerful tools make agents worse | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#notes">Writing</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#notes">Back to home</a>
+        <p class="eyebrow">Atlas note</p>
+        <h1>When more powerful tools make agents worse</h1>
+        <p class="reader-dek">
+          Atlas got more capable when several narrow finance tools became one
+          generalized scenario engine. It also got easier for the agent to choose
+          the wrong path.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            I used to think the obvious direction for agent tools was
+            consolidation. If four tools answer overlapping scenario questions,
+            replace them with one more expressive engine. Fewer APIs, more
+            capability, cleaner implementation. That is mostly true inside the
+            codebase. It is not automatically true at the product surface.
+          </p>
+          <p>
+            In Atlas, a generalized scenario engine replaced several narrower
+            commands. Internally, this was a good move. The engine could evaluate
+            different kinds of financial changes through one pure computation
+            path. It reduced duplicate logic and made new scenario types easier
+            to add.
+          </p>
+          <p>
+            But the agent now had a larger action space. Questions that used to
+            map cleanly to one verb could be answered by multiple paths. Some
+            paths were technically valid but semantically weaker. Others existed
+            only because an old flag had not been deleted yet. The tool became
+            more powerful, but the product became less crisp.
+          </p>
+
+          <h2>Capability expands the routing problem</h2>
+          <p>
+            A generalized tool asks the agent to do more product judgment. Which
+            mode should it use? Is this a comparison question or a feasibility
+            question? Should it update state or create a sandbox? Is the user
+            asking "can I do this now" or "when would this become possible"?
+          </p>
+          <p>
+            Humans can tolerate some ambiguity in a command surface because we
+            stop and think about intent. Agents often optimize for the first
+            plausible route. If two routes work, the eval has to pick a canonical
+            one. If the eval and the agent disagree, you get a rubric collision,
+            not necessarily a reasoning failure.
+          </p>
+
+          <h2>The fix was specialization at the edge</h2>
+          <p>
+            The pattern that worked was not to abandon the generalized engine.
+            It was to keep generality inside the implementation and restore
+            specificity at the interface. Conceptually different questions got
+            distinct verbs. Old flags that created overlap were removed instead
+            of deprecated softly. Wrong paths failed fast with useful messages.
+          </p>
+          <p>
+            This felt less elegant at first. It made the public command surface
+            more opinionated. But that was the point. Agents need fewer plausible
+            options, not more. The product layer should encode the routing
+            decision whenever the system already knows the distinction.
+          </p>
+
+          <h2>Strict errors beat fuzzy success</h2>
+          <p>
+            Another tempting fix was fuzzy matching. If the agent guesses an
+            approximate name, resolve it to the closest object and keep going.
+            That is attractive for read-only convenience. It is dangerous for
+            mutations and scenario changes. A fuzzy match can silently target the
+            wrong thing while training the agent that guessing is acceptable.
+          </p>
+          <p>
+            The better pattern was strict matching plus useful error envelopes.
+            When the agent supplied an invalid name, the tool returned valid
+            options and told it how to retry. The agent learned from the error at
+            the exact moment it needed help, without adding another always-loaded
+            prompt rule.
+          </p>
+
+          <h2>What I would generalize</h2>
+          <ul>
+            <li>Generalize the computation layer before you generalize the interface.</li>
+            <li>Delete overlapping verbs and flags when they create routing ambiguity.</li>
+            <li>Use hard failures when a path should no longer be used.</li>
+            <li>Prefer strict matching with helpful errors over fuzzy mutation targeting.</li>
+            <li>Remember that every new capability creates a new choice the agent has to make.</li>
+          </ul>
+          <p>
+            More powerful tools are not bad. They just shift work from code into
+            routing. If the product layer does not absorb that routing work, the
+            agent inherits it. That is where a lot of "the model got worse"
+            stories quietly begin.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A technical note from Atlas on why AI products that write data need undo, audit, and out-of-band recovery paths."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="If an AI can write data, it needs a recovery path" />
+    <meta
+      property="og:description"
+      content="A technical note from Atlas on why AI products that write data need undo, audit, and out-of-band recovery paths."
+    />
+    <title>If an AI can write data, it needs a recovery path | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#notes">Writing</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#notes">Back to home</a>
+        <p class="eyebrow">Atlas note</p>
+        <h1>If an AI can write data, it needs a recovery path</h1>
+        <p class="reader-dek">
+          The moment an AI agent can mutate a private system, trust stops being
+          only about accuracy. It becomes about confirmation, reversibility, and
+          the user's ability to recover when the model is wrong.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            Atlas started as a read-heavy system. The agent answered questions,
+            summarized data, and helped me inspect what was already there. That
+            was useful, but the product became much more serious once the agent
+            could write: log an event, update a plan, change a classification, or
+            record a transaction.
+          </p>
+          <p>
+            Write access changes the product contract. A wrong answer is
+            annoying. A wrong write becomes state. It can appear in later
+            reports, affect future recommendations, and train the user's trust in
+            the wrong direction.
+          </p>
+
+          <h2>The parser is a trust boundary</h2>
+          <p>
+            Many AI write paths start with extraction: read a message, screenshot,
+            or document, then convert it into structured data. That parser is not
+            just a convenience layer. It is the boundary between "the model thinks
+            this happened" and "the system now believes this happened."
+          </p>
+          <p>
+            Atlas got safer when uncertain extraction stopped flowing directly
+            into durable state. Unknown fields became review items. Ambiguous
+            targets produced strict errors. Mutations used dedicated commands
+            rather than raw database writes. The more important the write, the
+            more the system needed an explicit commit path.
+          </p>
+
+          <h2>Undo is part of the feature</h2>
+          <p>
+            A lot of AI product design focuses on making the happy path feel
+            magical. For daily workflow tools, recovery is just as important.
+            Users need to know what changed, why it changed, and how to reverse
+            it.
+          </p>
+          <p>
+            That means write commands should produce clear receipts. Records need
+            stable identifiers. Destructive or high-impact changes need delete or
+            rollback paths. Audit logs should explain what the agent attempted,
+            but they should not be confused with the domain's source of truth.
+            An audit log of invocations is not the same thing as a ledger of real
+            events.
+          </p>
+
+          <h2>Out-of-band control matters</h2>
+          <p>
+            There is another recovery problem: what happens when the agent itself
+            is the broken part? If the only way to restart, inspect, or disable
+            the system is to ask the AI, you have built a trap. Atlas needed a
+            small non-AI control plane for status checks, restarts, and emergency
+            operations.
+          </p>
+          <p>
+            This is not glamorous, but it changes how the product feels. The user
+            can trust the AI more when the AI is not the only door into the
+            system.
+          </p>
+
+          <h2>A recovery checklist</h2>
+          <ul>
+            <li>Confirm before committing when intent or target is ambiguous.</li>
+            <li>Return a receipt for every write, including what changed.</li>
+            <li>Give records stable IDs so the user can inspect or reverse them.</li>
+            <li>Keep audit logs, but do not make them answer domain questions they were not designed for.</li>
+            <li>Provide non-AI controls for restart, status, and rollback paths.</li>
+          </ul>
+          <p>
+            Reliability is not only "the model is usually right." Reliability is
+            also what happens after it is wrong. The recovery path is where the
+            product earns the user's willingness to try again.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
