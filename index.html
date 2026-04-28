@@ -5,117 +5,196 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Personal website for Daniel Chu: selected work, writing, and ways to connect."
+      content="Daniel Chu writes technical field notes, Atlas learnings, personal essays, and project reflections."
     />
-    <title>Daniel Chu | Personal Website</title>
+    <title>Daniel Chu | Notes, Systems, Taste</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header" aria-label="Site header">
-      <a class="brand" href="#top" aria-label="Daniel Chu home">Daniel Chu</a>
+      <a class="brand" href="#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
+        <a href="#atlas">Atlas</a>
+        <a href="#technical">Technical</a>
+        <a href="#personal">Personal</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="intro-title">
         <div class="hero-copy">
-          <p class="eyebrow">Builder, researcher, and product-minded engineer</p>
-          <h1 id="intro-title">Work that turns fuzzy ideas into useful software.</h1>
+          <p class="eyebrow">Technical notes and personal essays</p>
+          <h1 id="intro-title">
+            <span>A public</span>
+            <span>notebook for</span>
+            <span>work that is still</span>
+            <span>becoming clear.</span>
+          </h1>
           <p class="lead">
-            I design and build tools, prototypes, and systems that make complex
-            problems easier to use, explain, and ship.
+            I write about building Atlas, learning in public without leaking private
+            source code, and the small observations that change how I think.
           </p>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#work">View work</a>
-            <a class="button secondary" href="mailto:hello@example.com">Get in touch</a>
+            <a class="button primary" href="#atlas">Read Atlas notes</a>
+            <a class="button secondary" href="#personal">Browse personal writing</a>
           </div>
         </div>
 
-        <div class="work-snapshot" aria-label="Selected focus areas">
-          <div class="snapshot-panel panel-large">
-            <span>AI Products</span>
-            <strong>Human-centered workflows</strong>
-          </div>
-          <div class="snapshot-grid">
-            <div class="snapshot-panel">
-              <span>Systems</span>
-              <strong>Reliable foundations</strong>
+        <div class="index-strip" aria-hidden="true">
+          <span>Systems</span>
+          <span>Learning</span>
+          <span>Field notes</span>
+        </div>
+      </section>
+
+      <section class="section thesis-section" aria-labelledby="thesis-title">
+        <div class="section-kicker">What this place is for</div>
+        <h2 id="thesis-title">
+          A portfolio of judgment: what I tried, what broke, what I learned, and
+          what I would do differently.
+        </h2>
+      </section>
+
+      <section class="section atlas-section" id="atlas" aria-labelledby="atlas-title">
+        <div class="section-heading">
+          <p class="eyebrow">Atlas field notes</p>
+          <h2 id="atlas-title">Technical writing without publishing private code</h2>
+          <p>
+            Atlas can become a learning journal: architecture decisions, debugging
+            stories, privacy boundaries, operational tradeoffs, and design thinking.
+            The point is to show taste and rigor, not dump a repository.
+          </p>
+        </div>
+
+        <div class="atlas-layout">
+          <article class="feature-card">
+            <div class="feature-image atlas-image" aria-hidden="true"></div>
+            <div class="feature-body">
+              <p class="card-meta">Atlas / technical essay</p>
+              <h3>Building around sensitive data</h3>
+              <p>
+                A post about redaction, synthetic examples, and how to discuss a
+                system honestly when the real inputs should stay private.
+              </p>
+              <span class="text-link">Draft outline</span>
             </div>
-            <div class="snapshot-panel">
-              <span>Research</span>
-              <strong>Clear synthesis</strong>
-            </div>
+          </article>
+
+          <div class="note-stack" aria-label="Atlas note ideas">
+            <article class="mini-note">
+              <span>01</span>
+              <h3>Architecture sketches that explain the system, not the secrets</h3>
+            </article>
+            <article class="mini-note">
+              <span>02</span>
+              <h3>What I learned from designing a clean ingestion pipeline</h3>
+            </article>
+            <article class="mini-note">
+              <span>03</span>
+              <h3>Debugging notes: turning vague failures into useful signals</h3>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="work" aria-labelledby="work-title">
-        <div class="section-heading">
-          <p class="eyebrow">Selected work</p>
-          <h2 id="work-title">Projects worth a closer look</h2>
+      <section class="section writing-section" id="technical" aria-labelledby="technical-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">Technical blog</p>
+            <h2 id="technical-title">Learning logs for systems, AI, and product engineering</h2>
+          </div>
+          <p>
+            Short enough to read, concrete enough to prove the work happened.
+          </p>
         </div>
 
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="project-image image-one" aria-hidden="true"></div>
-            <div class="project-body">
-              <p class="project-type">Product prototype</p>
-              <h3>AI workflow companion</h3>
+        <div class="article-grid">
+          <article class="article-card">
+            <div class="article-cover cover-systems" aria-hidden="true"></div>
+            <div class="article-body">
+              <p class="card-meta">Systems / 7 min read</p>
+              <h3>Designing for recovery before designing for scale</h3>
               <p>
-                A focused assistant experience for moving from loose goals to
-                executable project plans.
+                Notes on logs, retries, dashboards, and the boring tools that make
+                ambitious work less fragile.
               </p>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-image image-two" aria-hidden="true"></div>
-            <div class="project-body">
-              <p class="project-type">Engineering system</p>
-              <h3>Developer productivity platform</h3>
+          <article class="article-card">
+            <div class="article-cover cover-ai" aria-hidden="true"></div>
+            <div class="article-body">
+              <p class="card-meta">AI product / 6 min read</p>
+              <h3>When an assistant should ask, act, or stay quiet</h3>
               <p>
-                A set of internal tools that make repeated engineering tasks
-                easier to coordinate and review.
+                A product note about agency, user trust, and designing workflows
+                that feel helpful instead of noisy.
               </p>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-image image-three" aria-hidden="true"></div>
-            <div class="project-body">
-              <p class="project-type">Research</p>
-              <h3>Decision support study</h3>
+          <article class="article-card">
+            <div class="article-cover cover-debug" aria-hidden="true"></div>
+            <div class="article-body">
+              <p class="card-meta">Engineering / 5 min read</p>
+              <h3>Debugging as a writing exercise</h3>
               <p>
-                Structured research notes, experiments, and recommendations for
-                a product direction with many tradeoffs.
+                How clearer notes turned a messy investigation into a reusable
+                playbook for the next confusing bug.
               </p>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section personal-section" id="personal" aria-labelledby="personal-title">
+        <div class="personal-copy">
+          <p class="eyebrow">Personal blog</p>
+          <h2 id="personal-title">Recently learned, still settling</h2>
+          <p>
+            Essays for ideas that do not fit a project repo: books, habits,
+            taste, attention, work, and the occasional sharp little lesson from
+            ordinary life.
+          </p>
+        </div>
+
+        <div class="personal-list">
+          <article>
+            <p class="card-meta">Life / reflection</p>
+            <h3>Notes on learning in seasons</h3>
+            <p>Some weeks are for collecting fragments. Some are for making the shape visible.</p>
+          </article>
+          <article>
+            <p class="card-meta">Taste / craft</p>
+            <h3>The difference between polished and considered</h3>
+            <p>A short essay on why good work feels inevitable only after many small choices.</p>
+          </article>
+          <article>
+            <p class="card-meta">Work / attention</p>
+            <h3>What I noticed when I stopped rushing the first draft</h3>
+            <p>A practical note about slowness, clarity, and making better decisions sooner.</p>
           </article>
         </div>
       </section>
 
       <section class="section about-section" id="about" aria-labelledby="about-title">
-        <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2 id="about-title">A practical mix of product taste and engineering depth</h2>
-        </div>
-        <p>
-          This site is a starting point for a personal portfolio. Replace this
-          text with your story, add real project details, and link the work you
-          want people to remember.
-        </p>
-      </section>
-
-      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
         <div>
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">Let’s build something clear and useful.</h2>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">I build, study, and write until the idea becomes usable.</h2>
         </div>
-        <a class="button primary" href="mailto:hello@example.com">Email Daniel</a>
+        <div class="about-copy">
+          <p>
+            This site is intentionally not just a portfolio shelf. It is a record
+            of how I think: technical enough to show depth, personal enough to
+            show taste, and careful enough to respect private work.
+          </p>
+          <a class="button primary" href="mailto:hello@example.com">Email Daniel</a>
+        </div>
       </section>
     </main>
   </body>
