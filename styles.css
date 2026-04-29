@@ -90,7 +90,14 @@ a {
 .hero {
   max-width: 1120px;
   margin: 0 auto;
-  padding-block: clamp(84px, 12vw, 150px) clamp(70px, 9vw, 112px);
+  padding-block: clamp(72px, 10vw, 124px) clamp(62px, 8vw, 96px);
+}
+
+.identity {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 820;
 }
 
 .kicker {
@@ -118,9 +125,9 @@ h3 {
 h1 {
   max-width: 900px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 4.9rem;
+  font-size: 4.35rem;
   font-weight: 520;
-  line-height: 1;
+  line-height: 1.02;
 }
 
 .lead {
@@ -190,6 +197,82 @@ h1 {
   font-size: 2.75rem;
   font-weight: 520;
   line-height: 1.08;
+}
+
+.featured-project-section {
+  background: var(--surface);
+}
+
+.featured-project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.72fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.featured-project-copy,
+.learning-panel {
+  min-width: 0;
+}
+
+.featured-project-copy h3 {
+  max-width: 640px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 520;
+  line-height: 1.02;
+}
+
+.featured-project-copy p:not(.project-meta) {
+  max-width: 680px;
+  margin: 20px 0 0;
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.featured-project-copy .button {
+  margin-top: 26px;
+}
+
+.learning-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.learning-panel h3 {
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.learning-panel ul {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.learning-panel li {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .note-grid,
@@ -273,6 +356,10 @@ h1 {
 
 .notes-section {
   background: var(--paper-soft);
+}
+
+.explorations-section {
+  background: var(--paper);
 }
 
 .questions-section {
@@ -507,7 +594,8 @@ h1 {
   }
 
   .note-grid,
-  .project-list {
+  .project-list,
+  .featured-project-card {
     grid-template-columns: 1fr;
   }
 
@@ -550,7 +638,7 @@ h1 {
   }
 
   h1 {
-    font-size: 1.72rem;
+    font-size: 2.28rem;
     line-height: 1.06;
   }
 

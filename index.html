@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Product person working on AI, agents, and enterprise workflows."
+      content="AI product leader focused on agent workflows, enterprise AI, and making AI systems useful in real workflows."
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Daniel Chu" />
     <meta
       property="og:description"
-      content="Product person working on AI, agents, and enterprise workflows."
+      content="AI product leader focused on agent workflows, enterprise AI, and making AI systems useful in real workflows."
     />
     <meta property="og:url" content="https://danielchu83.github.io/personalweb/" />
     <meta property="og:site_name" content="Daniel Chu" />
@@ -28,8 +28,8 @@
         <span>Daniel Chu</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#notes">Writing</a>
         <a href="#projects">Projects</a>
+        <a href="#notes">Notes</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -37,31 +37,93 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="intro-title">
-        <p class="kicker">Product person working on AI, agents, and enterprise workflows.</p>
-        <h1 id="intro-title">
-          I’m interested in why AI products work in demos but break in real workflows.
-        </h1>
+        <p class="identity">Daniel Chu</p>
+        <p class="kicker">Product leader working on AI agents and enterprise workflows.</p>
+        <h1 id="intro-title">I work on making AI systems useful in real workflows.</h1>
         <p class="lead">
-          I’m a product person working on AI, agents, productivity, and enterprise
-          workflows. I like studying the messy parts of product development: user
-          trust, tool reliability, context, permissions, evaluation, and the gap
-          between what a model can do and what people will actually use.
+          I focus on the product layer where agents, tools, context,
+          permissions, evaluation, and user trust have to come together. This
+          site collects product explorations and notes from building small AI
+          systems, studying their failure modes, and thinking through what it
+          takes for AI products to become dependable.
         </p>
         <div class="hero-actions" aria-label="Primary actions">
-          <a class="button primary" href="#notes">Read notes</a>
-          <a class="button secondary" href="#projects">See projects</a>
+          <a class="button primary" href="#projects">View projects</a>
+          <a class="button secondary" href="#notes">Read notes</a>
           <a class="button secondary" href="#contact">Contact</a>
+        </div>
+      </section>
+
+      <section class="section featured-project-section" id="projects" aria-labelledby="featured-project-title">
+        <div class="section-heading">
+          <p class="kicker">Featured Project</p>
+          <h2 id="featured-project-title">Atlas</h2>
+          <p class="section-intro">
+            A private AI workflow system I built to explore how agents use
+            tools, manage context, run evals, and recover from mistakes around
+            sensitive personal data.
+          </p>
+        </div>
+
+        <div class="featured-project-card">
+          <div class="featured-project-copy">
+            <p class="project-meta">Private system / public lessons</p>
+            <h3>Agent workflows, evals, tools, and recovery paths.</h3>
+            <p>
+              Atlas is the clearest example of the product problems I like:
+              turning model capability into dependable workflows, designing
+              tool surfaces agents can actually use, and building enough
+              evaluation and recovery scaffolding to trust the system over time.
+            </p>
+            <a class="button primary" href="projects/atlas.html">View Atlas project</a>
+          </div>
+          <div class="learning-panel" aria-label="What I learned from Atlas">
+            <h3>What I learned</h3>
+            <ul>
+              <li>Tool-use claims are not evidence.</li>
+              <li>General tools can make agents less reliable.</li>
+              <li>Evals need to test real workflows, not demos.</li>
+              <li>AI systems that write data need recovery paths.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section explorations-section" id="explorations" aria-labelledby="explorations-title">
+        <div class="section-heading">
+          <p class="kicker">Other Explorations</p>
+          <h2 id="explorations-title">Smaller product directions I keep returning to.</h2>
+          <p class="section-intro">
+            Hands-on concepts around AI-native interfaces and applied AI
+            workflow patterns.
+          </p>
+        </div>
+
+        <div class="project-list">
+          <!-- TODO: Expand into a project page if this becomes useful. -->
+          <article class="project-card">
+            <h3>AI-native messaging concepts</h3>
+            <p>
+              Exploring what messaging might look like if people, files, events,
+              and emails were treated as structured context instead of just text.
+            </p>
+          </article>
+          <!-- TODO: Expand into a project page if this becomes useful. -->
+          <article class="project-card">
+            <h3>Enterprise AI workflow patterns</h3>
+            <p>
+              A collection of patterns I keep seeing in applied AI products:
+              handoff problems, missing context, unclear ownership, and brittle
+              evaluation.
+            </p>
+          </article>
         </div>
       </section>
 
       <section class="section notes-section" id="notes" aria-labelledby="notes-title">
         <div class="section-heading">
           <p class="kicker">Notes</p>
-          <h2 id="notes-title">A few things I’m trying to understand better.</h2>
-          <p class="section-intro">
-            Sanitized technical notes from Atlas, my private AI workflow system.
-            The details are generalized, but the failure modes are real.
-          </p>
+          <h2 id="notes-title">Short notes from building and studying AI products.</h2>
         </div>
 
         <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
@@ -104,52 +166,6 @@
         </div>
       </section>
 
-      <section class="section projects-section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="kicker">Projects</p>
-          <h2 id="projects-title">Systems and product explorations.</h2>
-          <p class="section-intro">
-            Longer-running work that gives the notes context. Atlas is the main
-            project for now; the other ideas are smaller explorations.
-          </p>
-        </div>
-
-        <div class="project-list">
-          <a class="project-card project-card-link" href="projects/atlas.html">
-            <p class="project-meta">Primary project</p>
-            <h3>Atlas</h3>
-            <p>
-              A private AI workflow system for personal operations: CLI-first
-              tools, a cloud VM daemon, agent workflows, evals, and a careful
-              boundary around sensitive data.
-            </p>
-            <div class="related-links" aria-label="Related Atlas notes">
-              <span>Related notes</span>
-              <span>Tool use</span>
-              <span>Evals</span>
-              <span>Recovery</span>
-            </div>
-          </a>
-          <!-- TODO: Expand into a project page if this becomes useful. -->
-          <article class="project-card">
-            <h3>AI-native messaging concepts</h3>
-            <p>
-              Exploring what messaging might look like if people, files, events,
-              and emails were treated as structured context instead of just text.
-            </p>
-          </article>
-          <!-- TODO: Expand into a project page if this becomes useful. -->
-          <article class="project-card">
-            <h3>Enterprise AI workflow patterns</h3>
-            <p>
-              A collection of patterns I keep seeing in applied AI products:
-              handoff problems, missing context, unclear ownership, and brittle
-              evaluation.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section class="section questions-section" aria-labelledby="questions-title">
         <div class="section-heading">
           <p class="kicker">Product questions</p>
@@ -169,19 +185,18 @@
       <section class="section about-section" id="about" aria-labelledby="about-title">
         <div class="section-heading">
           <p class="kicker">About</p>
-          <h2 id="about-title">I’m Daniel, a product manager working on AI and enterprise software.</h2>
+          <h2 id="about-title">I’m Daniel, a product leader working on AI and enterprise software.</h2>
         </div>
         <div class="about-copy">
           <p>
-            I’m Daniel, a product manager working on AI and enterprise software.
-            I’m interested in the practical side of AI products: how they fit
-            into real workflows, where they fail, and how to make them useful
-            without making users feel like they’re managing another complicated
-            system.
+            I work on the practical side of AI products: how they fit into real
+            workflows, where they fail, and how to make them useful without
+            making users feel like they are managing another complicated system.
           </p>
           <p>
-            This site is a place for notes, product explorations, and occasional
-            writing about AI, agents, productivity, and software design.
+            This site collects hands-on product explorations and notes about AI
+            agents, productivity systems, evaluation, user trust, and software
+            design.
           </p>
         </div>
       </section>
@@ -192,11 +207,10 @@
           <h2 id="contact-title">If something here overlaps with what you’re working on, I’d be happy to connect.</h2>
         </div>
         <div class="contact-links" aria-label="Contact links">
-          <!-- TODO: Replace placeholder profile URLs, email, and resume link. -->
-          <a href="https://www.linkedin.com/" aria-label="LinkedIn profile">LinkedIn</a>
-          <a href="https://x.com/" aria-label="X profile">X</a>
+          <!-- TODO: Replace placeholder email address. -->
+          <a href="https://www.linkedin.com/in/chudaniel/" aria-label="LinkedIn profile">LinkedIn</a>
+          <a href="https://x.com/danielchu83" aria-label="X profile">X</a>
           <a href="mailto:hello@example.com">Email</a>
-          <a href="#" aria-disabled="true">Resume</a>
         </div>
       </section>
     </main>

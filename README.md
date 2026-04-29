@@ -12,13 +12,32 @@ python3 -m http.server 4173
 
 Then visit `http://127.0.0.1:4173/index.html`.
 
+## Hosting on Azure
+
+Use Azure Static Web Apps for this site. It is a better fit than the existing
+VM because the site is static HTML/CSS/JS and does not need a server process.
+
+Recommended setup:
+
+1. Create an Azure Static Web App.
+2. Connect it to the GitHub repository.
+3. Use these build settings:
+   - App location: `/`
+   - API location: leave blank
+   - Output location: leave blank
+4. Keep `staticwebapp.config.json` at the repository root.
+
+Azure Static Web Apps has a Free plan, which should be enough for this personal
+site unless traffic becomes unusually high.
+
 ## Positioning
 
-Daniel is a product person working on AI, agents, and enterprise workflows.
+Daniel is a product leader working on AI agents and enterprise workflows.
 
-The site is intentionally modest: working notes, small product explorations, and
-plainspoken questions about why AI products often work in demos but break in real
-workflows.
+The site is a personal portfolio for AI product explorations, agent workflows,
+and notes on building reliable AI systems for real workflows. It is designed to
+make Atlas and other hands-on product work easy to scan before readers dive into
+the related notes.
 
 ## Content model
 
@@ -31,11 +50,25 @@ workflows.
 
 ## Analytics
 
-The site has a Microsoft Clarity integration point in `scripts/analytics.js`.
-Add your Clarity project ID to `scripts/config.js` to enable tracking.
+The site supports Google Analytics 4 through `scripts/analytics.js`.
+
+To enable it, create a GA4 web stream and add the measurement ID to
+`scripts/config.js`:
+
+```js
+window.personalWeb = {
+  analytics: {
+    googleAnalyticsId: "G-XXXXXXXXXX",
+    clarityProjectId: "",
+  },
+};
+```
+
+Microsoft Clarity is still available as an optional secondary analytics tool by
+setting `clarityProjectId`.
 
 ## TODOs
 
-- Replace placeholder LinkedIn, X, email, and resume links.
-- Add the Clarity project ID when the analytics project is created.
+- Replace the placeholder email address.
+- Add the Google Analytics measurement ID.
 - Expand the smaller project explorations when they have enough public material.
