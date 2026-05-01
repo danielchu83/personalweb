@@ -12,6 +12,15 @@ python3 -m http.server 4173
 
 Then visit `http://127.0.0.1:4173/index.html`.
 
+## Homepage concept studies
+
+Three alternate homepage concepts are available for comparison:
+
+- `concepts.html` - comparison index linking to all three directions.
+- `concept-lab-bench.html` - dark R&D bench for AI product experiments.
+- `concept-studio-notebook.html` - warm product studio notebook.
+- `concept-failure-museum.html` - curated gallery of AI product failure modes.
+
 ## Hosting on Azure
 
 Use Azure Static Web Apps for this site. It is a better fit than the existing
@@ -30,23 +39,24 @@ Recommended setup:
 Azure Static Web Apps has a Free plan, which should be enough for this personal
 site unless traffic becomes unusually high.
 
-## Positioning
+## Direction
 
-Daniel is a product leader working on AI agents and enterprise workflows.
+This is Daniel Chu's AI systems lab notebook for technology explorations.
 
-The site is a personal portfolio for AI product explorations, agent workflows,
-and notes on building reliable AI systems for real workflows. It is designed to
-make Atlas and other hands-on product work easy to scan before readers dive into
-the related notes.
+The main site currently follows the Product Lab Bench direction: a dark,
+ultraviolet R&D surface for experiments, diagrams, field notes, artifacts, and
+open questions from exploring AI agents, tools, workflows, product reliability,
+and software design. It should feel curious, technical, precise, humble, and
+alive rather than like a resume or positioning page.
 
 ## Content model
 
 - There is no CRUD surface or CMS.
 - New writing is published by adding or editing static HTML files under
   `articles/` and linking them from `index.html`.
-- Project pages live under `projects/` and can group related writing.
-- Atlas is the primary project page for now, with a public-safe architecture
-  overview and links to related technical notes.
+- Project pages live under `projects/` and can group related field notes.
+- Atlas is the primary exploration page for now, with a public-safe architecture
+  overview and links to related notes.
 
 ## Analytics
 
@@ -69,6 +79,5 @@ setting `clarityProjectId`.
 
 ## TODOs
 
-- Replace the placeholder email address.
 - Add the Google Analytics measurement ID.
-- Expand the smaller project explorations when they have enough public material.
+- Replace artifact placeholders with real diagrams, sketches, or prototypes.

@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A field note on the difference between AI convenience and AI leverage, and what kind of harness a neural computer might need."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI Features Are Not the Same as AI Leverage" />
+    <meta
+      property="og:description"
+      content="A field note on the difference between AI convenience and AI leverage, and what kind of harness a neural computer might need."
+    />
+    <title>AI Features Are Not the Same as AI Leverage | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css?v=lab-atlas-history-dates-20260501" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#explorations">Explorations</a>
+        <a href="../index.html#field-notes">Field Notes</a>
+        <a href="../index.html#questions">Questions</a>
+        <a href="../index.html#artifacts">Artifacts</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#field-notes">Back to field notes</a>
+        <p class="eyebrow">Product thinking</p>
+        <h1>AI Features Are Not the Same as AI Leverage</h1>
+        <p class="reader-dek">
+          I am starting to think the interesting question is not only how to add
+          AI to existing software. It is what kind of harness a neural computer
+          actually needs.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            Computers were mostly designed, at least in the way most of us use
+            them, like very fast calculators. We give them explicit inputs. They
+            follow workflows. They store artifacts. They move information between
+            files, fields, rows, folders, tickets, approvals, messages, and
+            dashboards. The software asks us to translate messy human intent into
+            forms the machine can understand.
+          </p>
+          <p>
+            This model has worked incredibly well. It gave us spreadsheets,
+            databases, messaging systems, project trackers, document editors,
+            workflow engines, and most of the coordination infrastructure of
+            modern work. It also shaped our instincts about software. A product
+            has screens. A screen has controls. A control changes a record. A
+            record belongs somewhere. A workflow advances through states.
+          </p>
+          <p>
+            Modern AI models make the computer feel more neural. Not perfectly
+            intelligent. Not magical. But different. A model can reason in
+            language, infer intent, inspect context, critique output, generate
+            plans, call tools, and sometimes act across a task. It can move from
+            a vague request toward a structured artifact without the user having
+            to specify every step.
+          </p>
+          <p>
+            The mismatch is that most software around these models is still
+            calculator-era software. We put neural capability into systems
+            organized around messages, files, fields, buttons, tickets, docs,
+            meetings, approvals, and static workflows. The model may be flexible,
+            but the harness around it often assumes the old unit of work.
+          </p>
+          <p>
+            A powerful model placed inside old software can feel like a neural
+            computer trapped inside calculator-era workflows. I do not mean that
+            as a complaint about the old workflows. They are old because they are
+            useful. They create legibility, auditability, ownership, and shared
+            memory. But I suspect the product question is shifting. The question
+            is not just "Where can we add an AI feature?" It is "What is the
+            right harness for a neural computer?"
+          </p>
+
+          <h2>AI convenience versus AI leverage</h2>
+          <p>
+            A lot of AI product work today creates real convenience. I do not
+            want to dismiss that. Convenience matters. Shortening a search,
+            improving a draft, summarizing a thread, or turning notes into a
+            checklist can make a day noticeably better.
+          </p>
+          <p>
+            But convenience is not the same as leverage. Convenience makes an
+            existing loop smoother. Leverage may change where the loop should
+            exist at all.
+          </p>
+          <p>
+            The distinction I am starting to use is between three levels of AI
+            product value. The boundaries are not clean, and a product can move
+            across levels. But the categories help me understand why some AI
+            features feel useful without feeling like they change the underlying
+            work system.
+          </p>
+          <p>
+            The first level is the Q&amp;A machine. It reduces the cost of knowing.
+            The second level is the agentic task assistant. It reduces the cost
+            of doing small tasks. The third level is a high-leverage harness. It
+            helps identify the smallest human judgment that creates the largest
+            net-positive outcome.
+          </p>
+
+          <h2>Q&amp;A machines reduce the cost of knowing</h2>
+          <p>
+            The Q&amp;A machine is often the first place AI becomes useful in a
+            work product. It answers questions like: "What did this person say
+            about this topic?" "When is my next meeting with this team?" "What
+            is this policy?" "Where is the latest doc?" "What did we decide last
+            time?" "Who owns this?"
+          </p>
+          <p>
+            These questions are not trivial. Knowing is expensive in modern work.
+            Context is fragmented across messages, meetings, docs, tickets,
+            comments, approvals, and people's memories. Much of work is really
+            reconstruction work: finding the latest state, understanding how we
+            got here, remembering who said what, and locating the source of
+            truth.
+          </p>
+          <p>
+            Reducing the cost of knowing is valuable because it lowers the cost
+            of orientation. A Q&amp;A system can help someone join a project,
+            catch up after time away, understand an escalation, or find the
+            artifact they need without asking three people for help.
+          </p>
+          <p>
+            But I suspect Q&amp;A usually does not create 10X or 100X leverage by
+            itself. It helps the user understand the existing state. It does not
+            necessarily change the state. It makes the old information system
+            more searchable, which is useful, but the work graph underneath may
+            remain just as tangled as before.
+          </p>
+          <p>
+            The risk is that we confuse better retrieval with better work. A
+            person can find the answer faster and still be stuck in the same
+            decision loop, the same approval loop, the same handoff problem, or
+            the same ambiguous ownership boundary.
+          </p>
+
+          <h2>Task assistants reduce the cost of small actions</h2>
+          <p>
+            The second level is the agentic task assistant. It does things like
+            triage a queue, draft a reply, batch approve low-risk expenses, make
+            a message sound better, fix grammar, summarize a thread, or create
+            tickets from meeting notes.
+          </p>
+          <p>
+            These assistants can be genuinely useful. There is a lot of repetitive
+            work in knowledge work. A system that removes small irritations can
+            create real relief. If it drafts the message, cleans up the note,
+            creates the ticket, and reminds the right person, that is a better
+            experience than making the user do every mechanical step.
+          </p>
+          <p>
+            Still, many of these assistants mostly make existing workflows
+            smoother. The message remains a message. The ticket remains a ticket.
+            The approval remains an approval. The doc remains a doc. The human
+            still lives inside the same loop, only with a better backspace key
+            and a faster clerk.
+          </p>
+          <p>
+            That can be worth building. But it may not be a fundamentally new
+            work system. The system is faster, but the shape of the work is
+            mostly unchanged. The AI helps the user push the old objects around
+            more efficiently.
+          </p>
+          <p>
+            This is where I think the phrase "agent" can become a little
+            misleading. If an agent just performs more small actions inside an
+            old workflow, it may be helpful without being high leverage. The
+            product question is not only "Can the agent act?" It is "Is this the
+            action that matters?"
+          </p>
+
+          <h2>Not more motion. Better consequence.</h2>
+          <p>
+            The framing I keep resisting is "largest amount of work." It is easy
+            to imagine a great AI system as one that does the most work for us:
+            more emails sent, more docs created, more meetings recorded, more
+            tickets closed, more code shipped, more approvals processed, and
+            more people unblocked.
+          </p>
+          <p>
+            But more work can simply mean more motion. And more motion can be
+            dangerous.
+          </p>
+          <p>
+            A system that optimizes for motion can look productive while making
+            the organization less effective. It can unblock people in the wrong
+            direction. It can generate documents that create false alignment. It
+            can close tickets without resolving the underlying issue. It can
+            produce status updates that make coordination feel complete when the
+            real decision is still unresolved.
+          </p>
+          <p>
+            The question I keep coming back to is:
+          </p>
+          <p>
+            Where is the smallest human judgment that creates the largest
+            net-positive outcome?
+          </p>
+          <p>
+            "Net-positive" is doing a lot of work in that sentence. It does not
+            mean more activity. It includes customer trust, quality, speed,
+            morale, risk, opportunity cost, future maintenance burden, precedent,
+            coordination cost, and whether the organization is moving in the
+            right direction.
+          </p>
+          <p>
+            This framing changes the product shape. The goal is not to automate
+            the most visible activity. The goal is to find the moment where a
+            small amount of human judgment, applied with the right context,
+            changes the trajectory of the work.
+          </p>
+
+          <h2>The model is productive force. The harness is production relation.</h2>
+          <p>
+            There is a phrase from Chinese that keeps coming to mind, although I
+            would use it carefully: sheng chan li, 生产力, means productive force.
+            Sheng chan guan xi, 生产关系, means production relations.
+          </p>
+          <p>
+            I am not trying to turn this into a political theory essay. The
+            practical product idea is simpler. The model may be a new productive
+            force. It can do new kinds of cognitive work, or at least make
+            certain cognitive operations much cheaper. But the harness changes
+            the production relations around that capability: who decides, what
+            context is visible, which tradeoffs are considered, what the system
+            is allowed to do, how decisions propagate, and how outcomes are
+            judged later.
+          </p>
+          <p>
+            If the harness is just a prompt box bolted onto old software, the
+            model's capability gets expressed through the old units of work. It
+            answers questions, drafts messages, edits docs, files tickets, and
+            moves records. Those are useful expressions of the model. But maybe
+            they are not the highest-leverage expression.
+          </p>
+          <p>
+            A high-leverage harness would look for judgment points. It would ask:
+            where is the decision that changes the work graph? Where is the
+            ambiguous ownership boundary? Where is repeated work indicating a
+            missing policy? Where are two teams using the same words but meaning
+            different things? Where does a small human call prevent a large
+            amount of downstream waste?
+          </p>
+
+          <h2>The harness needs a work graph, not just a prompt box</h2>
+          <p>
+            A prompt box is a powerful interface because it is open-ended. But
+            open-endedness is not the same as context. If the system does not
+            understand the work graph, the model can sound smart while remaining
+            blind to consequence.
+          </p>
+          <p>
+            By work graph, I mean the relationships between people, goals,
+            decisions, blockers, dependencies, commitments, artifacts,
+            permissions, risks, policies, historical outcomes, confidence
+            levels, blast radius, and feedback loops. Some of this can be
+            represented explicitly. Some of it may need to be inferred. Some of
+            it should probably remain under human control.
+          </p>
+          <p>
+            Without that graph, the model can summarize a thread without knowing
+            which decision matters. It can draft an update without knowing what
+            tradeoff is unresolved. It can close a ticket without knowing that
+            the same issue will reappear next week. It can approve work without
+            seeing the precedent being created.
+          </p>
+          <p>
+            I suspect this is one reason many AI features feel impressive in the
+            moment but do not always change the system. The model has language
+            context, but not enough consequence context. It sees the text around
+            the task, but not the graph of obligations, risks, dependencies, and
+            feedback that gives the task meaning.
+          </p>
+
+          <h2>Simulation is not prediction</h2>
+          <p>
+            The word "simulate" can sound more confident than I intend. I do not
+            think the point is that a model can predict the future. It cannot.
+            Work is too social, too contingent, too dependent on incentives,
+            trust, timing, and incomplete information.
+          </p>
+          <p>
+            The point is more modest: the model can make possible consequences
+            explicit enough for better human judgment.
+          </p>
+          <p>
+            That kind of simulation is structured reasoning. If we choose Path A,
+            who benefits? Who is blocked? What risk increases? What precedent do
+            we set? What future work do we create? What trust do we build or
+            damage? What will this make easier or harder six months from now?
+          </p>
+          <p>
+            First-degree consequences are the immediate visible results. The
+            launch ships. The customer receives the exception. The expense gets
+            approved. The ticket closes. The meeting is scheduled.
+          </p>
+          <p>
+            Second-degree consequences are downstream behavior, precedent, risk,
+            trust, coordination cost, future maintenance burden, or strategic
+            drift. The launch increases support load. The exception becomes an
+            expectation. The approval pattern teaches people the policy does not
+            matter. The closed ticket hides a recurring product issue.
+          </p>
+          <p>
+            A useful harness would not pretend to know which path is correct. It
+            would help the human see the decision with more of the consequence
+            surface exposed.
+          </p>
+
+          <h2>Product launch: the decision is the work</h2>
+          <p>
+            Consider a product launch. A team is deciding whether to launch
+            broadly, launch to beta users, or delay.
+          </p>
+          <p>
+            A Q&amp;A machine can summarize bugs, internal threads, customer
+            feedback, support notes, and launch criteria. That is useful because
+            it reduces the cost of getting oriented.
+          </p>
+          <p>
+            An agentic assistant can draft the launch email, create the checklist,
+            update the status page, and file follow-up tickets. Also useful.
+          </p>
+          <p>
+            A high-leverage harness would focus on the actual decision. What are
+            the paths? What tradeoff is being made between speed and trust? What
+            is the expected support load? Which commitments are affected? What
+            quality risk are we accepting? Which customers or teams will be
+            surprised by each path?
+          </p>
+          <p>
+            After human approval, the system could propagate the decision into
+            launch plans, support guidance, roadmap notes, customer messaging,
+            and follow-ups. Later, it could track whether the decision produced
+            the expected outcome. Did support volume match the estimate? Did the
+            beta path reduce risk? Did the delay actually improve quality, or did
+            it mostly move uncertainty into the future?
+          </p>
+          <p>
+            The leverage is not that the system drafted a better launch email.
+            The leverage is that it helped the team make and carry through the
+            decision with better consequence awareness.
+          </p>
+
+          <h2>Customer escalation: the response is not the whole decision</h2>
+          <p>
+            Now imagine a customer escalation. A customer wants an exception.
+          </p>
+          <p>
+            A Q&amp;A machine can summarize the customer history, agreement terms,
+            past support issues, and previous commitments. An agentic assistant
+            can draft a response, schedule a follow-up, and create an escalation
+            ticket.
+          </p>
+          <p>
+            But the real judgment is not "write a response." It is whether to
+            grant the exception, refuse it, or offer a temporary workaround.
+            Granting the exception may preserve trust but create precedent.
+            Refusing may protect the product boundary but damage the
+            relationship. A workaround may buy time but add support burden or
+            fragment the roadmap.
+          </p>
+          <p>
+            A high-leverage harness would compare those paths, surface the
+            second-degree consequences, and ask the human to make the
+            tradeoff-aware decision. It would then propagate the decision into
+            the customer message, internal notes, follow-up owner, support
+            guidance, and any policy or roadmap implication. Later, it would
+            track whether the decision helped or created new cost.
+          </p>
+          <p>
+            The system should not hide the value judgment. Whose trust matters?
+            Which precedent is acceptable? How much support burden is worth
+            carrying? Those are human questions.
+          </p>
+
+          <h2>Expense approvals: repeated work may be a design smell</h2>
+          <p>
+            Expense approvals are a small example, but useful. Batch approving
+            low-risk expenses saves time. A Q&amp;A machine can explain the
+            expense policy. An agentic assistant can approve obvious cases,
+            reject incomplete ones, and ask for missing receipts.
+          </p>
+          <p>
+            But the high-leverage move may be different. Maybe the repeated
+            approvals exist because the policy is unclear. Maybe people are
+            asking for approval because they do not trust their interpretation.
+            Maybe managers are approving the same category every week, which
+            means the organization has accidentally turned policy ambiguity into
+            recurring coordination labor.
+          </p>
+          <p>
+            A better harness might notice the pattern and ask a human whether
+            the policy should change. If approved, it could help update the
+            policy, communicate the change, adjust approval rules, and track
+            whether future approval load decreases.
+          </p>
+          <p>
+            This shifts the work from processing repeated approvals to removing
+            the cause of repeated approvals. That feels closer to leverage.
+          </p>
+
+          <h2>Cross-team misalignment: same word, different assumptions</h2>
+          <p>
+            Many coordination failures are semantic. Two teams use the same word
+            but mean different things. Or they agree on a plan while carrying
+            different assumptions about ownership, timing, API behavior, launch
+            scope, or customer impact.
+          </p>
+          <p>
+            A Q&amp;A machine can summarize what each team said. An agentic
+            assistant can draft an alignment email. Both help.
+          </p>
+          <p>
+            A high-leverage harness would try to detect the mismatch itself. It
+            might notice that one team is using "ready" to mean feature-complete,
+            while another means support-trained and customer-safe. It might show
+            likely consequences: duplicate work, incompatible APIs, launch delay,
+            customer confusion, or a late change in ownership.
+          </p>
+          <p>
+            Then it would ask for a source-of-truth decision. Which definition
+            are we using? Who owns the boundary? What needs to change in the doc,
+            roadmap, tickets, and team follow-ups so the decision becomes real?
+          </p>
+          <p>
+            The leverage is not better summarization. It is catching the hidden
+            ambiguity before the organization spends weeks executing different
+            plans under the same label.
+          </p>
+
+          <h2>Hiring and resource allocation: maybe headcount is not the bottleneck</h2>
+          <p>
+            Resource planning is another place where the obvious task may not be
+            the highest-leverage task. A team thinks it needs more headcount.
+          </p>
+          <p>
+            A Q&amp;A machine can summarize the hiring plan, open roles, workload,
+            and project commitments. An agentic assistant can draft a job
+            description, create an interview plan, and schedule loops.
+          </p>
+          <p>
+            But maybe the bottleneck is not headcount. Maybe ownership is
+            unclear. Maybe the team is blocked on a dependency. Maybe there are
+            too many priorities. Maybe sequencing is poor. Maybe one decision
+            from another group would unlock more than two new hires.
+          </p>
+          <p>
+            A high-leverage harness would help compare interventions: hiring,
+            cutting scope, changing ownership, resolving a dependency, or
+            resequencing work. It would not decide alone. But it could make the
+            bottleneck question harder to skip.
+          </p>
+          <p>
+            That is the shift I keep noticing. The model can help create the job
+            description. The harness should ask whether the job description is
+            the right artifact to create.
+          </p>
+
+          <h2>The human moves from labor to judgment</h2>
+          <p>
+            The best harness may not remove humans from the loop. It may move
+            humans to the highest-leverage point in the loop.
+          </p>
+          <p>
+            Current systems ask humans to do a lot of coordination labor. Read
+            every thread. Remember context. Connect dots. Rewrite updates. Repeat
+            decisions. Chase owners. Reconcile conflicting docs. Notice that two
+            teams are misaligned. Remember what happened last time. Translate
+            judgment into artifacts.
+          </p>
+          <p>
+            A neural harness should probably ask humans for different things:
+            judgment, values, tradeoffs, taste, accountability, final calls, and
+            exceptions. The machine can prepare the surface. The human should
+            still own the decision where the decision matters.
+          </p>
+          <p>
+            This is a more humble view of automation than "the AI does the work."
+            It says the AI should reduce the cost of reaching the right judgment
+            point, not simply increase the amount of activity around the old
+            one.
+          </p>
+
+          <h2>Failure modes</h2>
+          <p>
+            This idea has plenty of ways to go wrong.
+          </p>
+          <p>
+            The first failure mode is optimizing for measurable motion instead
+            of net outcome. Emails sent, tickets closed, documents generated,
+            and approvals processed are visible. Trust, quality, morale, future
+            maintenance burden, and strategic drift are harder to measure. A bad
+            harness will chase the visible thing.
+          </p>
+          <p>
+            The second is over-trusting simulated consequences. A model can make
+            a path sound coherent without being right. The product has to keep
+            simulation in the role of decision support, not prophecy.
+          </p>
+          <p>
+            The third is a bad or incomplete work graph. If the system does not
+            understand the real dependencies, permissions, owners, risks, and
+            history, it may surface the wrong judgment point with great
+            confidence.
+          </p>
+          <p>
+            The fourth is permission collapse. A system that acts across tools
+            can accidentally flatten boundaries that exist for good reasons.
+            Access, approval, confidentiality, and blast radius are product
+            constraints, not administrative details.
+          </p>
+          <p>
+            The fifth is invisible value judgment. "Net positive" depends on
+            whose outcome matters. A decision can be good for speed and bad for
+            quality, good for one team and costly for another, good this quarter
+            and harmful later. The harness should not smuggle those values into
+            the system invisibly.
+          </p>
+          <p>
+            The sixth is organizational politics. Surfacing leverage points may
+            reveal uncomfortable bottlenecks. Maybe the issue is unclear
+            ownership. Maybe a team is overloaded. Maybe the roadmap has too
+            many priorities. Maybe a policy is incoherent. A useful system may
+            make hidden tension visible, and not every organization will welcome
+            that.
+          </p>
+
+          <h2>The shape is still unresolved</h2>
+          <p>
+            I do not think we know the final interface for this. It might not be
+            a dashboard, inbox, canvas, graph, or chat. It may be some shape we
+            have not invented yet.
+          </p>
+          <p>
+            I also do not think the old software objects disappear. Messages,
+            docs, tickets, meetings, approvals, permissions, and audit trails
+            still matter. In many cases they are exactly what make work safe
+            enough to coordinate.
+          </p>
+          <p>
+            But I am starting to think that the most interesting AI products
+            will not simply place a model inside every old workflow. They will
+            ask what the model makes newly possible, and then design the harness
+            around judgment, consequence, propagation, and learning.
+          </p>
+          <p>
+            The question changes from "How do we add AI to existing software?"
+            to "What kind of harness does a neural computer actually need?"
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

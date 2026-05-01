@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Museum of Failure Modes concept for Daniel Chu's AI exploration notebook."
+    />
+    <title>Concept 3: Museum of Failure Modes | Daniel Chu</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="concept-styles.css?v=lab-atlas-history-dates-20260501" />
+    <script src="concept-interactions.js" defer></script>
+  </head>
+  <body class="concept-page museum-page">
+    <!-- Design direction: a curated gallery of AI product failure modes with
+      exhibit numbers, refined labels, spotlight-like depth, and a museum rhythm. -->
+    <header class="concept-header museum-header">
+      <a class="concept-brand" href="index.html">Daniel Chu</a>
+      <nav class="concept-nav" aria-label="Concept navigation">
+        <a href="concept-lab-bench.html">Lab Bench</a>
+        <a href="concept-studio-notebook.html">Studio Notebook</a>
+        <a aria-current="page" href="concept-failure-museum.html">Failure Museum</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="museum-hero" aria-labelledby="museum-title">
+        <p>Daniel Chu / gallery notes</p>
+        <h1 id="museum-title">A small museum of AI product failure modes.</h1>
+        <div>
+          <p>
+            I collect the moments where intelligent systems behave differently
+            from what the demo promised, then try to understand what product
+            design can do about it.
+          </p>
+        </div>
+      </section>
+
+      <section class="museum-gallery" aria-label="Failure mode exhibits">
+        <article class="exhibit-card">
+          <div class="exhibit-number">001</div>
+          <div class="exhibit-body">
+            <p class="exhibit-type">Evidence failure</p>
+            <h2>The agent said it used a tool. It didn't.</h2>
+            <dl>
+              <div><dt>What happened</dt><dd>The response cited a command-shaped source without reliable execution evidence.</dd></div>
+              <div><dt>What surprised me</dt><dd>The answer sounded more grounded than it was.</dd></div>
+              <div><dt>Open question</dt><dd>How should products expose proof of work without overwhelming the user?</dd></div>
+              <div><dt>Status</dt><dd>Observed repeatedly.</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="exhibit-number">002</div>
+          <div class="exhibit-body">
+            <p class="exhibit-type">Tooling failure</p>
+            <h2>The more powerful tool made the system worse.</h2>
+            <dl>
+              <div><dt>What happened</dt><dd>A generalized tool expanded the agent's routing problem.</dd></div>
+              <div><dt>What surprised me</dt><dd>Capability improved while predictability got worse.</dd></div>
+              <div><dt>Open question</dt><dd>Where should product constraints live: prompt, tool, or interface?</dd></div>
+              <div><dt>Status</dt><dd>Still studying.</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="exhibit-number">003</div>
+          <div class="exhibit-body">
+            <p class="exhibit-type">Evaluation failure</p>
+            <h2>The eval passed, but the workflow failed.</h2>
+            <dl>
+              <div><dt>What happened</dt><dd>The test checked the chat answer, not the real artifact or side effect.</dd></div>
+              <div><dt>What surprised me</dt><dd>The grader and the product lived in different worlds.</dd></div>
+              <div><dt>Open question</dt><dd>How do you grade work that happens outside the transcript?</dd></div>
+              <div><dt>Status</dt><dd>Actionable pattern.</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="exhibit-number">004</div>
+          <div class="exhibit-body">
+            <p class="exhibit-type">Recovery failure</p>
+            <h2>The AI wrote data without a recovery path.</h2>
+            <dl>
+              <div><dt>What happened</dt><dd>A write became durable state before the system made repair obvious.</dd></div>
+              <div><dt>What surprised me</dt><dd>Undo felt like UX, not infrastructure.</dd></div>
+              <div><dt>Open question</dt><dd>What should every AI write path return as a receipt?</dd></div>
+              <div><dt>Status</dt><dd>Design principle.</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="exhibit-number">005</div>
+          <div class="exhibit-body">
+            <p class="exhibit-type">Interface failure</p>
+            <h2>The interface hid too much control.</h2>
+            <dl>
+              <div><dt>What happened</dt><dd>The product made the agent feel simple by hiding the user's real levers.</dd></div>
+              <div><dt>What surprised me</dt><dd>Less visible complexity created more supervisory work.</dd></div>
+              <div><dt>Open question</dt><dd>What should the user control, and what should the system infer?</dd></div>
+              <div><dt>Status</dt><dd>Open exhibit.</dd></div>
+            </dl>
+          </div>
+        </article>
+      </section>
+
+      <section class="museum-invitation" aria-labelledby="museum-invite-title">
+        <p>Compare notes</p>
+        <h2 id="museum-invite-title">Every exhibit here is provisional.</h2>
+        <p>
+          If you found a different failure mode, a cleaner repair, or a better
+          way to frame the problem, I would genuinely like to see it.
+        </p>
+        <div>
+          <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>
+          <a href="https://x.com/danielchu83">X</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

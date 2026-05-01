@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Studio Notebook concept for Daniel Chu's AI exploration notebook."
+    />
+    <title>Concept 2: Studio Notebook | Daniel Chu</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="concept-styles.css?v=lab-atlas-history-dates-20260501" />
+    <script src="concept-interactions.js" defer></script>
+  </head>
+  <body class="concept-page notebook-page">
+    <!-- Design direction: a warm, tactile product studio notebook with layered
+      paper, precise labels, pencil-like sketch lines, and generous whitespace. -->
+    <header class="concept-header notebook-header">
+      <a class="concept-brand" href="index.html">Daniel Chu</a>
+      <nav class="concept-nav" aria-label="Concept navigation">
+        <a href="concept-lab-bench.html">Lab Bench</a>
+        <a aria-current="page" href="concept-studio-notebook.html">Studio Notebook</a>
+        <a href="concept-failure-museum.html">Failure Museum</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="notebook-hero" aria-labelledby="notebook-title">
+        <div class="notebook-copy">
+          <p class="notebook-name">Daniel Chu</p>
+          <h1 id="notebook-title">A studio notebook for AI product explorations.</h1>
+          <p>
+            Experiments, diagrams, and open questions from building small systems
+            with agents, tools, and workflows.
+          </p>
+          <div class="notebook-actions">
+            <a href="#desk">Currently on the desk</a>
+            <a href="#notes">Field notes</a>
+            <a href="#compare">Compare notes</a>
+          </div>
+        </div>
+        <div class="paper-stack" aria-label="Layered notebook cards">
+          <article>
+            <span>Observation</span>
+            <h2>Tool-use claims are not evidence.</h2>
+          </article>
+          <article>
+            <span>Experiment</span>
+            <h2>Generalized scenario engine.</h2>
+          </article>
+          <article>
+            <span>Open question</span>
+            <h2>How much constraint makes agents better?</h2>
+          </article>
+          <article>
+            <span>Artifact</span>
+            <h2>Workflow eval map.</h2>
+          </article>
+        </div>
+      </section>
+
+      <section class="notebook-section" id="desk" aria-labelledby="desk-title">
+        <p class="notebook-kicker">Currently on the desk</p>
+        <h2 id="desk-title">A few questions and experiments I keep returning to.</h2>
+        <div class="notebook-desk">
+          <article>
+            <span>01</span>
+            <h3>Agent tool use</h3>
+            <p>When an agent says it used a tool, how do we know?</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Generalized tools</h3>
+            <p>Why does giving agents more power sometimes make them less reliable?</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Workflow evals</h3>
+            <p>What would an eval look like if it tested the real workflow, not the demo?</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Recovery paths</h3>
+            <p>If an AI system can write data, what should undo, audit, and repair look like?</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>AI-native messaging</h3>
+            <p>What if people, files, events, and emails were structured context instead of attachments?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="notebook-feature" aria-labelledby="atlas-notebook-title">
+        <div>
+          <p class="notebook-kicker">Featured exploration</p>
+          <h2 id="atlas-notebook-title">Atlas</h2>
+          <p>
+            A private AI workflow system I've been building to explore how
+            agents use tools, manage context, recover from mistakes, and operate
+            near sensitive data.
+          </p>
+          <a href="projects/atlas.html">Open Atlas notes</a>
+        </div>
+        <div class="notebook-panels">
+          <article>
+            <span>What surprised me</span>
+            <ul>
+              <li>Tool-use claims are not evidence.</li>
+              <li>More powerful tools can make agents less predictable.</li>
+              <li>Evals often miss the actual workflow.</li>
+              <li>Recovery paths are product features.</li>
+            </ul>
+          </article>
+          <article>
+            <span>Still unresolved</span>
+            <p>How much constraint helps an agent before it starts limiting the system?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="notebook-section" id="notes" aria-labelledby="notebook-notes-title">
+        <p class="notebook-kicker">Field notes</p>
+        <h2 id="notebook-notes-title">Short notes from building, breaking, and studying AI product systems.</h2>
+        <div class="notebook-notes">
+          <a href="articles/when-agent-tool-use-isnt-evidence.html"><span>Observation</span>When an agent says it used a tool, that is not evidence</a>
+          <a href="articles/agents-debug-symptoms-not-systems.html"><span>Failure mode</span>AI agents debug symptoms before systems</a>
+          <a href="articles/why-powerful-tools-can-make-agents-worse.html"><span>Experiment</span>When more powerful tools make agents worse</a>
+          <a href="articles/evals-should-test-real-workflows.html"><span>Evaluation</span>Evals should test the workflow, not the demo</a>
+          <a href="articles/ai-products-need-recovery-paths.html"><span>Design note</span>If an AI can write data, it needs a recovery path</a>
+        </div>
+      </section>
+
+      <section class="notebook-section notebook-questions" aria-labelledby="notebook-questions-title">
+        <p class="notebook-kicker">Open questions</p>
+        <h2 id="notebook-questions-title">These are not conclusions. They are questions I am still working through.</h2>
+        <ul>
+          <li>What should an AI system refuse to automate?</li>
+          <li>When does flexibility become unreliability?</li>
+          <li>How should agents explain uncertainty without creating more work?</li>
+          <li>What does a good recovery path look like for AI-generated actions?</li>
+        </ul>
+      </section>
+
+      <section class="notebook-section compare-note" id="compare" aria-labelledby="notebook-compare-title">
+        <p class="notebook-kicker">Compare notes</p>
+        <h2 id="notebook-compare-title">If you have seen something different, I would love to compare notes.</h2>
+        <div>
+          <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>
+          <a href="https://x.com/danielchu83">X</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

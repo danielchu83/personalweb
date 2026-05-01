@@ -5,212 +5,295 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="AI product leader focused on agent workflows, enterprise AI, and making AI systems useful in real workflows."
+      content="Daniel Chu's AI systems lab notebook for experiments, field notes, diagrams, and open questions."
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Daniel Chu" />
     <meta
       property="og:description"
-      content="AI product leader focused on agent workflows, enterprise AI, and making AI systems useful in real workflows."
+      content="Experiments from the edge of useful AI: agents, tools, workflows, evals, and recovery paths."
     />
     <meta property="og:url" content="https://danielchu83.github.io/personalweb/" />
     <meta property="og:site_name" content="Daniel Chu" />
     <title>Daniel Chu</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=lab-atlas-history-dates-20260501" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
+    <script src="concept-interactions.js" defer></script>
   </head>
-  <body>
+  <body class="lab-page">
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="#top" aria-label="Daniel Chu home">
         <span class="brand-mark">DC</span>
         <span>Daniel Chu</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#projects">Projects</a>
-        <a href="#notes">Notes</a>
-        <a href="#about">About</a>
+        <a href="#explorations">Explorations</a>
+        <a href="#field-notes">Field Notes</a>
+        <a href="#questions">Questions</a>
+        <a href="#artifacts">Artifacts</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="intro-title">
-        <p class="identity">Daniel Chu</p>
-        <p class="kicker">Product leader working on AI agents and enterprise workflows.</p>
-        <h1 id="intro-title">I work on making AI systems useful in real workflows.</h1>
-        <p class="lead">
-          I focus on the product layer where agents, tools, context,
-          permissions, evaluation, and user trust have to come together. This
-          site collects product explorations and notes from building small AI
-          systems, studying their failure modes, and thinking through what it
-          takes for AI products to become dependable.
-        </p>
-        <div class="hero-actions" aria-label="Primary actions">
-          <a class="button primary" href="#projects">View projects</a>
-          <a class="button secondary" href="#notes">Read notes</a>
-          <a class="button secondary" href="#contact">Contact</a>
-        </div>
-      </section>
-
-      <section class="section featured-project-section" id="projects" aria-labelledby="featured-project-title">
-        <div class="section-heading">
-          <p class="kicker">Featured Project</p>
-          <h2 id="featured-project-title">Atlas</h2>
-          <p class="section-intro">
-            A private AI workflow system I built to explore how agents use
-            tools, manage context, run evals, and recover from mistakes around
-            sensitive personal data.
+      <section class="lab-hero" aria-labelledby="intro-title">
+        <div class="lab-hero-copy">
+          <p class="lab-kicker">Daniel Chu / AI systems lab</p>
+          <h1 id="intro-title">Experiments from the edge of useful AI.</h1>
+          <p>
+            I build small systems to understand how agents, tools, workflows,
+            and interfaces behave when they leave the demo and meet real work.
           </p>
-        </div>
-
-        <div class="featured-project-card">
-          <div class="featured-project-copy">
-            <p class="project-meta">Private system / public lessons</p>
-            <h3>Agent workflows, evals, tools, and recovery paths.</h3>
-            <p>
-              Atlas is the clearest example of the product problems I like:
-              turning model capability into dependable workflows, designing
-              tool surfaces agents can actually use, and building enough
-              evaluation and recovery scaffolding to trust the system over time.
-            </p>
-            <a class="button primary" href="projects/atlas.html">View Atlas project</a>
-          </div>
-          <div class="learning-panel" aria-label="What I learned from Atlas">
-            <h3>What I learned</h3>
-            <ul>
-              <li>Tool-use claims are not evidence.</li>
-              <li>General tools can make agents less reliable.</li>
-              <li>Evals need to test real workflows, not demos.</li>
-              <li>AI systems that write data need recovery paths.</li>
-            </ul>
+          <p>
+            This is where I keep experiments, notes, diagrams, and open
+            questions. Some ideas are polished. Some are still unresolved. If
+            you've seen something different, I'd love to compare notes.
+          </p>
+          <div class="lab-actions" aria-label="Primary actions">
+            <a href="#explorations">Inspect experiments</a>
+            <a href="#field-notes">Read field notes</a>
+            <a href="#contact">Send a thought</a>
           </div>
         </div>
+
+        <aside class="latest-articles-panel" aria-labelledby="latest-articles-title">
+          <div class="latest-panel-header">
+            <div>
+              <p class="lab-kicker">Latest articles</p>
+              <h2 id="latest-articles-title">Recent field notes.</h2>
+            </div>
+            <a href="#field-notes">All notes</a>
+          </div>
+
+          <ol class="latest-article-list" aria-label="Latest articles, newest first">
+            <li>
+              <a href="articles/ai-features-are-not-ai-leverage.html">
+                <time datetime="2026-05-01">May 1</time>
+                <span>
+                  <strong>AI Features Are Not the Same as AI Leverage</strong>
+                  <small>What kind of harness does a neural computer actually need?</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="articles/evals-should-test-real-workflows.html">
+                <time datetime="2026-04-28" title="Atlas learning: Apr 28, 2026">Apr 28</time>
+                <span>
+                  <strong>Evals should test the workflow, not the demo</strong>
+                  <small>Good tests need state, side effects, and real input shape.</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="articles/why-powerful-tools-can-make-agents-worse.html">
+                <time datetime="2026-04-18" title="Atlas learning: Apr 18, 2026">Apr 18</time>
+                <span>
+                  <strong>When more powerful tools make agents worse</strong>
+                  <small>Capability can reduce reliability without routing discipline.</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="articles/when-agent-tool-use-isnt-evidence.html">
+                <time datetime="2026-04-16" title="Atlas learning: Apr 16, 2026">Apr 16</time>
+                <span>
+                  <strong>When an agent says it used a tool, that is not evidence</strong>
+                  <small>The execution trace matters more than the narrative trace.</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="articles/agents-debug-symptoms-not-systems.html">
+                <time datetime="2026-03-29" title="Atlas learning: Mar 29, 2026">Mar 29</time>
+                <span>
+                  <strong>AI agents debug symptoms before systems</strong>
+                  <small>Why local fixes can hide the actual product failure.</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="articles/ai-products-need-recovery-paths.html">
+                <time datetime="2026-03-19" title="Atlas learning: Mar 19, 2026">Mar 19</time>
+                <span>
+                  <strong>If an AI can write data, it needs a recovery path</strong>
+                  <small>Undo, audit, and repair are part of the product surface.</small>
+                </span>
+              </a>
+            </li>
+          </ol>
+        </aside>
       </section>
 
-      <section class="section explorations-section" id="explorations" aria-labelledby="explorations-title">
-        <div class="section-heading">
-          <p class="kicker">Other Explorations</p>
-          <h2 id="explorations-title">Smaller product directions I keep returning to.</h2>
-          <p class="section-intro">
-            Hands-on concepts around AI-native interfaces and applied AI
-            workflow patterns.
-          </p>
+      <section class="lab-section" id="explorations" aria-labelledby="experiments-title">
+        <div class="lab-section-heading">
+          <p>Live surfaces</p>
+          <h2 id="experiments-title">Experiments under observation.</h2>
         </div>
 
-        <div class="project-list">
-          <!-- TODO: Expand into a project page if this becomes useful. -->
-          <article class="project-card">
-            <h3>AI-native messaging concepts</h3>
+        <div class="lab-card-grid">
+          <a class="lab-card" href="articles/when-agent-tool-use-isnt-evidence.html">
+            <span>Experiment</span>
+            <h3>Agent tool use</h3>
+            <p>When an agent says it used a tool, how do we know?</p>
+            <div class="lab-reveal">
+              <strong>What surprised me</strong>
+              <p>The prose can sound grounded even when execution did not happen.</p>
+            </div>
+          </a>
+          <a class="lab-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
+            <span>Experiment</span>
+            <h3>Generalized tools</h3>
+            <p>Why does giving agents more power sometimes make them less reliable?</p>
+            <div class="lab-reveal">
+              <strong>Still unresolved</strong>
+              <p>How narrow should a tool be before it stops being useful?</p>
+            </div>
+          </a>
+          <a class="lab-card" href="articles/evals-should-test-real-workflows.html">
+            <span>Evaluation</span>
+            <h3>Workflow evals</h3>
+            <p>What would an eval look like if it tested the real workflow?</p>
+            <div class="lab-reveal">
+              <strong>What surprised me</strong>
+              <p>Many evals test chat, while product behavior lives in files and side effects.</p>
+            </div>
+          </a>
+          <a class="lab-card" href="articles/ai-products-need-recovery-paths.html">
+            <span>Repair</span>
+            <h3>Recovery paths</h3>
+            <p>If an AI system writes data, what should undo and audit look like?</p>
+            <div class="lab-reveal">
+              <strong>Still unresolved</strong>
+              <p>How much recovery should be automatic before it becomes another risk?</p>
+            </div>
+          </a>
+          <a class="lab-card wide" href="#artifacts">
+            <span>Interface</span>
+            <h3>AI-native messaging</h3>
             <p>
-              Exploring what messaging might look like if people, files, events,
-              and emails were treated as structured context instead of just text.
+              What if people, files, events, and emails were structured context
+              instead of attachments?
             </p>
-          </article>
-          <!-- TODO: Expand into a project page if this becomes useful. -->
-          <article class="project-card">
-            <h3>Enterprise AI workflow patterns</h3>
-            <p>
-              A collection of patterns I keep seeing in applied AI products:
-              handoff problems, missing context, unclear ownership, and brittle
-              evaluation.
-            </p>
-          </article>
+            <div class="lab-reveal">
+              <strong>What surprised me</strong>
+              <p>The hard part is not the entity card. It is deciding who owns the context.</p>
+            </div>
+          </a>
         </div>
       </section>
 
-      <section class="section notes-section" id="notes" aria-labelledby="notes-title">
-        <div class="section-heading">
-          <p class="kicker">Notes</p>
-          <h2 id="notes-title">Short notes from building and studying AI products.</h2>
+      <section class="lab-section bench-notes" id="atlas" aria-labelledby="atlas-title">
+        <div class="bench-panel">
+          <div>
+            <p class="lab-kicker">Featured bench / Atlas</p>
+            <h2 id="atlas-title">A private system for making agent behavior observable.</h2>
+            <p>
+              Atlas is where I study tool use, context, evaluation, and recovery
+              around sensitive workflows without publishing private data.
+            </p>
+            <a class="lab-link" href="projects/atlas.html">Open Atlas exploration</a>
+          </div>
+          <a class="signal-map" href="projects/atlas.html" aria-label="Open Atlas architecture notes">
+            <span></span><span></span><span></span><span></span><span></span>
+            <i></i><i></i><i></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="lab-section" id="field-notes" aria-labelledby="notes-title">
+        <div class="lab-section-heading">
+          <p>Field notes</p>
+          <h2 id="notes-title">Short notes from building, breaking, and studying AI product systems.</h2>
         </div>
 
         <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
-        <div class="note-grid">
-          <a class="note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
+        <div class="lab-card-grid note-grid">
+          <a class="lab-card note-card" href="articles/ai-features-are-not-ai-leverage.html">
+            <span>Product thinking</span>
+            <h3>AI Features Are Not the Same as AI Leverage</h3>
+          </a>
+          <a class="lab-card note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
+            <span>Observation</span>
             <h3>When an agent says it used a tool, that is not evidence</h3>
-            <p>
-              A lesson from an agent that cited commands, produced plausible
-              answers, and still routed around the system it was supposed to use.
-            </p>
           </a>
-          <a class="note-card" href="articles/agents-debug-symptoms-not-systems.html">
+          <a class="lab-card note-card" href="articles/agents-debug-symptoms-not-systems.html">
+            <span>Failure mode</span>
             <h3>AI agents debug symptoms before systems</h3>
-            <p>
-              How a stale workspace, a tiny taxonomy bug, and mismatched queries
-              turned into a very convincing wrong theory.
-            </p>
           </a>
-          <a class="note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
+          <a class="lab-card note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
+            <span>Experiment</span>
             <h3>When more powerful tools make agents worse</h3>
-            <p>
-              Replacing narrow tools with a generalized scenario engine made
-              Atlas more capable, but also easier for the agent to misuse.
-            </p>
           </a>
-          <a class="note-card" href="articles/evals-should-test-real-workflows.html">
+          <a class="lab-card note-card" href="articles/evals-should-test-real-workflows.html">
+            <span>Evaluation</span>
             <h3>Evals should test the workflow, not the demo</h3>
-            <p>
-              The agent can know the right rule and still fail because the eval
-              missed screenshots, session state, file writes, or side effects.
-            </p>
           </a>
-          <a class="note-card" href="articles/ai-products-need-recovery-paths.html">
+          <a class="lab-card note-card" href="articles/ai-products-need-recovery-paths.html">
+            <span>Design note</span>
             <h3>If an AI can write data, it needs a recovery path</h3>
-            <p>
-              Confirm-before-commit, undo tools, audit trails, and out-of-band
-              controls are product features, not implementation details.
-            </p>
           </a>
         </div>
       </section>
 
-      <section class="section questions-section" aria-labelledby="questions-title">
-        <div class="section-heading">
-          <p class="kicker">Product questions</p>
-          <h2 id="questions-title">Questions I keep coming back to.</h2>
+      <section class="lab-section question-section" id="questions" aria-labelledby="questions-title">
+        <div class="lab-section-heading">
+          <p>Open questions</p>
+          <h2 id="questions-title">These are not conclusions. They are questions I'm still working through.</h2>
         </div>
 
         <ul class="question-list">
-          <li>What should an AI product refuse to automate?</li>
-          <li>When does adding flexibility make a system harder to trust?</li>
-          <li>How do you design for recovery when the model is wrong?</li>
-          <li>What should the user control, and what should the system infer?</li>
-          <li>How do you evaluate an agent when the task itself is ambiguous?</li>
-          <li>What makes a workflow feel trustworthy enough to become a habit?</li>
+          <li>What should an AI system refuse to automate?</li>
+          <li>When does flexibility become unreliability?</li>
+          <li>How should agents explain uncertainty without creating more work?</li>
+          <li>What does a good recovery path look like for AI-generated actions?</li>
+          <li>What kinds of constraints make agents more dependable?</li>
+          <li>How do you evaluate work when the task itself is ambiguous?</li>
         </ul>
       </section>
 
-      <section class="section about-section" id="about" aria-labelledby="about-title">
-        <div class="section-heading">
-          <p class="kicker">About</p>
-          <h2 id="about-title">I’m Daniel, a product leader working on AI and enterprise software.</h2>
+      <section class="lab-section artifact-section" id="artifacts" aria-labelledby="artifacts-title">
+        <div class="lab-section-heading">
+          <p>Artifacts</p>
+          <h2 id="artifacts-title">Diagrams, sketches, prototypes, and small pieces of work-in-progress.</h2>
         </div>
-        <div class="about-copy">
-          <p>
-            I work on the practical side of AI products: how they fit into real
-            workflows, where they fail, and how to make them useful without
-            making users feel like they are managing another complicated system.
-          </p>
-          <p>
-            This site collects hands-on product explorations and notes about AI
-            agents, productivity systems, evaluation, user trust, and software
-            design.
-          </p>
+
+        <div class="artifact-grid">
+          <!-- TODO: Replace placeholder artifacts with real diagrams or prototypes. -->
+          <a class="artifact-card" href="projects/atlas.html">
+            <span>Map</span>
+            <h3>Agent workflow map</h3>
+            <div class="artifact-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+          </a>
+          <a class="artifact-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
+            <span>Matrix</span>
+            <h3>Tool reliability matrix</h3>
+            <div class="artifact-matrix" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </a>
+          <a class="artifact-card" href="#contact">
+            <span>Sketch</span>
+            <h3>AI-native messaging sketch</h3>
+            <div class="artifact-bubbles" aria-hidden="true"><i></i><i></i><i></i></div>
+          </a>
+          <a class="artifact-card" href="articles/ai-products-need-recovery-paths.html">
+            <span>Checklist</span>
+            <h3>Recovery path checklist</h3>
+            <div class="artifact-checks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </a>
         </div>
       </section>
 
-      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="section-heading">
-          <p class="kicker">Contact</p>
-          <h2 id="contact-title">If something here overlaps with what you’re working on, I’d be happy to connect.</h2>
-        </div>
-        <div class="contact-links" aria-label="Contact links">
-          <!-- TODO: Replace placeholder email address. -->
-          <a href="https://www.linkedin.com/in/chudaniel/" aria-label="LinkedIn profile">LinkedIn</a>
-          <a href="https://x.com/danielchu83" aria-label="X profile">X</a>
-          <a href="mailto:hello@example.com">Email</a>
+      <section class="lab-section compare-strip" id="contact" aria-labelledby="contact-title">
+        <p>Compare notes</p>
+        <h2 id="contact-title">
+          If your agents failed differently, I want to hear the failure mode.
+        </h2>
+        <div>
+          <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>
+          <a href="https://x.com/danielchu83">X</a>
         </div>
       </section>
     </main>
