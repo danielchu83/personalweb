@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Daniel Chu's AI systems lab notebook for experiments, field notes, diagrams, and open questions."
+      content="Daniel Chu's personal notes on AI systems, software, work, and questions still in progress."
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Daniel Chu" />
     <meta
       property="og:description"
-      content="Experiments from the edge of useful AI: agents, tools, workflows, evals, and recovery paths."
+      content="Quiet field notes on AI systems, software, work, and questions still in progress."
     />
     <meta property="og:url" content="https://danielchu83.github.io/personalweb/" />
     <meta property="og:site_name" content="Daniel Chu" />
     <title>Daniel Chu</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=lab-atlas-history-dates-20260501" />
+    <link rel="stylesheet" href="styles.css?v=plain-notes-20260506-widthfix" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
     <script src="concept-interactions.js" defer></script>
@@ -29,10 +29,9 @@
         <span>Daniel Chu</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#explorations">Explorations</a>
-        <a href="#field-notes">Field Notes</a>
+        <a href="#field-notes">Notes</a>
         <a href="#questions">Questions</a>
-        <a href="#artifacts">Artifacts</a>
+        <a href="#atlas">Atlas</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -40,31 +39,27 @@
     <main id="top">
       <section class="lab-hero" aria-labelledby="intro-title">
         <div class="lab-hero-copy">
-          <p class="lab-kicker">Daniel Chu / AI systems lab</p>
-          <h1 id="intro-title">Experiments from the edge of useful AI.</h1>
+          <p class="lab-kicker">Daniel Chu / notes in progress</p>
+          <h1 id="intro-title">Notes on AI systems, software, and the shape of work.</h1>
           <p>
-            I build small systems to understand how agents, tools, workflows,
-            and interfaces behave when they leave the demo and meet real work.
+            I write about things I am building, breaking, and trying to
+            understand: agents, tools, workflows, evals, recovery paths, and the
+            awkward gap between demos and real work.
           </p>
           <p>
-            This is where I keep experiments, notes, diagrams, and open
-            questions. Some ideas are polished. Some are still unresolved. If
-            you've seen something different, I'd love to compare notes.
+            Some notes are polished. Some are closer to field observations. The
+            point is to think in public without pretending every question is
+            settled.
           </p>
-          <div class="lab-actions" aria-label="Primary actions">
-            <a href="#explorations">Inspect experiments</a>
-            <a href="#field-notes">Read field notes</a>
-            <a href="#contact">Send a thought</a>
-          </div>
         </div>
 
         <aside class="latest-articles-panel" aria-labelledby="latest-articles-title">
           <div class="latest-panel-header">
             <div>
-              <p class="lab-kicker">Latest articles</p>
-              <h2 id="latest-articles-title">Recent field notes.</h2>
+              <p class="lab-kicker">Recently</p>
+              <h2 id="latest-articles-title">Recent notes.</h2>
             </div>
-            <a href="#field-notes">All notes</a>
+            <a href="#field-notes">Browse notes</a>
           </div>
 
           <ol class="latest-article-list" aria-label="Latest articles, newest first">
@@ -128,8 +123,8 @@
 
       <section class="lab-section" id="explorations" aria-labelledby="experiments-title">
         <div class="lab-section-heading">
-          <p>Live surfaces</p>
-          <h2 id="experiments-title">Experiments under observation.</h2>
+          <p>Threads</p>
+          <h2 id="experiments-title">Things I keep trying to understand.</h2>
         </div>
 
         <div class="lab-card-grid">
@@ -138,7 +133,7 @@
             <h3>Agent tool use</h3>
             <p>When an agent says it used a tool, how do we know?</p>
             <div class="lab-reveal">
-              <strong>What surprised me</strong>
+              <strong>What I am noticing</strong>
               <p>The prose can sound grounded even when execution did not happen.</p>
             </div>
           </a>
@@ -156,7 +151,7 @@
             <h3>Workflow evals</h3>
             <p>What would an eval look like if it tested the real workflow?</p>
             <div class="lab-reveal">
-              <strong>What surprised me</strong>
+              <strong>What I am noticing</strong>
               <p>Many evals test chat, while product behavior lives in files and side effects.</p>
             </div>
           </a>
@@ -177,7 +172,7 @@
               instead of attachments?
             </p>
             <div class="lab-reveal">
-              <strong>What surprised me</strong>
+              <strong>What I am noticing</strong>
               <p>The hard part is not the entity card. It is deciding who owns the context.</p>
             </div>
           </a>
@@ -187,8 +182,8 @@
       <section class="lab-section bench-notes" id="atlas" aria-labelledby="atlas-title">
         <div class="bench-panel">
           <div>
-            <p class="lab-kicker">Featured bench / Atlas</p>
-            <h2 id="atlas-title">A private system for making agent behavior observable.</h2>
+            <p class="lab-kicker">Current project / Atlas</p>
+            <h2 id="atlas-title">A private system for studying agent behavior in real workflows.</h2>
             <p>
               Atlas is where I study tool use, context, evaluation, and recovery
               around sensitive workflows without publishing private data.
@@ -205,7 +200,7 @@
       <section class="lab-section" id="field-notes" aria-labelledby="notes-title">
         <div class="lab-section-heading">
           <p>Field notes</p>
-          <h2 id="notes-title">Short notes from building, breaking, and studying AI product systems.</h2>
+          <h2 id="notes-title">Essays and drafts from building, breaking, and thinking in public.</h2>
         </div>
 
         <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
@@ -256,7 +251,7 @@
       <section class="lab-section artifact-section" id="artifacts" aria-labelledby="artifacts-title">
         <div class="lab-section-heading">
           <p>Artifacts</p>
-          <h2 id="artifacts-title">Diagrams, sketches, prototypes, and small pieces of work-in-progress.</h2>
+          <h2 id="artifacts-title">Small diagrams, sketches, and work-in-progress fragments.</h2>
         </div>
 
         <div class="artifact-grid">
@@ -289,7 +284,7 @@
       <section class="lab-section compare-strip" id="contact" aria-labelledby="contact-title">
         <p>Compare notes</p>
         <h2 id="contact-title">
-          If your agents failed differently, I want to hear the failure mode.
+          If something here connects with what you are seeing, I would like to hear it.
         </h2>
         <div>
           <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>

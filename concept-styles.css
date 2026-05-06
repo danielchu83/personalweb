@@ -8,6 +8,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
 }
 
 a {
@@ -92,12 +93,17 @@ a {
 
 .lab-hero {
   display: grid;
-  max-width: 1280px;
-  grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1fr);
-  gap: clamp(28px, 6vw, 84px);
-  align-items: center;
+  max-width: 1680px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(440px, 0.88fr);
+  gap: clamp(28px, 4vw, 72px);
+  align-items: start;
   margin: 0 auto;
-  padding-block: clamp(70px, 11vw, 138px);
+  padding-block: clamp(52px, 8vw, 116px);
+}
+
+.lab-hero-copy,
+.lab-flow {
+  min-width: 0;
 }
 
 .lab-kicker,
@@ -112,12 +118,13 @@ a {
 }
 
 .lab-hero h1 {
-  max-width: 760px;
+  max-width: 820px;
   margin: 0;
-  font-size: clamp(3.4rem, 8vw, 7.8rem);
+  font-size: clamp(3.25rem, 6.6vw, 6.9rem);
   font-weight: 760;
   letter-spacing: -0.04em;
   line-height: 0.9;
+  text-wrap: balance;
 }
 
 .lab-hero-copy > p:not(.lab-kicker) {
@@ -794,8 +801,19 @@ a {
   line-height: 1.55;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1380px) {
   .lab-hero,
+  .bench-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-flow {
+    width: 100%;
+    max-width: 780px;
+  }
+}
+
+@media (max-width: 980px) {
   .bench-panel,
   .notebook-hero,
   .notebook-feature,
@@ -827,6 +845,30 @@ a {
     position: static;
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .concept-nav {
+    width: 100%;
+    gap: 10px 14px;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .lab-hero h1 {
+    font-size: clamp(2.25rem, 9.4vw, 2.75rem);
+    line-height: 0.96;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+  }
+
+  .lab-flow {
+    padding: 12px;
+  }
+
+  .flow-node {
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+    padding: 12px;
   }
 
   .lab-card-grid,
