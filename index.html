@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Daniel Chu's personal notes on AI systems, software, work, and questions still in progress."
-    />
+	    <meta
+	      name="description"
+	      content="Daniel Chu's notes from building AI tools that have to survive real workflows."
+	    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Daniel Chu" />
-    <meta
-      property="og:description"
-      content="Quiet field notes on AI systems, software, work, and questions still in progress."
-    />
+	    <meta
+	      property="og:description"
+	      content="Notes from building AI tools that have to survive real workflows."
+	    />
     <meta property="og:url" content="https://danielchu.dev/" />
     <meta property="og:site_name" content="Daniel Chu" />
     <title>Daniel Chu</title>
@@ -28,31 +28,35 @@
         <span class="brand-mark">DC</span>
         <span>Daniel Chu</span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#field-notes">Notes</a>
-        <a href="#questions">Questions</a>
-        <a href="#atlas">Atlas</a>
-        <a href="#contact">Contact</a>
-      </nav>
+	      <nav class="nav" aria-label="Primary navigation">
+	        <a href="#field-notes">Notes</a>
+	        <a href="#questions">Questions</a>
+	        <a href="#current-projects">Projects</a>
+	        <a href="#contact">Contact</a>
+	      </nav>
     </header>
 
     <main id="top">
       <section class="lab-hero" aria-labelledby="intro-title">
         <div class="hero-intro">
-          <div class="lab-hero-copy">
-            <p class="lab-kicker">Daniel Chu / notes in progress</p>
-            <h1 id="intro-title">Notes on AI systems, software, and the shape of work.</h1>
-            <p>
-              I write about things I am building, breaking, and trying to
-              understand: agents, tools, workflows, evals, recovery paths, and the
-              awkward gap between demos and real work.
-            </p>
-            <p>
-              Some notes are polished. Some are closer to field observations. The
-              point is to think in public without pretending every question is
-              settled.
-            </p>
-          </div>
+	          <div class="lab-hero-copy">
+	            <p class="lab-kicker">Daniel Chu / notes from real workflows</p>
+	            <h1 id="intro-title">Notes from building AI tools that have to survive real workflows.</h1>
+	            <p>
+	              I write about the awkward gap between AI demos and work that has
+	              users, deadlines, data, quality bars, support paths, and people who
+	              need the system to behave.
+	            </p>
+	            <p>
+	              Some notes are polished. Some are field observations from things I
+	              am still trying to understand: agents, tools, workflows, evals,
+	              recovery paths, and product judgment.
+	            </p>
+	            <div class="lab-actions">
+	              <a href="#start-here">Start with AI leverage</a>
+	              <a href="#current-projects">Current projects</a>
+	            </div>
+	          </div>
 
           <figure class="profile-card">
             <span class="profile-photo">
@@ -63,29 +67,94 @@
                 alt="Daniel Chu"
               />
             </span>
-            <figcaption>
-              <strong>Daniel Chu</strong>
-              <span>Building and studying AI systems in real workflows.</span>
-            </figcaption>
-          </figure>
-        </div>
+	            <figcaption>
+	              <strong>Daniel Chu</strong>
+	              <span>Building and studying AI systems in real workflows.</span>
+	              <div class="profile-links" aria-label="Daniel Chu profile links">
+	                <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>
+	                <a href="https://x.com/danielchu83">X</a>
+	                <a href="#contact">Contact</a>
+	              </div>
+	              <p>
+	                Current focus: multi-agent development systems, workflow evals,
+	                and recovery paths for AI actions.
+	              </p>
+	            </figcaption>
+	          </figure>
+	        </div>
 
-        <div class="home-visual" aria-label="How these notes are structured">
-          <div>
-            <span>Observed failure</span>
-            <strong>What broke?</strong>
-          </div>
-          <div>
-            <span>System shape</span>
-            <strong>Where did it break?</strong>
-          </div>
-          <div>
-            <span>Product lesson</span>
-            <strong>What should change?</strong>
-          </div>
-        </div>
+	        <div class="home-visual" aria-label="How these notes are structured">
+	          <div>
+	            <span>Start with evidence</span>
+	            <strong>Bug report</strong>
+	            <small>A real workflow, edge case, or failure that made the problem visible.</small>
+	          </div>
+	          <div>
+	            <span>Map the system</span>
+	            <strong>Workflow trace</strong>
+	            <small>Where context, tools, people, and incentives shape the outcome.</small>
+	          </div>
+	          <div>
+	            <span>Carry the decision</span>
+	            <strong>Decision record</strong>
+	            <small>What should change in the product, process, or evaluation.</small>
+	          </div>
+	        </div>
 
-        <aside class="latest-articles-panel" aria-labelledby="latest-articles-title">
+	        <div class="hero-feature-grid">
+	          <a
+	            class="featured-note"
+	            id="start-here"
+	            href="articles/ai-features-are-not-ai-leverage.html"
+	          >
+	            <div>
+	              <p class="lab-kicker">Start here</p>
+	              <h2>AI Features Are Not the Same as AI Leverage</h2>
+	              <p>
+	                Faster drafts are useful. The bigger question is whether AI helps a
+	                team make better tradeoffs when speed, quality, trust, and
+	                competition are all real.
+	              </p>
+	              <span>Read the note</span>
+	            </div>
+	            <div class="feature-artifact" aria-hidden="true">
+	              <span>Artifact help</span>
+	              <strong>Tradeoff</strong>
+	              <span>Decision leverage</span>
+	            </div>
+	          </a>
+
+	          <section
+	            class="current-projects"
+	            id="current-projects"
+	            aria-labelledby="current-projects-title"
+	          >
+	            <div class="project-stack-header">
+	              <p class="lab-kicker">Current projects</p>
+	              <h2 id="current-projects-title">What I am building and studying now.</h2>
+	            </div>
+	            <div class="project-stack">
+	              <div class="project-teaser">
+	                <span>Development system</span>
+	                <h3>Copilot Mobile Multi-Agent Development System</h3>
+	                <p>
+	                  Studying how multiple agents can help with mobile development
+	                  while keeping handoff, verification, and recovery visible.
+	                </p>
+	              </div>
+	              <a class="project-teaser" href="projects/atlas.html">
+	                <span>Research system</span>
+	                <h3>Atlas</h3>
+	                <p>
+	                  A private system for studying agent behavior in real workflows
+	                  without publishing private data.
+	                </p>
+	              </a>
+	            </div>
+	          </section>
+	        </div>
+
+	        <aside class="latest-articles-panel" aria-labelledby="latest-articles-title">
           <div class="latest-panel-header">
             <div>
               <p class="lab-kicker">Recently</p>
@@ -216,25 +285,7 @@
         </div>
       </section>
 
-      <section class="lab-section bench-notes" id="atlas" aria-labelledby="atlas-title">
-        <div class="bench-panel">
-          <div>
-            <p class="lab-kicker">Current project / Atlas</p>
-            <h2 id="atlas-title">A private system for studying agent behavior in real workflows.</h2>
-            <p>
-              Atlas is where I study tool use, context, evaluation, and recovery
-              around sensitive workflows without publishing private data.
-            </p>
-            <a class="lab-link" href="projects/atlas.html">Open Atlas exploration</a>
-          </div>
-          <a class="signal-map" href="projects/atlas.html" aria-label="Open Atlas architecture notes">
-            <span></span><span></span><span></span><span></span><span></span>
-            <i></i><i></i><i></i>
-          </a>
-        </div>
-      </section>
-
-      <section class="lab-section" id="field-notes" aria-labelledby="notes-title">
+	      <section class="lab-section" id="field-notes" aria-labelledby="notes-title">
         <div class="lab-section-heading">
           <p>Field notes</p>
           <h2 id="notes-title">Essays and drafts from building, breaking, and thinking in public.</h2>
@@ -242,30 +293,48 @@
 
         <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
         <div class="lab-card-grid note-grid">
-          <a class="lab-card note-card" href="articles/ai-features-are-not-ai-leverage.html">
-            <span>Product thinking</span>
-            <h3>AI Features Are Not the Same as AI Leverage</h3>
-          </a>
-          <a class="lab-card note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
-            <span>Observation</span>
-            <h3>When an agent says it used a tool, that is not evidence</h3>
-          </a>
-          <a class="lab-card note-card" href="articles/agents-debug-symptoms-not-systems.html">
-            <span>Failure mode</span>
-            <h3>AI agents debug symptoms before systems</h3>
-          </a>
-          <a class="lab-card note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
-            <span>Experiment</span>
-            <h3>When more powerful tools make agents worse</h3>
-          </a>
-          <a class="lab-card note-card" href="articles/evals-should-test-real-workflows.html">
-            <span>Evaluation</span>
-            <h3>Evals should test the workflow, not the demo</h3>
-          </a>
-          <a class="lab-card note-card" href="articles/ai-products-need-recovery-paths.html">
-            <span>Design note</span>
-            <h3>If an AI can write data, it needs a recovery path</h3>
-          </a>
+	          <a class="lab-card note-card" href="articles/ai-features-are-not-ai-leverage.html">
+	            <span>Product thinking</span>
+	            <h3>AI Features Are Not the Same as AI Leverage</h3>
+	            <div class="note-thumb note-thumb-leverage" aria-hidden="true">
+	              <i></i><i></i><i></i>
+	            </div>
+	          </a>
+	          <a class="lab-card note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
+	            <span>Observation</span>
+	            <h3>When an agent says it used a tool, that is not evidence</h3>
+	            <div class="note-thumb note-thumb-trace" aria-hidden="true">
+	              <i></i><i></i><i></i>
+	            </div>
+	          </a>
+	          <a class="lab-card note-card" href="articles/agents-debug-symptoms-not-systems.html">
+	            <span>Failure mode</span>
+	            <h3>AI agents debug symptoms before systems</h3>
+	            <div class="note-thumb note-thumb-debug" aria-hidden="true">
+	              <i></i><i></i><i></i>
+	            </div>
+	          </a>
+	          <a class="lab-card note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
+	            <span>Experiment</span>
+	            <h3>When more powerful tools make agents worse</h3>
+	            <div class="note-thumb note-thumb-matrix" aria-hidden="true">
+	              <i></i><i></i><i></i><i></i>
+	            </div>
+	          </a>
+	          <a class="lab-card note-card" href="articles/evals-should-test-real-workflows.html">
+	            <span>Evaluation</span>
+	            <h3>Evals should test the workflow, not the demo</h3>
+	            <div class="note-thumb note-thumb-workflow" aria-hidden="true">
+	              <i></i><i></i><i></i>
+	            </div>
+	          </a>
+	          <a class="lab-card note-card" href="articles/ai-products-need-recovery-paths.html">
+	            <span>Design note</span>
+	            <h3>If an AI can write data, it needs a recovery path</h3>
+	            <div class="note-thumb note-thumb-recovery" aria-hidden="true">
+	              <i></i><i></i><i></i>
+	            </div>
+	          </a>
         </div>
       </section>
 
