@@ -58,9 +58,9 @@
           </p>
           <p>
             Write access changes the product contract. A wrong answer is
-            annoying. A wrong write becomes state. It can appear in later
-            reports, affect future recommendations, and train the user's trust in
-            the wrong direction.
+            annoying. A wrong write becomes state. It can show up in later
+            reports, affect future recommendations, and teach the user to trust
+            the system for the wrong reasons.
           </p>
 
           <figure class="concept-figure recovery-figure" aria-labelledby="recovery-title">
@@ -102,10 +102,9 @@
             In practice, that pushed me toward write commands with clear
             receipts, records with stable identifiers, and rollback paths for
             destructive or high-impact changes. Audit logs can explain what the
-            agent attempted, but I would not treat them as the domain's source
-            of truth.
-            An audit log of invocations is not the same thing as a ledger of real
-            events.
+            agent attempted, but I would not treat them as the domain's source of
+            truth. A log of invocations can tell me what the agent tried. It
+            cannot replace a ledger of what actually happened.
           </p>
 
           <h2>Out-of-band control matters</h2>
@@ -131,9 +130,10 @@
             <li>Provide non-AI controls for restart, status, and rollback paths.</li>
           </ul>
           <p>
-            Reliability is not only "the model is usually right." Reliability is
-            also what happens after it is wrong. The recovery path is where the
-            product earns the user's willingness to try again.
+            I would judge reliability by more than whether the model is usually
+            right. I would also look at what happens after it is wrong. The
+            recovery path is where the product earns the user's willingness to
+            try again.
           </p>
         </div>
       </article>

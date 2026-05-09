@@ -79,9 +79,9 @@
           <h2>The input modality matters</h2>
           <p>
             A text eval can pass while the product fails on screenshots, PDFs, or
-            forwarded messages. That is not a small implementation detail. The
-            user's real input format is part of the task. If the eval only tests
-            the cleaned-up version, it is grading a demo path.
+            forwarded messages. The user's real input format is part of the
+            task. If the eval only tests the cleaned-up version, it is mostly
+            grading the demo path.
           </p>
           <p>
             Atlas improved when evals included the messy inputs the system really
@@ -116,8 +116,8 @@
             That plateau was useful because it separated product correctness from
             eval observability. If the behavior lives in a file, database row, or
             downstream message, the grader needs access to that artifact. Asking
-            the agent to summarize the artifact back into chat can change the
-            product just to satisfy the eval.
+            the agent to summarize the artifact back into chat can quietly
+            change the product just to satisfy the eval.
           </p>
 
           <h2>Better eval questions</h2>

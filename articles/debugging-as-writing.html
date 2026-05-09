@@ -43,9 +43,15 @@
 
         <div class="reader-body">
           <p>
-            Debugging gets easier when the investigation has a written trail. The
-            note does not need to be polished. It just needs to say what broke,
-            what changed, what was tested, and what still looks suspicious.
+            When a bug takes more than a few minutes, I usually need a written
+            trail. Otherwise the investigation starts to loop: I retest the same
+            theory, forget which boundary was checked, or lose the small clue
+            that explained the failure.
+          </p>
+          <p>
+            The note does not need to be polished. It just needs to say what
+            broke, what changed, what was tested, and what still looks
+            suspicious.
           </p>
           <h2>Write the failure down</h2>
           <p>
@@ -54,8 +60,9 @@
           </p>
           <h2>Keep the useful residue</h2>
           <p>
-            The win is not only fixing the bug. It is keeping the explanation
-            that shortens the next investigation.
+            The useful residue is the explanation that shortens the next
+            investigation: the contract that mattered, the misleading symptom,
+            and the check I would run first next time.
           </p>
         </div>
       </article>

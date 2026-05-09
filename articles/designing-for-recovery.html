@@ -43,10 +43,16 @@
 
         <div class="reader-body">
           <p>
-            I care about recovery before scale because scale only makes failures
-            louder. Before a system gets more users, it should help the team see
-            what happened, decide what is safe to retry, and recover without
-            guessing.
+            A system can look ready because the happy path works. Then the first
+            confusing failure arrives: a job half-runs, a retry might duplicate
+            work, and the dashboard says something happened without showing
+            enough detail to know what to do next.
+          </p>
+          <p>
+            I care about recovery before scale because scale usually makes those
+            failures louder. Before a system gets more users, it should help the
+            team see what happened, decide what is safe to retry, and recover
+            without guessing.
           </p>
           <h2>The recovery question</h2>
           <p>
@@ -58,6 +64,11 @@
             A good recovery path usually starts with readable logs, a small number
             of meaningful dashboards, and enough context to tell whether a retry is
             safe or just noise.
+          </p>
+          <p>
+            My current read is that these tools are not cleanup work after the
+            product is done. They are part of what makes the product usable under
+            stress.
           </p>
         </div>
       </article>
