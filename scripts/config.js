@@ -1,6 +1,6 @@
 window.personalWeb = {
   analytics: {
-    googleAnalyticsId: "",
+    googleAnalyticsId: "G-S0R68PPJ54",
     clarityProjectId: "",
   },
 };
