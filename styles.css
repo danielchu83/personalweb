@@ -125,6 +125,13 @@ button {
   min-width: 0;
 }
 
+.hero-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(132px, 168px);
+  gap: clamp(24px, 5vw, 54px);
+  align-items: start;
+}
+
 .lab-kicker,
 .lab-section-heading p,
 .lab-card span,
@@ -159,6 +166,104 @@ button {
   font-size: clamp(1.02rem, 1.4vw, 1.13rem);
   line-height: 1.76;
   overflow-wrap: break-word;
+}
+
+.profile-card {
+  margin: 6px 0 0;
+}
+
+.profile-photo {
+  display: block;
+  width: clamp(132px, 16vw, 168px);
+  max-width: 100%;
+  height: clamp(132px, 16vw, 168px);
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper-soft);
+  box-shadow: 0 18px 44px rgba(69, 52, 36, 0.11);
+  overflow: hidden;
+}
+
+.profile-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 16%;
+  transform: scale(1.08);
+  transform-origin: 50% 16%;
+}
+
+.profile-card figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.profile-card strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+.profile-card span {
+  display: block;
+}
+
+.home-visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: clamp(28px, 4vw, 40px);
+  padding: 22px 0 4px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+}
+
+.home-visual div {
+  position: relative;
+  min-height: 104px;
+  display: grid;
+  align-content: start;
+  gap: 28px;
+  padding: 0 22px 18px;
+}
+
+.home-visual div + div {
+  border-left: 1px solid var(--line);
+}
+
+.home-visual div::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--background);
+  box-shadow: 0 0 0 5px rgba(143, 99, 67, 0.07);
+}
+
+.home-visual span {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-visual strong {
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.25;
 }
 
 .lab-actions,
@@ -689,6 +794,365 @@ button {
   color: var(--text);
 }
 
+.concept-figure {
+  position: relative;
+  margin: 34px 0 42px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid rgba(58, 45, 34, 0.1);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(58, 45, 34, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 45, 34, 0.035) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 250, 242, 0.9), rgba(239, 246, 242, 0.66)),
+    var(--paper);
+  background-size:
+    24px 24px,
+    24px 24px,
+    auto,
+    auto;
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(255, 250, 242, 0.8);
+}
+
+.concept-figure::before {
+  content: "field diagram";
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: rgba(143, 99, 67, 0.62);
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.concept-figure figcaption {
+  max-width: 620px;
+  margin: 0 88px 24px 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 620;
+  line-height: 1.5;
+}
+
+.leverage-lanes,
+.trace-flow,
+.workflow-replay,
+.routing-split,
+.recovery-flow,
+.debug-boundaries {
+  display: grid;
+  gap: 12px;
+}
+
+.leverage-lanes {
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.72fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 18px;
+}
+
+.leverage-lane {
+  display: grid;
+  gap: 0;
+  align-content: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.leverage-lane span,
+.trace-node,
+.workflow-node,
+.route-node,
+.recovery-node,
+.boundary-row {
+  background: transparent;
+}
+
+.leverage-lane span {
+  position: relative;
+  padding: 13px 10px 13px 24px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+.leverage-lane span:last-child {
+  border-bottom: 0;
+}
+
+.leverage-lane span::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(143, 99, 67, 0.45);
+  transform: translateY(-50%);
+}
+
+.leverage-decision {
+  display: grid;
+  width: min(178px, 100%);
+  aspect-ratio: 1;
+  justify-self: center;
+  place-items: center;
+  padding: 20px;
+  border: 1px solid rgba(103, 124, 130, 0.34);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 250, 242, 0.95) 0 42%, rgba(103, 124, 130, 0.13) 43% 100%);
+  text-align: center;
+}
+
+.leverage-decision strong,
+.trace-node strong,
+.workflow-node strong,
+.route-node strong,
+.recovery-node strong,
+.boundary-row strong {
+  display: block;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.leverage-decision small,
+.ladder-steps small,
+.trace-node small,
+.workflow-node small,
+.route-node small,
+.recovery-node small,
+.boundary-row small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.ladder-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: end;
+  padding-top: 10px;
+}
+
+.ladder-steps div {
+  position: relative;
+  display: grid;
+  min-height: 132px;
+  align-content: end;
+  padding: 18px 0 0;
+  border-top: 4px solid rgba(143, 99, 67, 0.2);
+  background: transparent;
+}
+
+.ladder-steps div:nth-child(2) {
+  min-height: 164px;
+  border-top-color: rgba(143, 99, 67, 0.34);
+}
+
+.ladder-steps div:nth-child(3) {
+  min-height: 198px;
+  border-top-color: rgba(103, 124, 130, 0.58);
+}
+
+.ladder-steps strong {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+}
+
+.ladder-steps span {
+  display: block;
+  margin-top: 18px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 720;
+  line-height: 1.25;
+}
+
+.trace-flow {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 22px;
+}
+
+.trace-node,
+.workflow-node,
+.route-node,
+.recovery-node,
+.boundary-row {
+  border-radius: 0;
+}
+
+.trace-node.good,
+.workflow-node.good,
+.route-node.good,
+.recovery-node.good,
+.boundary-row.good {
+  border-color: rgba(78, 115, 105, 0.42);
+}
+
+.trace-node.bad,
+.route-node.bad,
+.boundary-row.bad {
+  border-color: rgba(143, 99, 67, 0.42);
+}
+
+.trace-node {
+  min-height: 128px;
+  padding: 18px 18px 18px 22px;
+  border-left: 4px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(255, 250, 242, 0.7), transparent 72%);
+}
+
+.workflow-replay {
+  position: relative;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.workflow-replay::before,
+.recovery-flow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 36px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.workflow-node {
+  position: relative;
+  min-height: 118px;
+  padding: 38px 0 0;
+}
+
+.workflow-node::before,
+.recovery-node::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--background);
+}
+
+.routing-split {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.route-node {
+  min-height: 140px;
+  padding: 18px 0 0;
+  border-top: 4px solid var(--line);
+  background: transparent;
+}
+
+.route-node.hub {
+  min-height: 160px;
+  display: grid;
+  align-content: center;
+  justify-self: center;
+  width: min(170px, 100%);
+  aspect-ratio: 1;
+  padding: 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: rgba(255, 250, 242, 0.74);
+  text-align: center;
+}
+
+.recovery-flow {
+  position: relative;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  padding-top: 20px;
+}
+
+.recovery-node {
+  position: relative;
+  min-height: 118px;
+  padding: 38px 0 0;
+}
+
+.debug-boundaries {
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.boundary-row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.boundary-row:last-child {
+  border-bottom: 0;
+}
+
+.boundary-row span {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 780;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mini-visual {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.mini-visual span {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  height: 16px;
+  background: rgba(103, 124, 130, 0.11);
+}
+
+.mini-visual span:nth-child(2) {
+  width: 74%;
+  background: rgba(143, 99, 67, 0.12);
+}
+
+.mini-visual span:nth-child(3) {
+  width: 52%;
+}
+
 .project-page {
   max-width: calc(var(--reader-wide-width) + var(--article-gutter) + var(--article-gutter));
 }
@@ -802,6 +1266,15 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .leverage-lanes,
+  .ladder-steps,
+  .trace-flow,
+  .workflow-replay,
+  .routing-split,
+  .recovery-flow {
+    grid-template-columns: 1fr;
+  }
+
   .arch-vm {
     grid-column: auto;
   }
@@ -825,6 +1298,27 @@ button {
 
   .lab-hero {
     display: block;
+  }
+
+  .hero-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    margin-top: 28px;
+  }
+
+  .profile-photo {
+    width: 88px;
+    height: 88px;
+  }
+
+  .profile-card figcaption {
+    margin-top: 0;
   }
 
   .lab-hero,
@@ -866,7 +1360,8 @@ button {
   }
 
   .lab-card-grid,
-  .artifact-grid {
+  .artifact-grid,
+  .home-visual {
     grid-template-columns: 1fr;
   }
 

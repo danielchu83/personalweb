@@ -14,7 +14,7 @@
       content="A technical note from Atlas on why AI agents often debug plausible symptoms before checking system boundaries."
     />
     <title>AI agents debug symptoms before systems | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=plain-notes-20260506-widthfix" />
+    <link rel="stylesheet" href="../styles.css?v=visual-notes-20260509" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -65,6 +65,19 @@
             cause.
           </p>
 
+          <figure class="concept-figure debug-figure" aria-labelledby="debug-title">
+            <figcaption id="debug-title">
+              The agent explained the symptom before proving which world it was
+              looking at.
+            </figcaption>
+            <div class="debug-boundaries" aria-hidden="true">
+              <div class="boundary-row bad"><span>Symptom</span><div><strong>Numbers disagree</strong><small>the visible mismatch</small></div></div>
+              <div class="boundary-row"><span>Boundary</span><div><strong>Wrong database copy</strong><small>the workspace was stale</small></div></div>
+              <div class="boundary-row"><span>Boundary</span><div><strong>Taxonomy drift</strong><small>tests normalized the wrong assumption</small></div></div>
+              <div class="boundary-row good"><span>Source</span><div><strong>Canonical command</strong><small>one trusted read path</small></div></div>
+            </div>
+          </figure>
+
           <h2>The agent skipped the boring checks</h2>
           <p>
             Human debugging often starts with boring questions. Am I looking at
@@ -96,17 +109,18 @@
             trusts.
           </p>
           <p>
-            I also like commands that print enough provenance to debug the
-            answer: the data source, the time window, the filters, and the
-            semantic definition being applied. It is not glamorous UI, but it
-            gives the agent fewer degrees of freedom to narrate the wrong system.
+            The commands also became more useful when they printed enough
+            provenance to debug the answer:
+            the data source, the time window, the filters, and the semantic
+            definition being applied. It is basic UI, but it gives the agent
+            fewer ways to narrate the wrong system.
           </p>
 
-          <h2>The product lesson</h2>
+          <h2>What helped</h2>
           <p>
             "Agent debugging" sounds like an intelligence problem. A lot of the
-            time it is a product-surface problem. The system needs to make the
-            boring checks cheap and obvious:
+            time it is a product-surface problem. In Atlas, the system got
+            better when the boring checks became cheap and obvious:
           </p>
           <ul>
             <li>Prefer canonical commands over copied workspace state.</li>
@@ -116,9 +130,9 @@
             <li>Teach the agent to verify the environment before explaining the symptom.</li>
           </ul>
           <p>
-            The deeper point is that agents need help developing taste about
-            debugging order. They can reason through a system, but the product
-            has to make "am I looking at the right system?" the first-class move.
+            Agents need help with debugging order. They can reason through a
+            system, but I want the product to make "am I looking at the right
+            system?" the first move.
           </p>
         </div>
       </article>

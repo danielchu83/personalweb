@@ -14,7 +14,7 @@
       content="A technical note from Atlas on why agent claims about tool use are not evidence of execution."
     />
     <title>When an agent says it used a tool, that is not evidence | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=plain-notes-20260506-widthfix" />
+    <link rel="stylesheet" href="../styles.css?v=visual-notes-20260509" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -52,8 +52,9 @@
           <p>
             Atlas has a private finance agent that answers questions by calling
             CLI commands over a local data layer. The clean version of the design
-            is simple: the agent should not do important math in prose. It should
-            call a command, read the result, and explain the result to the user.
+            is simple: for important math, I do not want the agent improvising
+            in prose. I want it to call a command, read the result, and explain
+            the result to the user.
           </p>
           <p>
             The failure was more subtle. The agent produced a forecast that was
@@ -64,6 +65,17 @@
             contract I wanted was different: the command should be the source of
             truth.
           </p>
+
+          <figure class="concept-figure trace-figure" aria-labelledby="trace-title">
+            <figcaption id="trace-title">
+              The final answer can look disciplined even when the execution path
+              is not.
+            </figcaption>
+            <div class="trace-flow" aria-hidden="true">
+              <div class="trace-node bad"><strong>Narrative trace</strong><small>"I used the forecast command"</small></div>
+              <div class="trace-node good"><strong>Execution trace</strong><small>command actually ran and produced the number</small></div>
+            </div>
+          </figure>
 
           <h2>The text channel lies by accident</h2>
           <p>
@@ -96,27 +108,25 @@
             "did the answer reflect the right source of truth?"
           </p>
           <p>
-            I also learned to treat environment setup as part of the product.
-            If an eval runner points at one database while the tool gateway points
-            at another, the agent can look unreliable when the real bug is the
-            harness. If a workspace contains stale data copies, the agent can do
-            sincere work against the wrong world. Both are product failures in an
-            agent system.
+            Environment setup is part of the product. If an eval runner points
+            at one database while the tool gateway points at another, the agent
+            can look unreliable when the real bug is setup. If a workspace
+            contains stale data copies, the agent can do sincere work against
+            the wrong world. Both are product failures in an agent system.
           </p>
 
-          <h2>What I would generalize</h2>
+          <h2>What I would keep</h2>
           <ul>
-            <li>Do not grade agent tool use by reading the agent's prose.</li>
             <li>Grade observable outputs, side effects, and source-of-truth agreement.</li>
-            <li>Make the correct tool path shorter than the improvised reasoning path.</li>
-            <li>Remove stale local copies when a canonical read path exists.</li>
-            <li>Test the harness and environment with the same seriousness as the prompt.</li>
+            <li>Make the intended tool path shorter than the improvised reasoning path.</li>
+            <li>Remove stale local copies when there is a canonical read path.</li>
+            <li>Test the environment, not just the prompt.</li>
           </ul>
           <p>
-            The product lesson is uncomfortable but useful: an AI agent does not
-            become reliable because it knows the right command exists. It becomes
-            reliable when the system makes the right command the easiest way to
-            succeed, and when the eval can see whether that actually happened.
+            My read is that an AI agent does not become reliable just because it
+            knows the right command exists. It becomes more reliable when the
+            system makes that command the easiest way to succeed, and when the
+            eval can see whether that actually happened.
           </p>
         </div>
       </article>

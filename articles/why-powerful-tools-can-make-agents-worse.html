@@ -14,7 +14,7 @@
       content="A technical note from Atlas on why generalized tools can make AI agents less predictable without tighter product constraints."
     />
     <title>When more powerful tools make agents worse | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=plain-notes-20260506-widthfix" />
+    <link rel="stylesheet" href="../styles.css?v=visual-notes-20260509" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -50,11 +50,11 @@
 
         <div class="reader-body">
           <p>
-            I used to think the obvious direction for agent tools was
-            consolidation. If four tools answer overlapping scenario questions,
-            replace them with one more expressive engine. Fewer APIs, more
-            capability, cleaner implementation. That is mostly true inside the
-            codebase. It is not automatically true at the product surface.
+            I thought agent tools should consolidate. If four tools answer
+            overlapping scenario questions, replace them with one more expressive
+            engine. Fewer APIs, more capability, cleaner implementation. That is
+            mostly true inside the codebase. At the product surface, it can be
+            more complicated.
           </p>
           <p>
             In Atlas, a generalized scenario engine replaced several narrower
@@ -71,11 +71,23 @@
             more powerful, but the product became less crisp.
           </p>
 
+          <figure class="concept-figure routing-figure" aria-labelledby="routing-title">
+            <figcaption id="routing-title">
+              Generality can live inside the engine. The interface can stay more
+              specific.
+            </figcaption>
+            <div class="routing-split" aria-hidden="true">
+              <div class="route-node hub"><strong>Scenario engine</strong><small>one computation path</small></div>
+              <div class="route-node bad"><strong>Loose interface</strong><small>many plausible routes</small></div>
+              <div class="route-node good"><strong>Specific edge</strong><small>clear verbs, strict errors</small></div>
+            </div>
+          </figure>
+
           <h2>Capability expands the routing problem</h2>
           <p>
             A generalized tool asks the agent to do more product judgment. Which
-            mode should it use? Is this a comparison question or a feasibility
-            question? Should it update state or create a sandbox? Is the user
+            mode fits? Is this a comparison question or a feasibility question?
+            Is this a state update or a sandbox? Is the user
             asking "can I do this now" or "when would this become possible"?
           </p>
           <p>
@@ -95,10 +107,10 @@
             of deprecated softly. Wrong paths failed fast with useful messages.
           </p>
           <p>
-            This felt less elegant at first. It made the public command surface
-            more opinionated. But that was the point. Agents need fewer plausible
-            options, not more. The product layer should encode the routing
-            decision whenever the system already knows the distinction.
+            This made the public command surface more opinionated. In this case,
+            that was the better tradeoff. Agents seemed to do better with fewer
+            plausible options, not more. When the system already knows the
+            distinction, the product layer can encode the routing decision.
           </p>
 
           <h2>Strict errors beat fuzzy success</h2>
@@ -110,20 +122,20 @@
             wrong thing while training the agent that guessing is acceptable.
           </p>
           <p>
-            The better pattern was strict matching plus useful error envelopes.
+            The pattern that worked better was strict matching plus useful error envelopes.
             When the agent supplied an invalid name, the tool returned valid
             options and told it how to retry. The agent learned from the error at
             the exact moment it needed help, without adding another always-loaded
             prompt rule.
           </p>
 
-          <h2>What I would generalize</h2>
+          <h2>What I would keep</h2>
           <ul>
-            <li>Generalize the computation layer before you generalize the interface.</li>
-            <li>Delete overlapping verbs and flags when they create routing ambiguity.</li>
-            <li>Use hard failures when a path should no longer be used.</li>
-            <li>Prefer strict matching with helpful errors over fuzzy mutation targeting.</li>
-            <li>Remember that every new capability creates a new choice the agent has to make.</li>
+            <li>Generalize the computation layer before the interface.</li>
+            <li>Remove overlapping verbs and flags when they create routing ambiguity.</li>
+            <li>Use hard failures when an old path should stop being used.</li>
+            <li>Use strict matching with helpful errors before fuzzy mutation targeting.</li>
+            <li>Every new capability creates another choice for the agent.</li>
           </ul>
           <p>
             More powerful tools are not bad. They just shift work from code into

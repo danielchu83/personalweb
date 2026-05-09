@@ -14,7 +14,7 @@
       content="A technical note from Atlas on why AI products that write data need undo, audit, and out-of-band recovery paths."
     />
     <title>If an AI can write data, it needs a recovery path | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=plain-notes-20260506-widthfix" />
+    <link rel="stylesheet" href="../styles.css?v=visual-notes-20260509" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -63,6 +63,19 @@
             the wrong direction.
           </p>
 
+          <figure class="concept-figure recovery-figure" aria-labelledby="recovery-title">
+            <figcaption id="recovery-title">
+              Trust depends on what happens after the model is wrong.
+            </figcaption>
+            <div class="recovery-flow" aria-hidden="true">
+              <div class="recovery-node"><strong>Extract</strong><small>read the messy input</small></div>
+              <div class="recovery-node"><strong>Review</strong><small>catch uncertainty</small></div>
+              <div class="recovery-node good"><strong>Commit</strong><small>write with a receipt</small></div>
+              <div class="recovery-node"><strong>Audit</strong><small>show what changed</small></div>
+              <div class="recovery-node good"><strong>Recover</strong><small>undo or repair</small></div>
+            </div>
+          </figure>
+
           <h2>The parser is a trust boundary</h2>
           <p>
             Many AI write paths start with extraction: read a message, screenshot,
@@ -86,10 +99,11 @@
             it.
           </p>
           <p>
-            That means write commands should produce clear receipts. Records need
-            stable identifiers. Destructive or high-impact changes need delete or
-            rollback paths. Audit logs should explain what the agent attempted,
-            but they should not be confused with the domain's source of truth.
+            In practice, that pushed me toward write commands with clear
+            receipts, records with stable identifiers, and rollback paths for
+            destructive or high-impact changes. Audit logs can explain what the
+            agent attempted, but I would not treat them as the domain's source
+            of truth.
             An audit log of invocations is not the same thing as a ledger of real
             events.
           </p>
@@ -103,9 +117,9 @@
             operations.
           </p>
           <p>
-            This is not glamorous, but it changes how the product feels. The user
-            can trust the AI more when the AI is not the only door into the
-            system.
+            This is not the flashy part of the product, but it changes how the
+            system feels. The user can trust the AI more when the AI is not the
+            only door into the system.
           </p>
 
           <h2>A recovery checklist</h2>

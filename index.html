@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="Daniel Chu" />
     <title>Daniel Chu</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=plain-notes-20260506-widthfix" />
+    <link rel="stylesheet" href="styles.css?v=visual-notes-20260509" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
     <script src="concept-interactions.js" defer></script>
@@ -38,19 +38,51 @@
 
     <main id="top">
       <section class="lab-hero" aria-labelledby="intro-title">
-        <div class="lab-hero-copy">
-          <p class="lab-kicker">Daniel Chu / notes in progress</p>
-          <h1 id="intro-title">Notes on AI systems, software, and the shape of work.</h1>
-          <p>
-            I write about things I am building, breaking, and trying to
-            understand: agents, tools, workflows, evals, recovery paths, and the
-            awkward gap between demos and real work.
-          </p>
-          <p>
-            Some notes are polished. Some are closer to field observations. The
-            point is to think in public without pretending every question is
-            settled.
-          </p>
+        <div class="hero-intro">
+          <div class="lab-hero-copy">
+            <p class="lab-kicker">Daniel Chu / notes in progress</p>
+            <h1 id="intro-title">Notes on AI systems, software, and the shape of work.</h1>
+            <p>
+              I write about things I am building, breaking, and trying to
+              understand: agents, tools, workflows, evals, recovery paths, and the
+              awkward gap between demos and real work.
+            </p>
+            <p>
+              Some notes are polished. Some are closer to field observations. The
+              point is to think in public without pretending every question is
+              settled.
+            </p>
+          </div>
+
+          <figure class="profile-card">
+            <span class="profile-photo">
+              <img
+                src="assets/profile-daniel-chu.jpg"
+                width="579"
+                height="720"
+                alt="Daniel Chu"
+              />
+            </span>
+            <figcaption>
+              <strong>Daniel Chu</strong>
+              <span>Building and studying AI systems in real workflows.</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="home-visual" aria-label="How these notes are structured">
+          <div>
+            <span>Observed failure</span>
+            <strong>What broke?</strong>
+          </div>
+          <div>
+            <span>System shape</span>
+            <strong>Where did it break?</strong>
+          </div>
+          <div>
+            <span>Product lesson</span>
+            <strong>What should change?</strong>
+          </div>
         </div>
 
         <aside class="latest-articles-panel" aria-labelledby="latest-articles-title">
@@ -68,7 +100,7 @@
                 <time datetime="2026-05-01">May 1</time>
                 <span>
                   <strong>AI Features Are Not the Same as AI Leverage</strong>
-                  <small>What kind of harness does a neural computer actually need?</small>
+                  <small>Faster drafts are helpful. Better decisions are leverage.</small>
                 </span>
               </a>
             </li>
@@ -124,7 +156,7 @@
       <section class="lab-section" id="explorations" aria-labelledby="experiments-title">
         <div class="lab-section-heading">
           <p>Threads</p>
-          <h2 id="experiments-title">Things I keep trying to understand.</h2>
+          <h2 id="experiments-title">Problems I am working through.</h2>
         </div>
 
         <div class="lab-card-grid">
@@ -132,6 +164,7 @@
             <span>Experiment</span>
             <h3>Agent tool use</h3>
             <p>When an agent says it used a tool, how do we know?</p>
+            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="lab-reveal">
               <strong>What I am noticing</strong>
               <p>The prose can sound grounded even when execution did not happen.</p>
@@ -141,6 +174,7 @@
             <span>Experiment</span>
             <h3>Generalized tools</h3>
             <p>Why does giving agents more power sometimes make them less reliable?</p>
+            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="lab-reveal">
               <strong>Still unresolved</strong>
               <p>How narrow should a tool be before it stops being useful?</p>
@@ -150,6 +184,7 @@
             <span>Evaluation</span>
             <h3>Workflow evals</h3>
             <p>What would an eval look like if it tested the real workflow?</p>
+            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="lab-reveal">
               <strong>What I am noticing</strong>
               <p>Many evals test chat, while product behavior lives in files and side effects.</p>
@@ -159,6 +194,7 @@
             <span>Repair</span>
             <h3>Recovery paths</h3>
             <p>If an AI system writes data, what should undo and audit look like?</p>
+            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="lab-reveal">
               <strong>Still unresolved</strong>
               <p>How much recovery should be automatic before it becomes another risk?</p>
@@ -171,6 +207,7 @@
               What if people, files, events, and emails were structured context
               instead of attachments?
             </p>
+            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="lab-reveal">
               <strong>What I am noticing</strong>
               <p>The hard part is not the entity card. It is deciding who owns the context.</p>
@@ -255,7 +292,6 @@
         </div>
 
         <div class="artifact-grid">
-          <!-- TODO: Replace placeholder artifacts with real diagrams or prototypes. -->
           <a class="artifact-card" href="projects/atlas.html">
             <span>Map</span>
             <h3>Agent workflow map</h3>
@@ -284,7 +320,7 @@
       <section class="lab-section compare-strip" id="contact" aria-labelledby="contact-title">
         <p>Compare notes</p>
         <h2 id="contact-title">
-          If something here connects with what you are seeing, I would like to hear it.
+          If something here matches what you are seeing, I would like to hear from you.
         </h2>
         <div>
           <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>

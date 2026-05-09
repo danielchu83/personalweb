@@ -14,7 +14,7 @@
       content="A technical note from Atlas on why AI evals should test real workflows, not just idealized prompts."
     />
     <title>Evals should test the workflow, not the demo | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=plain-notes-20260506-widthfix" />
+    <link rel="stylesheet" href="../styles.css?v=visual-notes-20260509" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -40,9 +40,9 @@
         <p class="eyebrow">Atlas note</p>
         <h1>Evals should test the workflow, not the demo</h1>
         <p class="reader-dek">
-          Atlas kept teaching me the same lesson: an agent can pass the prompt
-          and still fail the product if the eval leaves out state, files,
-          side effects, or the user's real input format.
+          Atlas made this clear to me: an agent can pass the prompt and still
+          fail the product if the eval leaves out state, files, side effects, or
+          the user's real input format.
         </p>
         <div class="reader-actions">
           <button class="button primary" type="button" data-share>Share article</button>
@@ -62,6 +62,19 @@
             what it had actually done. Once I tested that whole loop, new failure
             modes appeared.
           </p>
+
+          <figure class="concept-figure workflow-replay-figure" aria-labelledby="workflow-replay-title">
+            <figcaption id="workflow-replay-title">
+              The eval gets more useful when it replays the workflow shape, not
+              just the final chat answer.
+            </figcaption>
+            <div class="workflow-replay" aria-hidden="true">
+              <div class="workflow-node"><strong>Messy input</strong><small>screenshot, PDF, forwarded message</small></div>
+              <div class="workflow-node"><strong>Agent action</strong><small>tool call, file write, database update</small></div>
+              <div class="workflow-node"><strong>Visible artifact</strong><small>record, generated file, downstream message</small></div>
+              <div class="workflow-node good"><strong>Grader check</strong><small>observable contract, not prose</small></div>
+            </div>
+          </figure>
 
           <h2>The input modality matters</h2>
           <p>
@@ -86,10 +99,10 @@
             because the first test succeeded.
           </p>
           <p>
-            This changed how I think about eval infrastructure. Resetting the
-            chat session is not enough. You may also need to reset tool memory,
-            database rows, generated files, and any local cache the agent can
-            inspect. The eval harness is part of the system under test.
+            This changed the eval setup for me. Resetting the chat session was
+            not enough. I also had to think about tool memory, database rows,
+            generated files, and local caches the agent could inspect. The eval
+            runner became part of the system under test.
           </p>
 
           <h2>The grader can only grade what it can observe</h2>
@@ -116,10 +129,11 @@
             <li>Are expected answers resolved from live data when the data changes?</li>
           </ul>
           <p>
-            The practical lesson is that evals should feel less like trivia and
-            more like replay. Start from a real failure, preserve the workflow
-            shape, and grade the observable contract. Otherwise you get a system
-            that is excellent at the demo and still unreliable in daily use.
+            My current rule is that evals should feel less like trivia and more
+            like replay. Start from a real failure, preserve the workflow shape,
+            and grade the observable contract. Otherwise it is easy to get a
+            system that is excellent at the demo and still unreliable in daily
+            use.
           </p>
         </div>
       </article>
