@@ -1528,13 +1528,34 @@ a.project-teaser:hover {
   max-width: var(--reader-wide-width);
 }
 
+.project-page .reader > .back-link,
+.project-page .reader > .eyebrow,
 .project-page .reader > h1,
 .project-page .reader > .reader-dek,
+.project-page .reader > .reader-actions,
 .project-page .reader-body > h2,
 .project-page .reader-body > p,
 .project-page .reader-body > ul,
 .project-page .reader-body > ol {
   max-width: var(--reader-width);
+}
+
+.project-page .reader > .back-link,
+.project-page .reader > .eyebrow,
+.project-page .reader > h1,
+.project-page .reader > .reader-dek,
+.project-page .reader > .reader-actions,
+.project-page .reader-body > h2,
+.project-page .reader-body > p,
+.project-page .reader-body > ul,
+.project-page .reader-body > ol {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.project-page .reader > .back-link {
+  display: flex;
 }
 
 .architecture-diagram {
