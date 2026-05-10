@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A public-safe overview of Daniel Chu's work creating a production multi-agent development system for Microsoft Copilot Mobile."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Copilot Mobile Multi-Agent Development System | Daniel Chu" />
+    <meta
+      property="og:description"
+      content="A public-safe overview of Daniel Chu's work creating a production multi-agent development system for Microsoft Copilot Mobile."
+    />
+    <title>Copilot Mobile Multi-Agent Development System | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css?v=note-thumb-spacing-20260510" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Project navigation">
+        <a href="../index.html#explorations">Explorations</a>
+        <a href="../index.html#field-notes">Field Notes</a>
+        <a href="../index.html#questions">Questions</a>
+        <a href="../index.html#artifacts">Artifacts</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page project-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#current-projects">Back to projects</a>
+        <p class="eyebrow">Microsoft Copilot Mobile / Project</p>
+        <h1>Copilot Mobile Multi-Agent Development System</h1>
+        <p class="reader-dek">
+          I created and shipped the first production multi-agent development
+          system for Microsoft Copilot Mobile. The goal is simple to say and hard
+          to do: make mobile development more accessible while keeping quality,
+          review, and recovery visible.
+        </p>
+        <div class="reader-actions">
+          <a class="button primary" href="#what-changed">What changed</a>
+          <a class="button secondary" href="#learnings">Read learnings</a>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            This page stays at the level I can discuss publicly. I am not sharing
+            Microsoft internal architecture, prompts, private code paths, review
+            heuristics, customer data, or implementation details that belong to
+            the product.
+          </p>
+          <p>
+            What I can talk about is the shape of the work: I was the original
+            builder, I pioneered the eval-driven setup, and I am still an active
+            developer of the system.
+          </p>
+
+          <h2 id="what-changed">What changed</h2>
+          <p>
+            Before this, many useful product and UX changes still depended on an
+            engineer to start, translate, or carry the implementation. That slows
+            down PMs and designers, but it also slows down engineers. An iOS
+            developer may understand the product change and still have to wait on
+            Android context, or the other way around.
+          </p>
+          <p>
+            The system gives people a safer path into Copilot Mobile development.
+            PMs and designers can use it directly, with engineering review. Mobile
+            engineers can use it to move across platform boundaries. The point is
+            not to remove engineering judgment. It is to make more of the work
+            executable, reviewable, and testable.
+          </p>
+          <p>
+            The first strong signal was adoption. In its first month, PM and
+            Design teammates used the system directly to check in and merge 200
+            PRs with engineering review.
+          </p>
+
+          <div class="architecture-diagram" role="img" aria-label="Public workflow shape for the Copilot Mobile multi-agent development system">
+            <div class="arch-node arch-user">
+              <strong>Contributor</strong>
+              <span>PM, designer, or engineer starts from a scoped product change</span>
+            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-node">
+              <strong>Agent development loop</strong>
+              <span>Agents help translate intent into mobile implementation work</span>
+            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-node arch-core">
+              <strong>Eval gate</strong>
+              <span>Workflow checks catch regressions and make behavior observable</span>
+            </div>
+            <div class="arch-arrow" aria-hidden="true">→</div>
+            <div class="arch-node">
+              <strong>Engineering review</strong>
+              <span>Humans keep ownership of quality, risk, and product judgment</span>
+            </div>
+            <div class="arch-node arch-vm">
+              <strong>Risk-aware review</strong>
+              <span>As review load grew, I built auto-review support that evaluates PR risk and recommends review depth.</span>
+            </div>
+            <div class="arch-arrow arch-arrow-up" aria-hidden="true">↑</div>
+            <div class="arch-node">
+              <strong>Recovery path</strong>
+              <span>Changes stay tied to review, traceability, and rollback thinking</span>
+            </div>
+          </div>
+
+          <h2>What the system enabled</h2>
+          <p>
+            The clearest shift is that development no longer has to start only
+            with the person who already knows the exact platform, code path, or
+            implementation routine. A PM responsible for measurement can make
+            instrumentation and metrics changes directly. A designer can carry
+            product details closer to the final implementation. An engineer can
+            move faster in an unfamiliar part of the mobile stack.
+          </p>
+          <p>
+            This only works if the system treats review as part of the product,
+            not as a ceremonial last step. When the review queue became the next
+            bottleneck, I built an auto-review layer that evaluates the risk of a
+            PR and recommends the depth of review it needs. The public lesson is
+            that agent systems do not end at code generation. They have to carry
+            the change through verification, risk, and recovery.
+          </p>
+
+          <h2 id="learnings">What I am learning</h2>
+          <ul>
+            <li>Useful agents need evals before they need more autonomy.</li>
+            <li>Cross-functional development works when the handoff is visible, not hidden.</li>
+            <li>Review capacity becomes a product constraint once many more people can create PRs.</li>
+            <li>Quality improves when the system makes risk legible before a human reviewer opens the diff.</li>
+            <li>Enablement is real only when people can ship safely outside their usual comfort zone.</li>
+          </ul>
+
+          <h2>Why eval-driven mattered</h2>
+          <p>
+            My main contribution was not just wiring agents together. I pioneered
+            an eval-driven approach for setting up the system: using evals to
+            shape agent roles, test real workflows, catch regressions, compare
+            approaches, and decide when a path was reliable enough to trust.
+          </p>
+          <p>
+            That changed the development posture. Instead of asking whether the
+            agent sounded plausible, I wanted to know whether the workflow held
+            up: did the right files change, did the review surface make sense,
+            did the system expose risk, and could a person recover if something
+            went wrong?
+          </p>
+
+          <h2 id="related">Related notes</h2>
+          <div class="related-article-list">
+            <a href="../articles/evals-should-test-real-workflows.html">
+              <span>Evals</span>
+              <strong>Evals should test the workflow, not the demo</strong>
+            </a>
+            <a href="../articles/ai-features-are-not-ai-leverage.html">
+              <span>Product thinking</span>
+              <strong>AI Features Are Not the Same as AI Leverage</strong>
+            </a>
+            <a href="../articles/ai-products-need-recovery-paths.html">
+              <span>Trust</span>
+              <strong>If an AI can write data, it needs a recovery path</strong>
+            </a>
+            <a href="../articles/why-powerful-tools-can-make-agents-worse.html">
+              <span>Tool design</span>
+              <strong>When more powerful tools make agents worse</strong>
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
