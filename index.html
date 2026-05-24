@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="Daniel Chu" />
     <title>Daniel Chu</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=about-portfolio-20260524" />
+    <link rel="stylesheet" href="styles.css?v=visual-polish-20260524" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
     <script src="concept-interactions.js" defer></script>
@@ -41,48 +41,37 @@
       <section class="lab-hero" aria-labelledby="intro-title">
         <div class="hero-intro">
 	          <div class="lab-hero-copy">
-	            <p class="lab-kicker">Daniel Chu / notes from real workflows</p>
-	            <h1 id="intro-title">Notes from building AI tools that have to survive real workflows.</h1>
-	            <p>
-	              I write about the awkward gap between AI demos and work that has
-	              users, deadlines, data, quality bars, support paths, and people who
-	              need the system to behave.
-	            </p>
-	            <p>
-	              Some notes are polished. Some are field observations from things I
-	              am still trying to understand: agents, tools, workflows, evals,
-	              recovery paths, and product judgment.
-	            </p>
-	            <div class="lab-actions">
-	              <a href="#start-here">Start with AI leverage</a>
-	              <a href="portfolio.html">Portfolio</a>
-	              <a href="about.html">About Daniel</a>
-	            </div>
-	          </div>
+            <p class="lab-kicker">Daniel Chu / AI systems lab notebook</p>
+            <h1 id="intro-title">AI product notes from the messy middle.</h1>
+            <p>
+              I write from the space between demos and durable tools: agents
+              that touch files, evals that test behavior, interfaces that expose
+              risk, and recovery paths when automation gets it wrong.
+            </p>
+            <p>
+              These are field notes from systems I am building or studying, not
+              grand conclusions. The recurring question is simple: what makes AI
+              useful after the impressive first answer?
+            </p>
+            <div class="lab-actions">
+              <a href="#start-here">Start with AI leverage</a>
+              <a href="portfolio.html">See the work</a>
+              <a href="about.html">About Daniel</a>
+            </div>
+          </div>
 
-          <figure class="profile-card">
-            <span class="profile-photo">
-              <img
-                src="assets/profile-daniel-chu.jpg"
-                width="579"
-                height="720"
-                alt="Daniel Chu"
-              />
-            </span>
-	            <figcaption>
-	              <strong>Daniel Chu</strong>
-	              <span>Building and studying AI systems in real workflows.</span>
-	              <div class="profile-links" aria-label="Daniel Chu profile links">
-	                <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>
-	                <a href="https://x.com/danielchu83">X</a>
-	                <a href="#contact">Contact</a>
-	              </div>
-	              <p>
-	                Current focus: multi-agent development systems, workflow evals,
-	                and recovery paths for AI actions.
-	              </p>
-	            </figcaption>
-	          </figure>
+          <figure class="hero-image-card">
+            <img
+              src="assets/workflow-studio-hero.jpg"
+              width="1586"
+              height="992"
+              alt="A warm studio desk with AI workflow sketches, interface cards, and evaluation notes."
+            />
+            <figcaption>
+              <strong>AI systems as work surfaces.</strong>
+              <span>Agents, evals, review loops, and recovery paths in one frame.</span>
+            </figcaption>
+          </figure>
 	        </div>
 
         <div class="hero-feature-grid">
@@ -101,11 +90,14 @@
 	              </p>
 	              <span>Read the note</span>
 	            </div>
-	            <div class="feature-artifact" aria-hidden="true">
-	              <span>Artifact help</span>
-	              <strong>Tradeoff</strong>
-	              <span>Decision leverage</span>
-	            </div>
+	            <figure class="featured-note-image" aria-hidden="true">
+	              <img
+	                src="assets/field-notes-still-life.jpg"
+	                width="1448"
+	                height="1086"
+	                alt=""
+	              />
+	            </figure>
 	          </a>
 
 	          <section
@@ -119,27 +111,37 @@
 	            </div>
 	            <div class="project-stack">
 	              <a class="project-teaser" href="projects/copilot-mobile.html">
-	                <div class="project-identity">
-	                  <span class="project-chip project-chip-primary">Microsoft Copilot</span>
-	                  <span class="project-chip">Development system</span>
+	                <figure class="project-teaser-media" aria-hidden="true">
+	                  <img src="assets/copilot-agent-workflow.jpg" width="1448" height="1086" alt="" />
+	                </figure>
+	                <div class="project-teaser-copy">
+	                  <div class="project-identity">
+	                    <span class="project-chip project-chip-primary">Microsoft Copilot</span>
+	                    <span class="project-chip">Development system</span>
+	                  </div>
+	                  <h3>Copilot Mobile Multi-Agent Development System</h3>
+	                  <p>
+	                    A production multi-agent system that helps PMs,
+	                    designers, and engineers contribute to Copilot Mobile
+	                    development with evals and review in the loop.
+	                  </p>
 	                </div>
-	                <h3>Copilot Mobile Multi-Agent Development System</h3>
-	                <p>
-	                  I created and shipped a production multi-agent system that
-	                  helps PMs, designers, and engineers contribute to Copilot
-	                  Mobile development with evals and review in the loop.
-	                </p>
 	              </a>
 	              <a class="project-teaser" href="projects/atlas.html">
-	                <div class="project-identity">
-	                  <span class="project-chip project-chip-primary">Atlas</span>
-	                  <span class="project-chip">Personal research system</span>
+	                <figure class="project-teaser-media" aria-hidden="true">
+	                  <img src="assets/atlas-system-map.jpg" width="1448" height="1086" alt="" />
+	                </figure>
+	                <div class="project-teaser-copy">
+	                  <div class="project-identity">
+	                    <span class="project-chip project-chip-primary">Atlas</span>
+	                    <span class="project-chip">Personal research system</span>
+	                  </div>
+	                  <h3>Atlas</h3>
+	                  <p>
+	                    A private system for studying tool calls, context,
+	                    sensitive data boundaries, and agent reliability.
+	                  </p>
 	                </div>
-	                <h3>Atlas</h3>
-	                <p>
-	                  A private system for studying agent behavior in real workflows
-	                  without publishing private data.
-	                </p>
 	              </a>
 	            </div>
 	          </section>
@@ -287,44 +289,44 @@
 	          <a class="lab-card note-card" href="articles/ai-features-are-not-ai-leverage.html">
 	            <span>Product thinking</span>
 	            <h3>AI Features Are Not the Same as AI Leverage</h3>
-	            <div class="note-thumb note-thumb-leverage" aria-hidden="true">
-	              <i></i><i></i><i></i>
-	            </div>
+	            <span class="note-image" aria-hidden="true">
+	              <img src="assets/field-notes-still-life.jpg" width="1448" height="1086" alt="" />
+	            </span>
 	          </a>
 	          <a class="lab-card note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
 	            <span>Observation</span>
 	            <h3>When an agent says it used a tool, that is not evidence</h3>
-	            <div class="note-thumb note-thumb-trace" aria-hidden="true">
-	              <i></i><i></i><i></i>
-	            </div>
+	            <span class="note-image" aria-hidden="true">
+	              <img src="assets/atlas-system-map.jpg" width="1448" height="1086" alt="" />
+	            </span>
 	          </a>
 	          <a class="lab-card note-card" href="articles/agents-debug-symptoms-not-systems.html">
 	            <span>Failure mode</span>
 	            <h3>AI agents debug symptoms before systems</h3>
-	            <div class="note-thumb note-thumb-debug" aria-hidden="true">
-	              <i></i><i></i><i></i>
-	            </div>
+	            <span class="note-image" aria-hidden="true">
+	              <img src="assets/copilot-agent-workflow.jpg" width="1448" height="1086" alt="" />
+	            </span>
 	          </a>
 	          <a class="lab-card note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
 	            <span>Experiment</span>
 	            <h3>When more powerful tools make agents worse</h3>
-	            <div class="note-thumb note-thumb-matrix" aria-hidden="true">
-	              <i></i><i></i><i></i><i></i>
-	            </div>
+	            <span class="note-image" aria-hidden="true">
+	              <img src="assets/messaging-context-objects.jpg" width="1448" height="1086" alt="" />
+	            </span>
 	          </a>
 	          <a class="lab-card note-card" href="articles/evals-should-test-real-workflows.html">
 	            <span>Evaluation</span>
 	            <h3>Evals should test the workflow, not the demo</h3>
-	            <div class="note-thumb note-thumb-workflow" aria-hidden="true">
-	              <i></i><i></i><i></i>
-	            </div>
+	            <span class="note-image" aria-hidden="true">
+	              <img src="assets/copilot-agent-workflow.jpg" width="1448" height="1086" alt="" />
+	            </span>
 	          </a>
 	          <a class="lab-card note-card" href="articles/ai-products-need-recovery-paths.html">
 	            <span>Design note</span>
 	            <h3>If an AI can write data, it needs a recovery path</h3>
-	            <div class="note-thumb note-thumb-recovery" aria-hidden="true">
-	              <i></i><i></i><i></i>
-	            </div>
+	            <span class="note-image" aria-hidden="true">
+	              <img src="assets/atlas-system-map.jpg" width="1448" height="1086" alt="" />
+	            </span>
 	          </a>
         </div>
       </section>
@@ -355,24 +357,30 @@
           <a class="artifact-card" href="projects/atlas.html">
             <span>Map</span>
             <h3>Agent workflow map</h3>
-            <div class="artifact-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="artifact-image" aria-hidden="true">
+              <img src="assets/atlas-system-map.jpg" width="1448" height="1086" alt="" />
+            </span>
           </a>
           <a class="artifact-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
             <span>Matrix</span>
             <h3>Tool reliability matrix</h3>
-            <div class="artifact-matrix" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-            </div>
+            <span class="artifact-image" aria-hidden="true">
+              <img src="assets/copilot-agent-workflow.jpg" width="1448" height="1086" alt="" />
+            </span>
           </a>
           <a class="artifact-card" href="portfolio.html#ai-native-messaging">
             <span>Sketch</span>
             <h3>AI-native messaging sketch</h3>
-            <div class="artifact-bubbles" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="artifact-image" aria-hidden="true">
+              <img src="assets/messaging-context-objects.jpg" width="1448" height="1086" alt="" />
+            </span>
           </a>
           <a class="artifact-card" href="articles/ai-products-need-recovery-paths.html">
             <span>Checklist</span>
             <h3>Recovery path checklist</h3>
-            <div class="artifact-checks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <span class="artifact-image" aria-hidden="true">
+              <img src="assets/field-notes-still-life.jpg" width="1448" height="1086" alt="" />
+            </span>
           </a>
         </div>
       </section>
