@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Selected public-safe portfolio work from Daniel Chu: AI products, agent systems, eval workflows, and visual concept studies."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Portfolio | Daniel Chu" />
+    <meta
+      property="og:description"
+      content="Public-safe portfolio work from Daniel Chu: AI products, agent systems, eval workflows, and concept studies."
+    />
+    <title>Portfolio | Daniel Chu</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=about-portfolio-20260524" />
+    <script src="scripts/config.js" defer></script>
+    <script src="scripts/analytics.js" defer></script>
+    <script src="scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Portfolio navigation">
+        <a href="index.html#top">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="index.html#field-notes">Notes</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page portfolio-page">
+      <article class="reader">
+        <a class="back-link" href="index.html#current-projects">Back to projects</a>
+        <p class="eyebrow">Portfolio</p>
+        <h1>Products, systems, and public-safe artifacts.</h1>
+        <p class="reader-dek">
+          A small portfolio of work I can describe publicly: shipped AI systems,
+          private research tools, product visuals, and concept studies. Some work
+          is represented as simplified diagrams rather than screenshots because
+          the source systems and data are private.
+        </p>
+        <div class="reader-actions">
+          <a class="button primary" href="#copilot-mobile">Selected work</a>
+          <a class="button secondary" href="about.html">About Daniel</a>
+        </div>
+
+        <div class="reader-body portfolio-body">
+          <section class="portfolio-showcase" id="copilot-mobile" aria-labelledby="copilot-title">
+            <div class="portfolio-copy">
+              <p class="lab-kicker">Microsoft Copilot Mobile</p>
+              <h2 id="copilot-title">Multi-agent development system</h2>
+              <p>
+                I created and shipped a production multi-agent development system
+                for Microsoft Copilot Mobile. The system helps PMs, designers,
+                and engineers contribute to mobile development with evals,
+                review, and recovery thinking in the loop.
+              </p>
+              <ul class="portfolio-facts">
+                <li>
+                  <strong>Role</strong>
+                  <span>Original builder and active developer</span>
+                </li>
+                <li>
+                  <strong>Signal</strong>
+                  <span>200 PRs merged by PM and Design teammates in the first month, with engineering review</span>
+                </li>
+                <li>
+                  <strong>Focus</strong>
+                  <span>Agent workflows, eval gates, risk-aware review, and quality visibility</span>
+                </li>
+              </ul>
+              <a class="lab-link" href="projects/copilot-mobile.html">Read project page</a>
+            </div>
+
+            <figure class="portfolio-picture portfolio-picture-copilot" aria-label="Simplified visual of a mobile agent development workflow">
+              <div class="phone-frame">
+                <span>Intent</span>
+                <strong>Mobile change</strong>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+              <div class="review-lane">
+                <span>Agent loop</span>
+                <span>Eval gate</span>
+                <span>Human review</span>
+              </div>
+            </figure>
+          </section>
+
+          <section class="portfolio-showcase portfolio-showcase-reverse" id="atlas" aria-labelledby="atlas-title">
+            <div class="portfolio-copy">
+              <p class="lab-kicker">Atlas</p>
+              <h2 id="atlas-title">Private AI workflow system</h2>
+              <p>
+                Atlas is my private system for studying how agents behave around
+                real work: tool calls, context, local commands, sensitive data,
+                scheduled jobs, and eval replay. The public page shows the system
+                shape without exposing private records or implementation details.
+              </p>
+              <ul class="portfolio-facts">
+                <li>
+                  <strong>Role</strong>
+                  <span>Creator and primary user</span>
+                </li>
+                <li>
+                  <strong>Shape</strong>
+                  <span>CLI spine, agent layer, private data boundary, always-on jobs, and eval harness</span>
+                </li>
+                <li>
+                  <strong>Learning</strong>
+                  <span>Reliable agents need source-of-truth discipline and recovery paths, not just better prompts</span>
+                </li>
+              </ul>
+              <a class="lab-link" href="projects/atlas.html">Read project page</a>
+            </div>
+
+            <figure class="portfolio-picture portfolio-picture-atlas" aria-label="Simplified visual of the Atlas workflow system">
+              <div class="atlas-map">
+                <span>Agent</span>
+                <span>CLI</span>
+                <span>Data</span>
+                <span>Eval</span>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </figure>
+          </section>
+
+          <section class="portfolio-gallery" aria-labelledby="gallery-title">
+            <div class="portfolio-section-heading">
+              <p class="lab-kicker">Artifacts</p>
+              <h2 id="gallery-title">Pictures, sketches, and concept studies.</h2>
+            </div>
+
+            <div class="portfolio-card-grid">
+              <a class="portfolio-card" id="ai-native-messaging" href="index.html#artifacts">
+                <span>Product sketch</span>
+                <h3>AI-native messaging</h3>
+                <p>
+                  A working product question: what if people, files, events, and
+                  emails were structured context instead of loose attachments?
+                </p>
+                <div class="portfolio-card-visual messaging-visual" aria-hidden="true">
+                  <i></i><i></i><i></i>
+                </div>
+              </a>
+
+              <a class="portfolio-card" href="concepts.html">
+                <span>Visual system</span>
+                <h3>Homepage concept studies</h3>
+                <p>
+                  Three directions for this site: product lab bench, studio
+                  notebook, and a museum of AI product failure modes.
+                </p>
+                <div class="portfolio-card-visual concept-visual" aria-hidden="true">
+                  <i></i><i></i><i></i>
+                </div>
+              </a>
+
+              <a class="portfolio-card" href="index.html#field-notes">
+                <span>Writing</span>
+                <h3>Field notes on AI product work</h3>
+                <p>
+                  Essays and drafts about agents, evals, product constraints,
+                  recovery paths, and the gap between demos and real workflows.
+                </p>
+                <div class="portfolio-card-visual writing-visual" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i>
+                </div>
+              </a>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

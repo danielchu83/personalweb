@@ -54,9 +54,31 @@ alive rather than like a resume or positioning page.
 - There is no CRUD surface or CMS.
 - New writing is published by adding or editing static HTML files under
   `articles/` and linking them from `index.html`.
+- Work-in-progress articles use the `articles/wip-*.html` naming convention.
+  These pages are deployed online but protected by Azure Static Web Apps route
+  roles, so only an account with the `owner` role can view them.
+- Keep WIP articles out of `index.html` until they are ready to publish.
+  To publish a WIP article, remove the `wip-` prefix from the filename and add
+  the public links to `index.html`.
 - Project pages live under `projects/` and can group related field notes.
 - Atlas is the primary exploration page for now, with a public-safe architecture
   overview and links to related notes.
+
+## WIP article access
+
+The `staticwebapp.config.json` file protects `articles/wip-*` with the custom
+`owner` role and sends unauthenticated visitors to GitHub sign-in.
+
+After deploying this config, add your GitHub account to the `owner` role in the
+Azure Static Web Apps resource:
+
+1. Open the Static Web Apps resource in the Azure portal.
+2. Go to Settings > Role Management.
+3. Invite your GitHub username with the role `owner`.
+4. Accept the invite while signed in to that GitHub account.
+
+If you prefer Microsoft Entra ID sign-in, change the GitHub login routes in
+`staticwebapp.config.json` from `/.auth/login/github` to `/.auth/login/aad`.
 
 ## Analytics
 
