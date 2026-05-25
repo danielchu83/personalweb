@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	    <meta
-	      name="description"
-	      content="Daniel Chu's notes from building AI tools that have to survive real workflows."
-	    />
+    <meta
+      name="description"
+      content="Daniel Chu builds multi-agent AI systems and writes practical notes on agents, evals, product judgment, and recovery paths."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Daniel Chu" />
-	    <meta
-	      property="og:description"
-	      content="Notes from building AI tools that have to survive real workflows."
-	    />
+    <meta
+      property="og:description"
+      content="Practical notes from building multi-agent AI systems that have to survive real workflows."
+    />
     <meta property="og:url" content="https://danielchu.dev/" />
     <meta property="og:site_name" content="Daniel Chu" />
     <title>Daniel Chu</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=visual-polish-20260524" />
+    <link rel="stylesheet" href="styles.css?v=warm-refresh-20260525" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
     <script src="concept-interactions.js" defer></script>
@@ -29,11 +29,10 @@
         <span>Daniel Chu</span>
       </a>
 	      <nav class="nav" aria-label="Primary navigation">
-	        <a href="about.html">About</a>
-	        <a href="portfolio.html">Portfolio</a>
-	        <a href="#field-notes">Notes</a>
-	        <a href="#current-projects">Projects</a>
-	        <a href="#contact">Contact</a>
+        <a href="portfolio.html">Work</a>
+        <a href="#field-notes">Notes</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
 	      </nav>
     </header>
 
@@ -41,22 +40,22 @@
       <section class="lab-hero" aria-labelledby="intro-title">
         <div class="hero-intro">
 	          <div class="lab-hero-copy">
-            <p class="lab-kicker">Daniel Chu / AI systems lab notebook</p>
-            <h1 id="intro-title">AI product notes from the messy middle.</h1>
+            <p class="lab-kicker">Daniel Chu / AI systems and product notes</p>
+            <h1 id="intro-title">I build AI systems for the messy middle of real work.</h1>
             <p>
-              I write from the space between demos and durable tools: agents
-              that touch files, evals that test behavior, interfaces that expose
-              risk, and recovery paths when automation gets it wrong.
+              At Microsoft, I lead M365 Copilot Mobile product work. At home, I
+              build multi-agent systems to understand what breaks when agents
+              touch files, tools, memory, and real decisions.
             </p>
             <p>
-              These are field notes from systems I am building or studying, not
-              grand conclusions. The recurring question is simple: what makes AI
-              useful after the impressive first answer?
+              This site is the notebook around that work: practical notes on
+              evals, review loops, recovery paths, and the product judgment that
+              shows up after the impressive first answer.
             </p>
             <div class="lab-actions">
-              <a href="#start-here">Start with AI leverage</a>
-              <a href="portfolio.html">See the work</a>
-              <a href="about.html">About Daniel</a>
+              <a href="#start-here">Read the notes</a>
+              <a href="portfolio.html">See selected work</a>
+              <a href="about.html">About me</a>
             </div>
           </div>
 
@@ -67,9 +66,18 @@
               height="992"
               alt="A warm studio desk with AI workflow sketches, interface cards, and evaluation notes."
             />
+            <span class="hero-profile-note" aria-label="Daniel Chu profile">
+              <span class="hero-profile-photo">
+                <img src="assets/profile-daniel-chu.jpg" width="579" height="720" alt="" />
+              </span>
+              <span>
+                <strong>Daniel Chu</strong>
+                <small>Building multi-agent AI systems at work and at home.</small>
+              </span>
+            </span>
             <figcaption>
-              <strong>AI systems as work surfaces.</strong>
-              <span>Agents, evals, review loops, and recovery paths in one frame.</span>
+              <strong>The desk is the point.</strong>
+              <span>Messy inputs, product constraints, review paths, and repair in one frame.</span>
             </figcaption>
           </figure>
 	        </div>
@@ -81,14 +89,13 @@
 	            href="articles/ai-features-are-not-ai-leverage.html"
 	          >
 	            <div>
-	              <p class="lab-kicker">Start here</p>
-	              <h2>AI Features Are Not the Same as AI Leverage</h2>
-	              <p>
-	                Faster drafts are useful. The bigger question is whether AI helps a
-	                team make better tradeoffs when speed, quality, trust, and
-	                competition are all real.
-	              </p>
-	              <span>Read the note</span>
+              <p class="lab-kicker">Start here</p>
+              <h2>AI Features Are Not the Same as AI Leverage</h2>
+              <p>
+                Faster drafts are useful. The bigger question is whether AI
+                helps a team see the decision it actually has to make.
+              </p>
+              <span>Read the note</span>
 	            </div>
 	            <figure class="featured-note-image" aria-hidden="true">
 	              <img
@@ -107,7 +114,7 @@
 	          >
 	            <div class="project-stack-header">
 	              <p class="lab-kicker">Current projects</p>
-	              <h2 id="current-projects-title">What I am building and studying now.</h2>
+              <h2 id="current-projects-title">Two systems I keep learning from.</h2>
 	            </div>
 	            <div class="project-stack">
 	              <a class="project-teaser" href="projects/copilot-mobile.html">
@@ -121,9 +128,9 @@
 	                  </div>
 	                  <h3>Copilot Mobile Multi-Agent Development System</h3>
 	                  <p>
-	                    A production multi-agent system that helps PMs,
-	                    designers, and engineers contribute to Copilot Mobile
-	                    development with evals and review in the loop.
+	                    A production multi-agent system for turning product
+	                    intent into mobile changes with evals, review, and
+	                    recovery thinking in the loop.
 	                  </p>
 	                </div>
 	              </a>
@@ -138,8 +145,9 @@
 	                  </div>
 	                  <h3>Atlas</h3>
 	                  <p>
-	                    A private system for studying tool calls, context,
-	                    sensitive data boundaries, and agent reliability.
+	                    My private system for studying tool calls, context,
+	                    sensitive data boundaries, scheduled jobs, and agent
+	                    reliability.
 	                  </p>
 	                </div>
 	              </a>
@@ -151,7 +159,7 @@
           <div class="latest-panel-header">
             <div>
               <p class="lab-kicker">Recently</p>
-              <h2 id="latest-articles-title">Recent notes.</h2>
+              <h2 id="latest-articles-title">Recent field notes.</h2>
             </div>
             <a href="#field-notes">Browse notes</a>
           </div>
@@ -218,7 +226,7 @@
       <section class="lab-section" id="explorations" aria-labelledby="experiments-title">
         <div class="lab-section-heading">
           <p>Threads</p>
-          <h2 id="experiments-title">Problems I am working through.</h2>
+          <h2 id="experiments-title">Problems I keep coming back to.</h2>
         </div>
 
         <div class="lab-card-grid">
@@ -281,7 +289,7 @@
 	      <section class="lab-section" id="field-notes" aria-labelledby="notes-title">
         <div class="lab-section-heading">
           <p>Field notes</p>
-          <h2 id="notes-title">Essays and drafts from building, breaking, and thinking in public.</h2>
+          <h2 id="notes-title">Writing I would hand to another builder.</h2>
         </div>
 
         <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
@@ -334,7 +342,7 @@
       <section class="lab-section question-section" id="questions" aria-labelledby="questions-title">
         <div class="lab-section-heading">
           <p>Open questions</p>
-          <h2 id="questions-title">These are not conclusions. They are questions I'm still working through.</h2>
+          <h2 id="questions-title">These are not conclusions. They are the working questions.</h2>
         </div>
 
         <ul class="question-list">
@@ -388,7 +396,7 @@
       <section class="lab-section compare-strip" id="contact" aria-labelledby="contact-title">
         <p>Compare notes</p>
         <h2 id="contact-title">
-          If something here matches what you are seeing, I would like to hear from you.
+          If something here matches what you are building, I would be happy to compare notes.
         </h2>
         <div>
           <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>

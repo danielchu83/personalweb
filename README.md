@@ -41,13 +41,13 @@ site unless traffic becomes unusually high.
 
 ## Direction
 
-This is Daniel Chu's AI systems lab notebook for technology explorations.
+This is Daniel Chu's AI systems and product notebook.
 
-The main site currently follows the Product Lab Bench direction: a dark,
-ultraviolet R&D surface for experiments, diagrams, field notes, artifacts, and
-open questions from exploring AI agents, tools, workflows, product reliability,
-and software design. It should feel curious, technical, precise, humble, and
-alive rather than like a resume or positioning page.
+The main site currently follows a warm studio desk direction: practical,
+plain-spoken writing around multi-agent AI systems, Copilot Mobile work, evals,
+review loops, recovery paths, and product judgment. It should feel curious,
+technical, grounded, and personal rather than like a resume, pitch deck, or AI
+marketing page.
 
 ## Content model
 
