@@ -32,6 +32,7 @@
     "X-Frame-Options": "DENY"
   },
   "mimeTypes": {
+    ".ico": "image/x-icon",
     ".svg": "image/svg+xml"
   }
 }
