@@ -2700,15 +2700,11 @@ a.project-teaser:hover {
     font-size: 0.84rem;
   }
 
-  .nav a[href$="#explorations"] {
-    display: none;
-  }
-
-  .nav a[href$="#field-notes"] {
+  .nav a[href$="#notes"] {
     font-size: 0;
   }
 
-  .nav a[href$="#field-notes"]::after {
+  .nav a[href$="#notes"]::after {
     content: "Notes";
     font-size: 0.84rem;
   }

@@ -42,7 +42,7 @@
       </a>
 	      <nav class="nav" aria-label="Primary navigation">
         <a href="portfolio.html">Work</a>
-        <a href="#field-notes">Notes</a>
+        <a href="#notes">Notes</a>
         <a href="about.html">About</a>
         <a href="#contact">Contact</a>
 	      </nav>
@@ -60,16 +60,16 @@
               product intent into reviewable, testable workflows.
             </p>
             <p>
-              At work and at home, I study what breaks when agents touch files,
-              tools, memory, and decisions that need review.
+              I use work projects and my own systems to understand what breaks
+              when agents touch files, tools, memory, and decisions that need
+              review.
             </p>
             <p>
-              This site is the notebook around that work: practical notes on
-              evals, review loops, recovery paths, and the product judgment that
-              shows up after the impressive first answer.
+              This site is where I write down what I am learning about evals,
+              review loops, recovery paths, and the product work around agents.
             </p>
             <div class="lab-actions">
-              <a href="#start-here">Read the notes</a>
+              <a href="#notes">Read the notes</a>
               <a href="portfolio.html">See selected work</a>
               <a href="about.html">About me</a>
             </div>
@@ -130,7 +130,7 @@
 	          >
 	            <div class="project-stack-header">
 	              <p class="lab-kicker">Current projects</p>
-              <h2 id="current-projects-title">Two systems I keep learning from.</h2>
+              <h2 id="current-projects-title">What I am building.</h2>
 	            </div>
 	            <div class="project-stack">
 	              <a class="project-teaser" href="projects/copilot-mobile.html">
@@ -171,13 +171,12 @@
 	          </section>
 	        </div>
 
-	        <aside class="latest-articles-panel" aria-labelledby="latest-articles-title">
+	        <aside class="latest-articles-panel" id="notes" aria-labelledby="latest-articles-title">
           <div class="latest-panel-header">
             <div>
-              <p class="lab-kicker">Recently</p>
-              <h2 id="latest-articles-title">Recent field notes.</h2>
+              <p class="lab-kicker">Notes</p>
+              <h2 id="latest-articles-title">Recent writing.</h2>
             </div>
-            <a href="#field-notes">Browse notes</a>
           </div>
 
           <ol class="latest-article-list" aria-label="Latest articles, newest first">
@@ -239,142 +238,10 @@
         </aside>
       </section>
 
-      <section class="lab-section" id="explorations" aria-labelledby="experiments-title">
-        <div class="lab-section-heading">
-          <p>Threads</p>
-          <h2 id="experiments-title">Problems I keep coming back to.</h2>
-        </div>
-
-        <div class="lab-card-grid">
-          <a class="lab-card" href="articles/when-agent-tool-use-isnt-evidence.html">
-            <span>Experiment</span>
-            <h3>Agent tool use</h3>
-            <p>When an agent says it used a tool, how do we know?</p>
-            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="lab-reveal">
-              <strong>What I am noticing</strong>
-              <p>The prose can sound grounded even when execution did not happen.</p>
-            </div>
-          </a>
-          <a class="lab-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
-            <span>Experiment</span>
-            <h3>Generalized tools</h3>
-            <p>Why does giving agents more power sometimes make them less reliable?</p>
-            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="lab-reveal">
-              <strong>Still unresolved</strong>
-              <p>How narrow should a tool be before it stops being useful?</p>
-            </div>
-          </a>
-          <a class="lab-card" href="articles/evals-should-test-real-workflows.html">
-            <span>Evaluation</span>
-            <h3>Workflow evals</h3>
-            <p>What would an eval look like if it tested the real workflow?</p>
-            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="lab-reveal">
-              <strong>What I am noticing</strong>
-              <p>Many evals test chat, while product behavior lives in files and side effects.</p>
-            </div>
-          </a>
-          <a class="lab-card" href="articles/ai-products-need-recovery-paths.html">
-            <span>Repair</span>
-            <h3>Recovery paths</h3>
-            <p>If an AI system writes data, what should undo and audit look like?</p>
-            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="lab-reveal">
-              <strong>Still unresolved</strong>
-              <p>How much recovery should be automatic before it becomes another risk?</p>
-            </div>
-          </a>
-          <a class="lab-card wide" href="portfolio.html#ai-native-messaging">
-            <span>Interface</span>
-            <h3>AI-native messaging</h3>
-            <p>
-              What if people, files, events, and emails were structured context
-              instead of attachments?
-            </p>
-            <div class="mini-visual" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="lab-reveal">
-              <strong>What I am noticing</strong>
-              <p>The hard part is not the entity card. It is deciding who owns the context.</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-	      <section class="lab-section" id="field-notes" aria-labelledby="notes-title">
-        <div class="lab-section-heading">
-          <p>Field notes</p>
-          <h2 id="notes-title">Writing I would hand to another builder.</h2>
-        </div>
-
-        <!-- TODO: Add future Atlas notes here as they are sanitized for public writing. -->
-        <div class="lab-card-grid note-grid">
-	          <a class="lab-card note-card" href="articles/ai-features-are-not-ai-leverage.html">
-	            <span>Product thinking</span>
-	            <h3>AI Features Are Not the Same as AI Leverage</h3>
-	            <span class="note-image" aria-hidden="true">
-	              <img src="assets/field-notes-still-life.jpg" width="1448" height="1086" alt="" />
-	            </span>
-	          </a>
-	          <a class="lab-card note-card" href="articles/when-agent-tool-use-isnt-evidence.html">
-	            <span>Observation</span>
-	            <h3>When an agent says it used a tool, that is not evidence</h3>
-	            <span class="note-image" aria-hidden="true">
-	              <img src="assets/atlas-system-map.jpg" width="1448" height="1086" alt="" />
-	            </span>
-	          </a>
-	          <a class="lab-card note-card" href="articles/agents-debug-symptoms-not-systems.html">
-	            <span>Failure mode</span>
-	            <h3>AI agents debug symptoms before systems</h3>
-	            <span class="note-image" aria-hidden="true">
-	              <img src="assets/copilot-agent-workflow.jpg" width="1448" height="1086" alt="" />
-	            </span>
-	          </a>
-	          <a class="lab-card note-card" href="articles/why-powerful-tools-can-make-agents-worse.html">
-	            <span>Experiment</span>
-	            <h3>When more powerful tools make agents worse</h3>
-	            <span class="note-image" aria-hidden="true">
-	              <img src="assets/messaging-context-objects.jpg" width="1448" height="1086" alt="" />
-	            </span>
-	          </a>
-	          <a class="lab-card note-card" href="articles/evals-should-test-real-workflows.html">
-	            <span>Evaluation</span>
-	            <h3>Evals should test the workflow, not the demo</h3>
-	            <span class="note-image" aria-hidden="true">
-	              <img src="assets/copilot-agent-workflow.jpg" width="1448" height="1086" alt="" />
-	            </span>
-	          </a>
-	          <a class="lab-card note-card" href="articles/ai-products-need-recovery-paths.html">
-	            <span>Design note</span>
-	            <h3>If an AI can write data, it needs a recovery path</h3>
-	            <span class="note-image" aria-hidden="true">
-	              <img src="assets/atlas-system-map.jpg" width="1448" height="1086" alt="" />
-	            </span>
-	          </a>
-        </div>
-      </section>
-
-      <section class="lab-section question-section" id="questions" aria-labelledby="questions-title">
-        <div class="lab-section-heading">
-          <p>Open questions</p>
-          <h2 id="questions-title">These are not conclusions. They are the working questions.</h2>
-        </div>
-
-        <ul class="question-list">
-          <li>What should an AI system refuse to automate?</li>
-          <li>When does flexibility become unreliability?</li>
-          <li>How should agents explain uncertainty without creating more work?</li>
-          <li>What does a good recovery path look like for AI-generated actions?</li>
-          <li>What kinds of constraints make agents more dependable?</li>
-          <li>How do you evaluate work when the task itself is ambiguous?</li>
-        </ul>
-      </section>
-
       <section class="lab-section compare-strip" id="contact" aria-labelledby="contact-title">
-        <p>Compare notes</p>
+        <p>Contact</p>
         <h2 id="contact-title">
-          If something here matches what you are building, I would be happy to compare notes.
+          If this overlaps with what you are building, I would be happy to compare notes.
         </h2>
         <div>
           <a href="https://www.linkedin.com/in/chudaniel/">LinkedIn</a>
