@@ -2405,7 +2405,7 @@ a.project-teaser:hover {
 
 .portfolio-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   margin-top: 28px;
 }
@@ -2452,6 +2452,20 @@ a.project-teaser:hover {
 
 .portfolio-card p + .portfolio-card-visual {
   margin-top: auto;
+}
+
+.portfolio-card-static {
+  cursor: default;
+}
+
+.portfolio-card-static:hover {
+  border-color: var(--line);
+  background: rgba(255, 249, 242, 0.58);
+  transform: none;
+}
+
+.portfolio-card-static:hover .portfolio-card-visual img {
+  transform: none;
 }
 
 .messaging-visual i {
@@ -2686,8 +2700,7 @@ a.project-teaser:hover {
     font-size: 0.84rem;
   }
 
-  .nav a[href$="#explorations"],
-  .nav a[href$="#artifacts"] {
+  .nav a[href$="#explorations"] {
     display: none;
   }
 
