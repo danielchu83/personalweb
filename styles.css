@@ -182,6 +182,55 @@ button {
   line-height: 1.5;
 }
 
+.builder-proof-grid,
+.portfolio-proof-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.builder-proof-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 620px;
+}
+
+.builder-proof-grid div,
+.portfolio-proof-grid div,
+.atlas-system-card div {
+  border: 1px solid rgba(47, 102, 93, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 242, 0.78), rgba(47, 102, 93, 0.055)),
+    var(--paper);
+}
+
+.builder-proof-grid div {
+  min-height: 128px;
+  padding: 14px;
+}
+
+.builder-proof-grid strong,
+.portfolio-proof-grid span,
+.atlas-system-card span {
+  display: block;
+  color: var(--accent-strong);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.builder-proof-grid span {
+  display: block;
+  margin-top: 14px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.38;
+}
+
 .profile-card {
   margin: 4px 0 0;
   padding: 18px;
@@ -1769,6 +1818,48 @@ a.project-teaser:hover {
   display: flex;
 }
 
+.atlas-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.58fr);
+  gap: clamp(28px, 5vw, 58px);
+  align-items: start;
+}
+
+.atlas-hero-copy {
+  min-width: 0;
+}
+
+.atlas-system-card {
+  display: grid;
+  gap: 12px;
+  margin-top: 6px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(47, 102, 93, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 102, 93, 0.04) 1px, transparent 1px),
+    rgba(255, 249, 242, 0.66);
+  background-size:
+    22px 22px,
+    22px 22px,
+    auto;
+  box-shadow: var(--shadow);
+}
+
+.atlas-system-card div {
+  padding: 16px;
+}
+
+.atlas-system-card strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  line-height: 1.34;
+}
+
 .architecture-diagram {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
@@ -1988,6 +2079,25 @@ a.project-teaser:hover {
 
 .portfolio-hero-picture strong {
   color: var(--text);
+}
+
+.portfolio-proof-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 26px;
+}
+
+.portfolio-proof-grid div {
+  min-height: 142px;
+  padding: 16px;
+}
+
+.portfolio-proof-grid strong {
+  display: block;
+  margin-top: 18px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  line-height: 1.35;
 }
 
 .about-snapshot {
@@ -2576,6 +2686,7 @@ a.project-teaser:hover {
   }
 
   .about-hero,
+  .atlas-hero,
   .portfolio-hero,
   .about-work-image,
   .portfolio-showcase,
@@ -2712,9 +2823,21 @@ a.project-teaser:hover {
   .lab-card-grid,
   .artifact-grid,
   .home-visual,
+  .builder-proof-grid,
+  .portfolio-proof-grid,
   .about-snapshot,
   .about-focus-grid {
     grid-template-columns: 1fr;
+  }
+
+  .builder-proof-grid div,
+  .portfolio-proof-grid div {
+    min-height: 0;
+  }
+
+  .builder-proof-grid span,
+  .portfolio-proof-grid strong {
+    margin-top: 8px;
   }
 
   .about-photo-card {
@@ -2850,6 +2973,10 @@ a.project-teaser:hover {
 
   .latest-articles-panel {
     margin-top: 42px;
+  }
+
+  .hero-image-card {
+    margin-top: 28px;
   }
 
   .lab-actions,

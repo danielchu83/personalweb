@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="A public-safe overview of Atlas, Daniel Chu's private AI workflow system for agents, evals, automation, and personal operations."
+      content="Atlas is Daniel Chu's private AI workflow and eval lab for testing agent tool use, memory, automation, sensitive data boundaries, workflow replay, and recovery paths."
     />
     <link rel="canonical" href="https://danielchu.dev/projects/atlas.html" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Atlas | Daniel Chu" />
     <meta
       property="og:description"
-      content="A public-safe overview of Atlas, Daniel Chu&#x27;s private AI workflow system for agents, evals, automation, and personal operations."
+      content="A private AI workflow and eval lab for testing agent tool use, memory, automation, sensitive data boundaries, workflow replay, and recovery paths."
     />
     <meta property="og:url" content="https://danielchu.dev/projects/atlas.html" />
     <meta property="og:site_name" content="Daniel Chu" />
@@ -24,11 +24,11 @@
     <meta name="twitter:title" content="Atlas | Daniel Chu" />
     <meta
       name="twitter:description"
-      content="A public-safe overview of Atlas, Daniel Chu&#x27;s private AI workflow system for agents, evals, automation, and personal operations."
+      content="A private AI workflow and eval lab for testing agent tool use, memory, automation, sensitive data boundaries, workflow replay, and recovery paths."
     />
     <meta name="twitter:image" content="https://danielchu.dev/assets/social-preview.jpg" />
     <title>Atlas | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=warm-refresh-20260525" />
+    <link rel="stylesheet" href="../styles.css?v=frontier-builder-20260605" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -50,39 +50,59 @@
 
     <main class="article-page project-page">
       <article class="reader">
-        <a class="back-link" href="../index.html#notes">Back to notes</a>
-        <p class="eyebrow">Personal research system</p>
-        <h1>Atlas</h1>
-        <p class="reader-dek">
-          Atlas is my private AI workflow system. I use it to explore how agents
-          become useful in daily work: how they call tools, preserve context,
-          recover from mistakes, and operate around sensitive personal data.
-        </p>
-        <div class="reader-actions">
-          <a class="button primary" href="#architecture">View architecture</a>
-          <a class="button secondary" href="#related">Read related notes</a>
-        </div>
+        <a class="back-link" href="../portfolio.html#atlas">Back to selected work</a>
+        <section class="atlas-hero" aria-labelledby="atlas-title">
+          <div class="atlas-hero-copy">
+            <p class="eyebrow">Personal AI workflow and eval lab</p>
+            <h1 id="atlas-title">Atlas</h1>
+            <p class="reader-dek">
+              Atlas is my private AI workflow system for testing whether agents
+              can use tools, preserve context, respect sensitive data boundaries,
+              recover from mistakes, and keep scheduled work observable.
+            </p>
+            <div class="reader-actions">
+              <a class="button primary" href="#architecture">View architecture</a>
+              <a class="button secondary" href="#related">Read related notes</a>
+            </div>
+          </div>
+
+          <aside class="atlas-system-card" aria-label="Atlas system proof points">
+            <div>
+              <span>Core loop</span>
+              <strong>Prompt to tool call to trace to eval to repair</strong>
+            </div>
+            <div>
+              <span>What it tests</span>
+              <strong>Source-of-truth discipline, memory boundaries, safe writes, and recovery</strong>
+            </div>
+            <div>
+              <span>Why it matters</span>
+              <strong>Agents sound reliable before their execution path is reliable</strong>
+            </div>
+          </aside>
+        </section>
 
         <div class="reader-body">
           <p>
             I do not publish Atlas source code or raw data. The useful public
-            version is the system shape: what I tried, what broke, and what the
-            failures taught me about AI product design.
+            version is the builder evidence: the system shape, the failure
+            modes, the eval gates, and the product decisions that made agent
+            behavior easier to inspect.
           </p>
           <p>
             The project started as CLI-first personal software and grew into a
             practical testbed for agentic workflows. The durable lesson has been
             that AI products are less about impressive one-off answers and more
-            about boring reliability: source-of-truth discipline, safe writes,
-            eval harnesses, recovery paths, and interfaces that make the right
-            action easy for the agent.
+            about operational reliability: source-of-truth discipline, safe
+            writes, eval harnesses, workflow replay, recovery paths, and
+            interfaces that make the right action easy for the agent.
           </p>
 
           <h2 id="architecture">Architecture</h2>
           <p>
             The public diagram below is intentionally simplified. It shows the
-            setup without exposing private schemas, credentials, raw records, or
-            operational secrets.
+            product shape without exposing private schemas, credentials, raw
+            records, or operational secrets.
           </p>
 
           <div class="architecture-diagram" role="img" aria-label="Simplified Atlas architecture diagram">
@@ -93,7 +113,7 @@
             <div class="arch-arrow" aria-hidden="true">→</div>
             <div class="arch-node">
               <strong>Chat and agent layer</strong>
-              <span>Agent sessions, skills, model routing, and tool calls</span>
+              <span>Agent sessions, skills, model routing, tool calls, and handoffs</span>
             </div>
             <div class="arch-arrow" aria-hidden="true">→</div>
             <div class="arch-node arch-core">
@@ -103,7 +123,7 @@
             <div class="arch-arrow" aria-hidden="true">→</div>
             <div class="arch-node">
               <strong>Private data layer</strong>
-              <span>Local database, generated context, and domain records</span>
+              <span>Local database, generated context, memory, and domain records</span>
             </div>
             <div class="arch-node arch-vm">
               <strong>Azure VM</strong>
@@ -118,17 +138,17 @@
 
           <h2>How the pieces fit</h2>
           <p>
-            The CLI is the product's spine. Agents are encouraged to call
-            commands instead of doing important reasoning from memory or raw
-            database queries. That makes the system easier to test and gives the
-            agent a smaller, more trustworthy surface.
+            The CLI is the product's spine. Agents are pushed toward commands
+            instead of important reasoning from memory or raw database queries.
+            That makes behavior easier to test and gives the agent a smaller,
+            more trustworthy surface.
           </p>
           <p>
             The Azure VM runs the always-on pieces: scheduled jobs, a daemon,
-            health checks, and notifications. The VM is not interesting because
-            it is complex. It is interesting because it forces product questions:
-            what should run automatically, what should require confirmation, and
-            what should still work when the AI layer is unavailable?
+            health checks, and notifications. The VM is useful because it forces
+            product questions: what should run automatically, what should require
+            confirmation, and what should still work when the AI layer is
+            unavailable?
           </p>
           <p>
             The eval harness exists because prompts alone were not enough. Atlas

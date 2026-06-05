@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "eval": "node scripts/evaluate-site.js",
+    "test": "node scripts/evaluate-site.js"
+  }
+}

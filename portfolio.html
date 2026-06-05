@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Selected public-safe work from Daniel Chu: Copilot Mobile, multi-agent systems, Atlas, workflow evals, and AI product notes."
+      content="Selected AI-native builder work from Daniel Chu: Copilot Mobile multi-agent development systems, Atlas, workflow evals, recovery paths, and product artifacts for frontier AI teams."
     />
     <link rel="canonical" href="https://danielchu.dev/portfolio.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Portfolio | Daniel Chu" />
     <meta
       property="og:description"
-      content="Selected public-safe work from Daniel Chu: Copilot Mobile, multi-agent systems, Atlas, workflow evals, and AI product notes."
+      content="Selected AI-native builder work: Copilot Mobile multi-agent development systems, Atlas, workflow evals, recovery paths, and product artifacts for frontier AI teams."
     />
     <meta property="og:url" content="https://danielchu.dev/portfolio.html" />
     <meta property="og:site_name" content="Daniel Chu" />
@@ -24,12 +24,12 @@
     <meta name="twitter:title" content="Portfolio | Daniel Chu" />
     <meta
       name="twitter:description"
-      content="Selected public-safe work from Daniel Chu: Copilot Mobile, multi-agent systems, Atlas, workflow evals, and AI product notes."
+      content="Selected AI-native builder work: Copilot Mobile multi-agent development systems, Atlas, workflow evals, recovery paths, and product artifacts for frontier AI teams."
     />
     <meta name="twitter:image" content="https://danielchu.dev/assets/social-preview.jpg" />
     <title>Portfolio | Daniel Chu</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=warm-refresh-20260525" />
+    <link rel="stylesheet" href="styles.css?v=frontier-builder-20260605" />
     <script src="scripts/config.js" defer></script>
     <script src="scripts/analytics.js" defer></script>
     <script src="scripts/site.js" defer></script>
@@ -55,16 +55,30 @@
         <section class="portfolio-hero" aria-labelledby="portfolio-title">
           <div>
             <p class="eyebrow">Selected work</p>
-            <h1 id="portfolio-title">Selected work, with private details kept private.</h1>
+            <h1 id="portfolio-title">Public edges of AI systems that shipped.</h1>
             <p class="reader-dek">
-              Shipped systems, private research tools, and product artifacts I
-              can describe publicly. Some pieces use simplified diagrams instead
-              of screenshots because the real systems, data, and review paths
-              are private.
+              I work where frontier AI ideas become product surfaces: agentic
+              workflows, eval gates, review paths, and recovery systems that
+              have to hold up outside a demo. Some diagrams are simplified
+              because the real data and implementation details are private.
             </p>
+            <div class="portfolio-proof-grid" aria-label="AI-native builder proof">
+              <div>
+                <span>Production</span>
+                <strong>Multi-agent development system used by PM and Design</strong>
+              </div>
+              <div>
+                <span>Hands-on</span>
+                <strong>I build the agent loops, evals, and repair paths myself</strong>
+              </div>
+              <div>
+                <span>Research taste</span>
+                <strong>Atlas turns agent failures into testable product questions</strong>
+              </div>
+            </div>
             <div class="reader-actions">
-              <a class="button primary" href="#copilot-mobile">Selected work</a>
-              <a class="button secondary" href="about.html">About me</a>
+              <a class="button primary" href="#copilot-mobile">See systems</a>
+              <a class="button secondary" href="index.html#contact">Contact</a>
             </div>
           </div>
 
@@ -90,21 +104,22 @@
               <p>
                 I created and shipped a production multi-agent development system
                 for Microsoft Copilot Mobile. It gives PMs, designers, and
-                engineers a safer path from product intent to mobile changes,
-                with evals, review, and recovery thinking in the loop.
+                engineers a safer path from product intent to mobile changes:
+                agents do the mechanical work, evals catch regressions, and
+                review stays close to the diff.
               </p>
               <ul class="portfolio-facts">
                 <li>
                   <strong>Role</strong>
-                  <span>Original builder and active developer</span>
+                  <span>Original builder, active developer, and product owner for the workflow</span>
                 </li>
                 <li>
                   <strong>Signal</strong>
-                  <span>PM and Design teammates used the system directly to create and merge a meaningful volume of production PRs with engineering review, enough that review capacity became the next bottleneck</span>
+                  <span>PM and Design teammates used it directly to create and merge a meaningful volume of production PRs with engineering review</span>
                 </li>
                 <li>
                   <strong>Focus</strong>
-                  <span>Agent workflows, eval gates, risk-aware review, and quality visibility</span>
+                  <span>Agent workflows, eval gates, review capacity, source-of-truth checks, and recovery paths</span>
                 </li>
               </ul>
               <a class="lab-link" href="projects/copilot-mobile.html">Read project page</a>
@@ -123,26 +138,25 @@
           <section class="portfolio-showcase portfolio-showcase-reverse" id="atlas" aria-labelledby="atlas-title">
             <div class="portfolio-copy">
               <p class="lab-kicker">Atlas</p>
-              <h2 id="atlas-title">Private AI workflow and eval system</h2>
+              <h2 id="atlas-title">Private AI workflow and eval lab</h2>
               <p>
-                Atlas is my private system for studying how agents behave around
-                real work: tool calls, context, local commands, sensitive data,
-                scheduled jobs, and eval replay. The public page shows the shape
-                of the system without exposing private records or implementation
-                details.
+                Atlas is my private system for studying how agents behave when
+                they have real tools, local context, scheduled jobs, memory, and
+                sensitive data boundaries. The public page shows the system
+                shape without exposing private records or implementation details.
               </p>
               <ul class="portfolio-facts">
                 <li>
                   <strong>Role</strong>
-                  <span>Creator and primary user</span>
+                  <span>Creator, primary user, and evaluator</span>
                 </li>
                 <li>
                   <strong>Shape</strong>
-                  <span>CLI spine, agent layer, private data boundary, always-on jobs, and eval harness</span>
+                  <span>CLI spine, agent layer, memory boundary, always-on jobs, eval harness, and replayable failures</span>
                 </li>
                 <li>
                   <strong>Learning</strong>
-                  <span>Reliable agents need source-of-truth discipline and recovery paths, not just better prompts</span>
+                  <span>Reliable agents need tool-path discipline, observability, and recovery paths, not just better prompts</span>
                 </li>
               </ul>
               <a class="lab-link" href="projects/atlas.html">Read project page</a>
@@ -160,8 +174,8 @@
 
           <section class="portfolio-gallery" aria-labelledby="gallery-title">
             <div class="portfolio-section-heading">
-              <p class="lab-kicker">Sketches</p>
-              <h2 id="gallery-title">A few public edges of the work.</h2>
+              <p class="lab-kicker">Open questions</p>
+              <h2 id="gallery-title">Product questions frontier AI teams keep running into.</h2>
             </div>
 
             <div class="portfolio-card-grid">
@@ -182,8 +196,9 @@
                 <span>Notes</span>
                 <h3>Agent product notes</h3>
                 <p>
-                  Essays about agents, evals, product constraints, recovery
-                  paths, and the gap between demos and real workflows.
+                  Essays about agents, evals, product constraints, workflow
+                  observability, recovery paths, and the gap between demos and
+                  real work.
                 </p>
                 <span class="portfolio-card-visual" aria-hidden="true">
                   <img src="assets/field-notes-still-life.jpg" width="1448" height="1086" alt="" />
