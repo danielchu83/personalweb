@@ -1429,10 +1429,13 @@ a.project-teaser:hover {
   content: "evidence board";
   position: static;
   display: block;
-  width: max-content;
-  max-width: 100%;
-  margin: 0 0 12px auto;
-  line-height: 1;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(58, 45, 34, 0.08);
+  line-height: 1.1;
+  text-align: right;
 }
 
 .evidence-board figcaption {
