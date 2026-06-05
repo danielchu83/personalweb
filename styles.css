@@ -1421,6 +1421,196 @@ a.project-teaser:hover {
   line-height: 1.5;
 }
 
+.evidence-board {
+  margin: 38px 0 46px;
+}
+
+.evidence-board::before {
+  content: "evidence board";
+  position: static;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 12px auto;
+  line-height: 1;
+}
+
+.evidence-board figcaption {
+  max-width: 680px;
+  margin: 0 0 24px;
+}
+
+.failure-split,
+.loop-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.failure-split section,
+.loop-compare section {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 249, 242, 0.62);
+}
+
+.failure-split section > span,
+.loop-compare section > span,
+.artifact-record span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 780;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.failure-split h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: clamp(1.06rem, 1.9vw, 1.22rem);
+  font-weight: 720;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.failure-split p,
+.artifact-record p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.failure-split .failure-danger {
+  border-color: rgba(183, 91, 57, 0.36);
+  background:
+    linear-gradient(180deg, rgba(183, 91, 57, 0.08), transparent 72%),
+    rgba(255, 249, 242, 0.68);
+}
+
+.issue-ledger {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 249, 242, 0.58);
+}
+
+.issue-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr) minmax(0, 0.86fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.issue-row:first-child {
+  border-top: 0;
+}
+
+.issue-row > span {
+  display: block;
+  min-width: 0;
+  padding: 16px;
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.issue-row > span:first-child {
+  border-left: 0;
+}
+
+.issue-row strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.issue-head {
+  background: rgba(239, 225, 210, 0.6);
+}
+
+.issue-head > span {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 780;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.artifact-record {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.artifact-record div {
+  min-height: 150px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 249, 242, 0.64);
+}
+
+.loop-compare section {
+  min-height: 0;
+}
+
+.loop-compare ol {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.52;
+}
+
+.loop-compare li {
+  margin: 9px 0;
+}
+
+.loop-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.loop-strip span {
+  display: grid;
+  min-height: 86px;
+  place-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 249, 242, 0.64);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 720;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.loop-strip span:nth-child(2),
+.loop-strip span:nth-child(4),
+.loop-strip span:nth-child(6) {
+  border-color: rgba(47, 102, 93, 0.34);
+  background: rgba(47, 102, 93, 0.08);
+}
+
 .leverage-lanes,
 .trace-flow,
 .workflow-replay,
@@ -2858,6 +3048,55 @@ a.project-teaser:hover {
     padding: 0 14px 16px;
   }
 
+  .failure-split,
+  .loop-compare,
+  .artifact-record {
+    grid-template-columns: 1fr;
+  }
+
+  .issue-row {
+    grid-template-columns: 1fr;
+  }
+
+  .issue-row > span {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .issue-row > span:first-child {
+    border-top: 0;
+  }
+
+  .issue-head {
+    display: none;
+  }
+
+  .issue-row:not(.issue-head) > span::before {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--accent);
+    font-size: 0.66rem;
+    font-weight: 780;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .issue-row:not(.issue-head) > span:nth-child(1)::before {
+    content: "Observed artifact";
+  }
+
+  .issue-row:not(.issue-head) > span:nth-child(2)::before {
+    content: "Fix that followed";
+  }
+
+  .issue-row:not(.issue-head) > span:nth-child(3)::before {
+    content: "Verification";
+  }
+
+  .loop-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .home-visual div + div {
     border-top: 1px solid var(--line);
     border-left: 0;
@@ -3001,6 +3240,10 @@ a.project-teaser:hover {
   .latest-article-list a {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .loop-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .portfolio-facts li {

@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A personal Atlas note on why self-improving agents need behavioral evidence for bad answers, bad actions, and false green status."
+    />
+    <link rel="canonical" href="https://danielchu.dev/articles/self-improving-agents-need-evidence.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Self-improving agents need evidence, not just autonomy" />
+    <meta
+      property="og:description"
+      content="A personal Atlas note on why self-improving agents need behavioral evidence for bad answers, bad actions, and false green status."
+    />
+    <meta property="og:url" content="https://danielchu.dev/articles/self-improving-agents-need-evidence.html" />
+    <meta property="og:site_name" content="Daniel Chu" />
+    <meta property="og:image" content="https://danielchu.dev/assets/social-preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The workflow is the test. AI systems for the messy middle of real work." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Self-improving agents need evidence, not just autonomy" />
+    <meta
+      name="twitter:description"
+      content="A personal Atlas note on why self-improving agents need behavioral evidence for bad answers, bad actions, and false green status."
+    />
+    <meta name="twitter:image" content="https://danielchu.dev/assets/social-preview.jpg" />
+    <title>Self-improving agents need evidence, not just autonomy | Daniel Chu</title>
+    <link rel="stylesheet" href="../styles.css?v=frontier-builder-20260605" />
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/analytics.js" defer></script>
+    <script src="../scripts/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="../index.html#top" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="../index.html#top">Home</a>
+        <a href="../portfolio.html">Work</a>
+        <a href="../index.html#notes">Notes</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article-page">
+      <article class="reader">
+        <a class="back-link" href="../index.html#notes">Back to notes</a>
+        <p class="eyebrow">Atlas note</p>
+        <h1>Self-improving agents need evidence, not just autonomy</h1>
+        <p class="reader-dek">
+          The uncomfortable failures are not only bad answers. Sometimes an
+          agent takes the wrong action: sends an email, mutates state, leaks
+          internal tool output, or marks a workflow green before the user
+          actually has the result.
+        </p>
+        <div class="reader-actions">
+          <button class="button primary" type="button" data-share>Share article</button>
+        </div>
+
+        <div class="reader-body">
+          <p>
+            One Atlas failure that changed my thinking was not a bad answer.
+          </p>
+          <p>
+            Voya, my travel agent, sent a reservation email before I had
+            explicitly approved the final message. The right behavior was not
+            subtle: show the full To, Subject, and Body, then wait for an exact
+            send approval. A reminder or follow-up task should be allowed to draft
+            an email. It should not silently become permission to send one.
+          </p>
+          <p>
+            That kind of failure feels different from weak prose. A bad answer
+            can mislead. A bad action can change the outside world.
+          </p>
+
+          <figure class="concept-figure evidence-board action-evidence-figure" aria-labelledby="action-evidence-title">
+            <figcaption id="action-evidence-title">
+              The failure surface is wider than chat quality. Once an agent can
+              act, observability has to cover actions, side effects, and missing
+              confirmations too.
+            </figcaption>
+            <div class="failure-split" aria-label="Bad answers and bad actions">
+              <section>
+                <span>Bad answer</span>
+                <h3>Looks plausible, but the grounding is missing.</h3>
+                <p>
+                  A finance answer cites the right kind of command but does not
+                  actually use the source of truth.
+                </p>
+              </section>
+              <section class="failure-danger">
+                <span>Bad action</span>
+                <h3>Something happens before the contract is satisfied.</h3>
+                <p>
+                  A travel email is sent before I approve the exact draft. A
+                  mutation times out after work may already have happened.
+                </p>
+              </section>
+            </div>
+          </figure>
+
+          <p>
+            For a while, my improvement loop started with me noticing those
+            moments and turning them into issues.
+          </p>
+          <p>
+            Once the issue existed, the rest of the machine could move. The issue
+            could become an eval. The eval could drive a fix. The fix could be
+            tested, deployed, and replayed against the live system.
+          </p>
+          <p>
+            That loop was useful. It was also more human-bottlenecked than I
+            wanted to admit.
+          </p>
+          <p>
+            If every improvement starts with a human naming the failure, the
+            system is not self-improving in the sense I care about. It is
+            human-improved with agent assistance.
+          </p>
+
+          <h2>The loop that worked after I named the failure</h2>
+          <p>
+            Atlas is a personal AI system that runs real workflows for my family
+            and for me. It handles finance, health, travel, coaching, career
+            tracking, and operational automation. It runs on an Azure VM, talks
+            to us through Telegram, reads real data, and has to behave
+            consistently enough that we can trust it.
+          </p>
+          <p>
+            It also has a fairly serious eval and deployment loop. When something
+            becomes concrete enough, the path is clear:
+          </p>
+          <ol>
+            <li>Capture the failure.</li>
+            <li>Turn it into a GitHub issue or durable artifact.</li>
+            <li>Write a knowledge eval and a workflow/action eval.</li>
+            <li>Fix the code, prompt, skill, or workflow.</li>
+            <li>Run the targeted evals and adjacent regression tests.</li>
+            <li>Deploy.</li>
+            <li>Replay the behavior on the live system before calling it shipped.</li>
+          </ol>
+          <p>
+            A few recent examples made the pattern concrete:
+          </p>
+
+          <figure class="concept-figure evidence-board issue-ledger-figure" aria-labelledby="issue-ledger-title">
+            <figcaption id="issue-ledger-title">
+              Once failures became artifacts, they could become specific fixes
+              instead of remembered frustration.
+            </figcaption>
+            <div class="issue-ledger" role="table" aria-label="Atlas failures and fixes">
+              <div class="issue-row issue-head" role="row">
+                <span role="columnheader">Observed artifact</span>
+                <span role="columnheader">Fix that followed</span>
+                <span role="columnheader">Verification</span>
+              </div>
+              <div class="issue-row" role="row">
+                <span role="cell">
+                  <strong>Voya sent a reservation email before approval.</strong>
+                  Issue #294 became a broader email-confirmation protocol fix in
+                  issue #305.
+                </span>
+                <span role="cell">
+                  Voya now has to show full To, Subject, and Body and wait for
+                  explicit approval of the exact draft before any outbound email.
+                </span>
+                <span role="cell">
+                  Ten eval cases covered direct sends, reminders, cron-fired
+                  drafts, weak approvals, changed drafts, and live replay.
+                </span>
+              </div>
+              <div class="issue-row" role="row">
+                <span role="cell">
+                  <strong>Daily liquidity silently subtracted stale card debt.</strong>
+                  Issue #295 showed a digest line contradicting cash-status.
+                </span>
+                <span role="cell">
+                  Confirmed cash and stale card estimates were separated instead
+                  of being blended into one scary liquidity number.
+                </span>
+                <span role="cell">
+                  Targeted evals and acceptance audit passed after deploy.
+                </span>
+              </div>
+              <div class="issue-row" role="row">
+                <span role="cell">
+                  <strong>A long finance mutation timed out in Telegram.</strong>
+                  Issue #142 left the user unsure whether work had happened.
+                </span>
+                <span role="cell">
+                  Timeout-prone finance workflows now send a status ping before
+                  mutation and a follow-up if time is tight.
+                </span>
+                <span role="cell">
+                  The deployed rule requires delivery evidence, not only a longer
+                  backend timeout.
+                </span>
+              </div>
+              <div class="issue-row" role="row">
+                <span role="cell">
+                  <strong>Pulse leaked internal tool/action cards into Telegram.</strong>
+                  Issue #150 exposed commands, file paths, and health-log details.
+                </span>
+                <span role="cell">
+                  The fix combined a runtime patch with prompt and eval coverage
+                  for output hygiene.
+                </span>
+                <span role="cell">
+                  VM patch checks, regression tests, and live acceptance audit
+                  all had to pass.
+                </span>
+              </div>
+            </div>
+          </figure>
+
+          <p>
+            I do not want to oversell this. Some of those examples still began
+            with me reacting to something bad. The improvement was that the
+            reaction did not stay trapped in my memory. It became observed
+            behavior, expected behavior, evidence, evals, deployment, and replay.
+          </p>
+          <p>
+            That is the distinction I am trying to make.
+          </p>
+
+          <h2>The missing step was creating evidence</h2>
+          <p>
+            The hidden assumption in the old loop was that the failure would
+            somehow become durable evidence first.
+          </p>
+          <p>
+            If I noticed a bad response and opened the issue, the loop worked. If
+            a scheduled job failed loudly, the loop worked. If I explicitly told
+            an agent to create a self-learning issue, the loop worked.
+          </p>
+          <p>
+            But a lot of agent failures do not fail loudly.
+          </p>
+          <p>
+            They look like a confusing answer in a chat. A stale assumption that
+            survives because nobody challenges it. A progress message mistaken
+            for delivery. A cron run that looks green because something was sent,
+            even though the actual task outcome was missing. A tool error that
+            becomes the user-facing answer instead of being retried, translated,
+            or turned into an improvement candidate.
+          </p>
+          <p>
+            Or, more seriously, an agent takes an action before the human
+            confirmation contract is satisfied.
+          </p>
+
+          <figure class="concept-figure evidence-board artifact-card-figure" aria-labelledby="artifact-card-title">
+            <figcaption id="artifact-card-title">
+              The artifact does not need to be a postmortem. It needs enough
+              structure for the next run to know what failed.
+            </figcaption>
+            <div class="artifact-record" aria-label="Example failure artifact">
+              <div>
+                <span>Observed</span>
+                <p>Travel agent sent an external reservation email before explicit approval.</p>
+              </div>
+              <div>
+                <span>Expected</span>
+                <p>Draft full To, Subject, and Body. Wait for exact send approval.</p>
+              </div>
+              <div>
+                <span>Evidence</span>
+                <p>Telegram message id, sent-message id, agent, trigger, and issue fingerprint.</p>
+              </div>
+              <div>
+                <span>Regression</span>
+                <p>Knowledge eval for the rule, workflow eval for the real send path, live replay.</p>
+              </div>
+            </div>
+          </figure>
+
+          <p>
+            That last point is important. The artifact is not just a log. It is a
+            small record of the product contract that was broken.
+          </p>
+
+          <h2>The first observability failure was observability</h2>
+          <p>
+            At some point I got tired of being the person who had to say, "this
+            is wrong, open an issue."
+          </p>
+          <p>
+            The next move seemed straightforward: let the system observe itself.
+            Let it collect artifacts while it runs. Let nightly analysis look
+            across those artifacts and ask:
+          </p>
+          <ul>
+            <li>What kept going wrong?</li>
+            <li>Which failures share a root cause?</li>
+            <li>Which agent needs a new rule, eval, or tool?</li>
+            <li>Which workflow needs a stronger delivery contract?</li>
+            <li>Which assumption kept recurring without being challenged?</li>
+          </ul>
+          <p>
+            The first version produced almost nothing useful.
+          </p>
+          <p>
+            Not because nothing was wrong. Because the system was not observable
+            enough to learn from itself.
+          </p>
+          <p>
+            Later, the deployed miner found hundreds of signals across GitHub,
+            git, cron, and logs. But the first live verification also found a
+            boring bug: my local assumption about cron history was wrong. On the
+            VM, OpenClaw required listing cron jobs first and then fetching each
+            job's runs by id. Until that was fixed, cron-derived behavior could
+            quietly disappear from the evidence stream.
+          </p>
+          <p>
+            That was a good reminder. The observability system itself needs
+            observability. A green nightly job is not enough if the sources it
+            mines are incomplete.
+          </p>
+
+          <h2>Logs are not the same as learning</h2>
+          <p>
+            One trap I hit was assuming that having logs meant having learning
+            material.
+          </p>
+          <p>
+            It does not.
+          </p>
+          <p>
+            Logs are raw material. They can tell you what happened at one layer
+            of the system. They usually do not tell you why it mattered.
+          </p>
+          <p>
+            A cron log can say a job finished. That does not mean the user got
+            the thing they needed.
+          </p>
+          <p>
+            A tool log can say a command failed. That does not say whether the
+            agent retried it, translated it, escalated it, or dumped the raw error
+            into chat.
+          </p>
+          <p>
+            A sent-message record can prove an email left the system. It does not
+            by itself say whether the user approved that exact draft.
+          </p>
+          <p>
+            Learning requires interpretation.
+          </p>
+          <p>
+            For Atlas, that meant creating a collector that can look across
+            GitHub issues, commits, cron runs, logs, and durable action artifacts.
+            The goal is not one issue per log line. That would just turn
+            observability into noise.
+          </p>
+          <p>
+            The goal is to turn messy traces into a small number of improvement
+            candidates with stable evidence keys.
+          </p>
+
+          <h2>Manual noticing versus artifact loops</h2>
+          <p>
+            The practical difference is not that humans disappear from the loop.
+            I still notice things. I still care about taste, usefulness, and
+            whether an answer actually helped.
+          </p>
+          <p>
+            The difference is what happens after the noticing.
+          </p>
+
+          <figure class="concept-figure evidence-board loop-compare-figure" aria-labelledby="loop-compare-title">
+            <figcaption id="loop-compare-title">
+              The goal is not to remove human judgment. The goal is to stop
+              making human memory the only place failures persist.
+            </figcaption>
+            <div class="loop-compare" aria-label="Manual noticing versus artifact loop">
+              <section>
+                <span>Manual mode</span>
+                <ol>
+                  <li>I notice a failure.</li>
+                  <li>I remember enough context to explain it.</li>
+                  <li>I ask for an issue or fix.</li>
+                  <li>The next similar failure depends on me noticing again.</li>
+                </ol>
+              </section>
+              <section>
+                <span>Artifact mode</span>
+                <ol>
+                  <li>The run leaves observed and expected behavior.</li>
+                  <li>The issue links to evidence and an agent/workflow target.</li>
+                  <li>The fix must add knowledge and workflow/action evals.</li>
+                  <li>Deployment is followed by live replay and recurrence checks.</li>
+                </ol>
+              </section>
+            </div>
+          </figure>
+
+          <p>
+            That second path changes the system pressure. The agent is no longer
+            allowed to improve only in prose. It has to leave behind a regression
+            harness for the behavior that failed.
+          </p>
+
+          <h2>Green status needs a contract</h2>
+          <p>
+            One of the more subtle failures in agent systems is confusing
+            delivery with completion.
+          </p>
+          <p>
+            A scheduled workflow can send a progress message. The delivery layer
+            can mark that message as sent. The cron history can look green. But
+            the actual final result might never arrive.
+          </p>
+          <p>
+            From the scheduler's perspective, something happened.
+          </p>
+          <p>
+            From the user's perspective, the job failed.
+          </p>
+          <p>
+            Agents make this more likely because they are good at producing
+            plausible intermediate text. They can explain what they are doing.
+            They can say they will follow up. They can produce a partial answer
+            that looks enough like movement for the surrounding system to mark
+            the run as successful.
+          </p>
+          <p>
+            A job should not be considered successful because it spoke. It should
+            be considered successful because it produced the required artifact,
+            summary, state change, or user-visible outcome.
+          </p>
+          <p>
+            For self-improvement, that means the observability layer has to watch
+            for contract failures, not just technical failures.
+          </p>
+          <ul>
+            <li>Did the job return the expected terminal state?</li>
+            <li>Did it save the snapshot it claimed to save?</li>
+            <li>Did it log the activity in a place the next run can inspect?</li>
+            <li>Did it ask the user for data it could have retrieved itself?</li>
+            <li>Did it send, write, or mutate anything without the right confirmation?</li>
+          </ul>
+          <p>
+            Green is only meaningful when it is tied to the right contract.
+          </p>
+
+          <h2>What I would build earlier next time</h2>
+          <p>
+            If I were starting over, I would build observability earlier.
+          </p>
+          <p>
+            Not dashboards first. Evidence first.
+          </p>
+          <p>
+            I would make every important agent workflow answer a few boring
+            questions:
+          </p>
+          <ul>
+            <li>What does success mean here?</li>
+            <li>What evidence proves success?</li>
+            <li>What user reaction counts as a negative signal?</li>
+            <li>What tool outputs should become artifacts?</li>
+            <li>What stale source-of-truth conditions should be treated as failures?</li>
+            <li>What action requires explicit confirmation?</li>
+            <li>What terminal state should a scheduler require?</li>
+          </ul>
+
+          <figure class="concept-figure evidence-board loop-strip-figure" aria-labelledby="loop-strip-title">
+            <figcaption id="loop-strip-title">
+              The compounding loop only works if the first step creates evidence.
+            </figcaption>
+            <div class="loop-strip" aria-label="Self-improvement loop">
+              <span>Failure</span>
+              <span>Artifact</span>
+              <span>Issue</span>
+              <span>Eval</span>
+              <span>Fix</span>
+              <span>Replay</span>
+            </div>
+          </figure>
+
+          <p>
+            I would also resist the urge to make every failure immediately
+            actionable.
+          </p>
+          <p>
+            Some artifacts should simply accumulate. One weak response might be
+            noise. Five weak responses with the same shape are a product bug.
+          </p>
+          <p>
+            That is another reason durable evidence matters. Humans are bad at
+            remembering distributions. We remember the last painful example. The
+            system needs to remember the pattern.
+          </p>
+
+          <h2>The part I keep coming back to</h2>
+          <p>
+            Autonomy without observability does not compound.
+          </p>
+          <p>
+            An agent can be powerful, fast, and useful. But if its failures do
+            not become evidence, the improvement loop stays human-bottlenecked.
+            You end up with a system that can execute fixes, but cannot reliably
+            discover what needs fixing.
+          </p>
+          <p>
+            That is still useful. It is just not self-improving in the stronger
+            sense.
+          </p>
+          <p>
+            The more agents I run, the more I think the hard part is not only
+            giving them more tools. It is making their behavior legible enough
+            that the system around them can learn.
+          </p>
+          <p>
+            Not every failure needs a meeting.
+          </p>
+          <p>
+            Not every mistake needs a postmortem.
+          </p>
+          <p>
+            Not every weak answer needs a human to stop everything and debug it.
+          </p>
+          <p>
+            But the important failures need somewhere to go.
+          </p>
+          <p>
+            Because if an agent fails and the system cannot see it, nothing
+            improves. The user adjusts. The human compensates. The same thing
+            happens again next week with slightly different words.
+          </p>
+          <p>
+            The goal is not agents that never fail.
+          </p>
+          <p>
+            The goal is agents whose failures leave enough evidence for the next
+            version of the system to get better.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
