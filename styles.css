@@ -1428,14 +1428,14 @@ a.project-teaser:hover {
 .evidence-board::before {
   content: "evidence board";
   position: static;
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0 0 18px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(58, 45, 34, 0.08);
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 16px;
+  padding: 0 0 8px;
+  border-bottom: 1px solid rgba(183, 91, 57, 0.28);
   line-height: 1.1;
-  text-align: right;
+  text-align: left;
 }
 
 .evidence-board figcaption {
