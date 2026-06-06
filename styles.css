@@ -1491,59 +1491,54 @@ a.project-teaser:hover {
     rgba(255, 249, 242, 0.68);
 }
 
-.issue-ledger {
+.action-trace {
   display: grid;
-  gap: 0;
-  overflow: hidden;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.action-trace-node {
+  position: relative;
+  min-height: 218px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 249, 242, 0.58);
+  background: rgba(255, 249, 242, 0.66);
 }
 
-.issue-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr) minmax(0, 0.86fr);
-  gap: 0;
-  border-top: 1px solid var(--line);
-}
-
-.issue-row:first-child {
-  border-top: 0;
-}
-
-.issue-row > span {
+.action-trace-node span {
   display: block;
-  min-width: 0;
-  padding: 16px;
-  border-left: 1px solid var(--line);
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 0.84rem;
-  line-height: 1.5;
-}
-
-.issue-row > span:first-child {
-  border-left: 0;
-}
-
-.issue-row strong {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--text);
-  font-size: 0.9rem;
-  line-height: 1.35;
-}
-
-.issue-head {
-  background: rgba(239, 225, 210, 0.6);
-}
-
-.issue-head > span {
   color: var(--accent);
-  font-size: 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
   font-weight: 780;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.action-trace-node strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.04rem;
+  line-height: 1.28;
+}
+
+.action-trace-node p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.action-trace-node-danger {
+  border-color: rgba(183, 91, 57, 0.4);
+  background:
+    linear-gradient(180deg, rgba(183, 91, 57, 0.1), transparent 80%),
+    rgba(255, 249, 242, 0.66);
 }
 
 .artifact-record {
@@ -3049,43 +3044,12 @@ a.project-teaser:hover {
     grid-template-columns: 1fr;
   }
 
-  .issue-row {
+  .action-trace {
     grid-template-columns: 1fr;
   }
 
-  .issue-row > span {
-    border-top: 1px solid var(--line);
-    border-left: 0;
-  }
-
-  .issue-row > span:first-child {
-    border-top: 0;
-  }
-
-  .issue-head {
-    display: none;
-  }
-
-  .issue-row:not(.issue-head) > span::before {
-    display: block;
-    margin-bottom: 7px;
-    color: var(--accent);
-    font-size: 0.66rem;
-    font-weight: 780;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-  }
-
-  .issue-row:not(.issue-head) > span:nth-child(1)::before {
-    content: "Observed artifact";
-  }
-
-  .issue-row:not(.issue-head) > span:nth-child(2)::before {
-    content: "Fix that followed";
-  }
-
-  .issue-row:not(.issue-head) > span:nth-child(3)::before {
-    content: "Verification";
+  .action-trace-node {
+    min-height: 0;
   }
 
   .loop-strip {

@@ -28,7 +28,7 @@
     />
     <meta name="twitter:image" content="https://danielchu.dev/assets/social-preview.jpg" />
     <title>Self-improving agents need evidence, not just autonomy | Daniel Chu</title>
-    <link rel="stylesheet" href="../styles.css?v=agent-evidence-20260605d" />
+    <link rel="stylesheet" href="../styles.css?v=agent-evidence-20260606b" />
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/analytics.js" defer></script>
     <script src="../scripts/site.js" defer></script>
@@ -54,10 +54,9 @@
         <p class="eyebrow">Atlas note</p>
         <h1>Self-improving agents need evidence, not just autonomy</h1>
         <p class="reader-dek">
-          The uncomfortable failures are not only bad answers. Sometimes an
-          agent takes the wrong action: sends an email, mutates state, leaks
-          internal tool output, or marks a workflow green before the user
-          actually has the result.
+          If every improvement starts with a human naming the failure, the
+          system is not self-improving in the sense I care about. It is
+          human-improved with agent assistance.
         </p>
         <div class="reader-actions">
           <button class="button primary" type="button" data-share>Share article</button>
@@ -118,12 +117,6 @@
             That loop was useful. It was also more human-bottlenecked than I
             wanted to admit.
           </p>
-          <p>
-            If every improvement starts with a human naming the failure, the
-            system is not self-improving in the sense I care about. It is
-            human-improved with agent assistance.
-          </p>
-
           <h2>The loop that worked after I named the failure</h2>
           <p>
             Atlas is a personal AI system that runs real workflows for my family
@@ -146,87 +139,95 @@
             <li>Replay the behavior on the live system before calling it shipped.</li>
           </ol>
           <p>
-            A few recent examples made the pattern concrete:
+            The weak part was the first step.
+          </p>
+          <p>
+            "Capture the failure" cannot mean "I remember something felt wrong."
+            It has to mean the system leaves enough evidence to reconstruct the
+            broken product contract.
+          </p>
+          <p>
+            This is where I had been too shallow about observability. I was
+            thinking too much about events and not enough about the relationships
+            between events.
+          </p>
+          <p>
+            A log can tell me that Voya sent an email. That is the easy part. The
+            useful trace has to answer a harder question: did this external side
+            effect have a valid causal path from a human approval of the same
+            payload?
+          </p>
+          <p>
+            If the answer is no, I do not want another dashboard panel. I want an
+            improvement candidate with a broken invariant attached to it.
           </p>
 
-          <figure class="concept-figure evidence-board issue-ledger-figure" aria-labelledby="issue-ledger-title">
-            <figcaption id="issue-ledger-title">
-              Once failures became artifacts, they could become specific fixes
-              instead of remembered frustration.
+          <figure class="concept-figure evidence-board action-trace-figure" aria-labelledby="observability-contract-title">
+            <figcaption id="observability-contract-title">
+              For action-taking agents, observability has to prove the contract
+              around the side effect, not just record that the side effect
+              happened.
             </figcaption>
-            <div class="issue-ledger" role="table" aria-label="Atlas failures and fixes">
-              <div class="issue-row issue-head" role="row">
-                <span role="columnheader">Observed artifact</span>
-                <span role="columnheader">Fix that followed</span>
-                <span role="columnheader">Verification</span>
+            <div class="action-trace" aria-label="External action trace contract">
+              <div class="action-trace-node">
+                <span>Draft branch</span>
+                <strong>Agent prepares a candidate email.</strong>
+                <p>
+                  Internal planning can revise, retry, and summarize. None of
+                  that should create permission to mutate the outside world.
+                </p>
               </div>
-              <div class="issue-row" role="row">
-                <span role="cell">
-                  <strong>Voya sent a reservation email before approval.</strong>
-                  Issue #294 became a broader email-confirmation protocol fix in
-                  issue #305.
-                </span>
-                <span role="cell">
-                  Voya now has to show full To, Subject, and Body and wait for
-                  explicit approval of the exact draft before any outbound email.
-                </span>
-                <span role="cell">
-                  Ten eval cases covered direct sends, reminders, cron-fired
-                  drafts, weak approvals, changed drafts, and live replay.
-                </span>
+              <div class="action-trace-node">
+                <span>Human contract</span>
+                <strong>Approval attaches to one immutable payload.</strong>
+                <p>
+                  The approval is not a general blessing to "handle the trip." It
+                  is a typed edge from a person to a specific action version.
+                </p>
               </div>
-              <div class="issue-row" role="row">
-                <span role="cell">
-                  <strong>Daily liquidity silently subtracted stale card debt.</strong>
-                  Issue #295 showed a digest line contradicting cash-status.
-                </span>
-                <span role="cell">
-                  Confirmed cash and stale card estimates were separated instead
-                  of being blended into one scary liquidity number.
-                </span>
-                <span role="cell">
-                  Targeted evals and acceptance audit passed after deploy.
-                </span>
+              <div class="action-trace-node action-trace-node-danger">
+                <span>Boundary check</span>
+                <strong>The side effect is blocked if the edge is missing.</strong>
+                <p>
+                  The failure is not "email sent." The failure is "send transition
+                  fired from a branch with no approved predecessor."
+                </p>
               </div>
-              <div class="issue-row" role="row">
-                <span role="cell">
-                  <strong>A long finance mutation timed out in Telegram.</strong>
-                  Issue #142 left the user unsure whether work had happened.
-                </span>
-                <span role="cell">
-                  Timeout-prone finance workflows now send a status ping before
-                  mutation and a follow-up if time is tight.
-                </span>
-                <span role="cell">
-                  The deployed rule requires delivery evidence, not only a longer
-                  backend timeout.
-                </span>
-              </div>
-              <div class="issue-row" role="row">
-                <span role="cell">
-                  <strong>Pulse leaked internal tool/action cards into Telegram.</strong>
-                  Issue #150 exposed commands, file paths, and health-log details.
-                </span>
-                <span role="cell">
-                  The fix combined a runtime patch with prompt and eval coverage
-                  for output hygiene.
-                </span>
-                <span role="cell">
-                  VM patch checks, regression tests, and live acceptance audit
-                  all had to pass.
-                </span>
+              <div class="action-trace-node">
+                <span>Replay contract</span>
+                <strong>The same trigger should now stop at draft-only.</strong>
+                <p>
+                  The regression is a replay of the action path, not a unit test
+                  that merely confirms a confirmation string exists.
+                </p>
               </div>
             </div>
           </figure>
 
           <p>
-            I do not want to oversell this. Some of those examples still began
-            with me reacting to something bad. The improvement was that the
-            reaction did not stay trapped in my memory. It became observed
-            behavior, expected behavior, evidence, evals, deployment, and replay.
+            The liquidity example had the same shape. The bug was not that the
+            system forgot to print a number. It was that source confidence got
+            flattened before the answer reached me. Confirmed cash, estimated
+            card debt, stale balances, and current transactions were allowed to
+            collapse into one clean-looking summary. The observability fix was to
+            keep provenance and freshness attached long enough for the answer
+            layer to say, "this aggregate is not trustworthy yet."
           </p>
           <p>
-            That is the distinction I am trying to make.
+            The long Telegram mutation was another version of the same problem.
+            "I am working on it" is not a terminal state. A useful trace had to
+            separate accepted, mutation started, outside state changed, user
+            notified, and recovery path triggered. Otherwise a timeout could look
+            like a backend nuisance while the user was left unsure whether
+            anything had happened.
+          </p>
+          <p>
+            That is the observability bar I care about here. I want the system to
+            notice broken invariants: an external action without an approval edge,
+            an aggregate that erased source confidence, a workflow that reached
+            no user-visible terminal state, or an internal diagnostic that leaked
+            into the answer. Those are the artifacts that can become evals and
+            fixes without waiting for me to remember the bad moment.
           </p>
 
           <h2>The missing step was creating evidence</h2>
@@ -263,19 +264,19 @@
             <div class="artifact-record" aria-label="Example failure artifact">
               <div>
                 <span>Observed</span>
-                <p>Travel agent sent an external reservation email before explicit approval.</p>
+                <p>External-send transition fired from a trace branch with no approved predecessor.</p>
               </div>
               <div>
                 <span>Expected</span>
-                <p>Draft full To, Subject, and Body. Wait for exact send approval.</p>
+                <p>The action runner refuses a side effect unless the approval graph contains the right edge.</p>
               </div>
               <div>
                 <span>Evidence</span>
-                <p>Telegram message id, sent-message id, agent, trigger, and issue fingerprint.</p>
+                <p>Trace links from draft branch to presentation, approval, boundary check, and provider receipt.</p>
               </div>
               <div>
                 <span>Regression</span>
-                <p>Knowledge eval for the rule, workflow eval for the real send path, live replay.</p>
+                <p>Replay the same reminder path and require draft-only behavior until approval exists.</p>
               </div>
             </div>
           </figure>
