@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/api/grind",
-      "allowedRoles": ["owner"],
+      "allowedRoles": ["authenticated"],
       "headers": {
         "Cache-Control": "no-store",
         "X-Robots-Tag": "noindex, nofollow"

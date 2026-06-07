@@ -4,6 +4,52 @@ const https = require("https");
 const MAX_BYTES = 2 * 1024 * 1024;
 const TIMEOUT_MS = 10000;
 
+function htmlMessage(title, body) {
+  return `<!doctype html><html><body><h1>${title}</h1>${body ? `<p>${body}</p>` : ""}</body></html>`;
+}
+
+function response(status, body) {
+  return {
+    status,
+    headers: {
+      "Cache-Control": "no-store",
+      "Content-Type": "text/html; charset=utf-8",
+      "X-Content-Type-Options": "nosniff",
+      "X-Robots-Tag": "noindex, nofollow",
+    },
+    body,
+  };
+}
+
+function decodePrincipal(req) {
+  const header = req?.headers?.["x-ms-client-principal"] || req?.headers?.["X-MS-CLIENT-PRINCIPAL"];
+  if (!header) return null;
+
+  try {
+    return JSON.parse(Buffer.from(header, "base64").toString("utf8"));
+  } catch (error) {
+    return null;
+  }
+}
+
+function allowedUsers() {
+  return (process.env.GRIND_ALLOWED_GITHUB_USERS || "")
+    .split(",")
+    .map((value) => value.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function isAllowedPrincipal(principal) {
+  const provider = String(principal?.identityProvider || "").toLowerCase();
+  const user = String(principal?.userDetails || "").toLowerCase();
+  if (!provider || !user) return false;
+  if (provider !== "github") return false;
+
+  const allowed = allowedUsers();
+  if (!allowed.length) return false;
+  return allowed.includes(user) || allowed.includes(`github:${user}`);
+}
+
 function fetchText(target) {
   return new Promise((resolve, reject) => {
     const client = target.protocol === "https:" ? https : http;
@@ -45,21 +91,28 @@ function fetchText(target) {
   });
 }
 
-module.exports = async function (context) {
+module.exports = async function (context, req) {
   const targetValue = process.env.GRIND_STATUS_URL;
-  const baseHeaders = {
-    "Cache-Control": "no-store",
-    "Content-Type": "text/html; charset=utf-8",
-    "X-Content-Type-Options": "nosniff",
-    "X-Robots-Tag": "noindex, nofollow",
-  };
+  const principal = decodePrincipal(req);
+
+  if (!principal) {
+    context.res = response(
+      401,
+      htmlMessage("Sign in required.", "Use GitHub authentication to access the grinder status."),
+    );
+    return;
+  }
+
+  if (!isAllowedPrincipal(principal)) {
+    context.res = response(
+      403,
+      htmlMessage("Access denied.", "This GitHub account is not allowed to view the grinder status."),
+    );
+    return;
+  }
 
   if (!targetValue) {
-    context.res = {
-      status: 503,
-      headers: baseHeaders,
-      body: "<!doctype html><html><body><h1>Grinder status is not configured.</h1></body></html>",
-    };
+    context.res = response(503, htmlMessage("Grinder status is not configured."));
     return;
   }
 
@@ -67,44 +120,24 @@ module.exports = async function (context) {
   try {
     target = new URL(targetValue);
   } catch (error) {
-    context.res = {
-      status: 503,
-      headers: baseHeaders,
-      body: "<!doctype html><html><body><h1>Grinder status configuration is invalid.</h1></body></html>",
-    };
+    context.res = response(503, htmlMessage("Grinder status configuration is invalid."));
     return;
   }
 
   if (target.protocol !== "https:" && target.protocol !== "http:") {
-    context.res = {
-      status: 503,
-      headers: baseHeaders,
-      body: "<!doctype html><html><body><h1>Grinder status configuration is invalid.</h1></body></html>",
-    };
+    context.res = response(503, htmlMessage("Grinder status configuration is invalid."));
     return;
   }
 
   try {
     const upstream = await fetchText(target);
     if (upstream.statusCode < 200 || upstream.statusCode >= 300) {
-      context.res = {
-        status: 502,
-        headers: baseHeaders,
-        body: "<!doctype html><html><body><h1>Grinder status upstream returned an error.</h1></body></html>",
-      };
+      context.res = response(502, htmlMessage("Grinder status upstream returned an error."));
       return;
     }
 
-    context.res = {
-      status: 200,
-      headers: baseHeaders,
-      body: upstream.body,
-    };
+    context.res = response(200, upstream.body);
   } catch (error) {
-    context.res = {
-      status: 502,
-      headers: baseHeaders,
-      body: "<!doctype html><html><body><h1>Unable to reach grinder status.</h1></body></html>",
-    };
+    context.res = response(502, htmlMessage("Unable to reach grinder status."));
   }
 };

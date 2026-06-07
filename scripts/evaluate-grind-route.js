@@ -34,24 +34,45 @@ async function withServer(statusCode, body, fn) {
   }
 }
 
-async function callProxy(target) {
+function principalHeader(userDetails = "grind-owner", identityProvider = "github") {
+  return Buffer.from(
+    JSON.stringify({
+      identityProvider,
+      userDetails,
+      userRoles: ["anonymous", "authenticated"],
+    }),
+  ).toString("base64");
+}
+
+async function callProxy(target, options = {}) {
   const previous = process.env.GRIND_STATUS_URL;
+  const previousAllowed = process.env.GRIND_ALLOWED_GITHUB_USERS;
   if (target === undefined) {
     delete process.env.GRIND_STATUS_URL;
   } else {
     process.env.GRIND_STATUS_URL = target;
   }
+  process.env.GRIND_ALLOWED_GITHUB_USERS = options.allowedUsers || "grind-owner";
 
   try {
     const context = {};
     const proxy = require("../api/grind");
-    await proxy(context, {});
+    const headers = {};
+    if (options.principal !== false) {
+      headers["x-ms-client-principal"] = principalHeader(options.userDetails, options.identityProvider);
+    }
+    await proxy(context, { headers });
     return context.res;
   } finally {
     if (previous === undefined) {
       delete process.env.GRIND_STATUS_URL;
     } else {
       process.env.GRIND_STATUS_URL = previous;
+    }
+    if (previousAllowed === undefined) {
+      delete process.env.GRIND_ALLOWED_GITHUB_USERS;
+    } else {
+      process.env.GRIND_ALLOWED_GITHUB_USERS = previousAllowed;
     }
   }
 }
@@ -83,7 +104,7 @@ async function main() {
     ["route-08", "Grind client strips upstream meta refresh", () => includes(js, "stripRefresh") && includes(js, "http-equiv")],
     ["route-09", "Grind client auto-refreshes every minute", () => includes(js, "60000")],
     ["route-10", "Grind client offers sign out", () => includes(html, "/.auth/logout")],
-    ["route-11", "Static config restricts the API route to owner", () => apiRoute && apiRoute.allowedRoles.length === 1 && apiRoute.allowedRoles.includes("owner")],
+    ["route-11", "Static config requires GitHub authentication for the API route", () => apiRoute && apiRoute.allowedRoles.length === 1 && apiRoute.allowedRoles.includes("authenticated")],
     ["route-12", "Static config prevents indexing the private page", () => grindRoute && grindRoute.headers["X-Robots-Tag"] === "noindex, nofollow"],
     ["route-13", "Static config disables cache on private routes", () => apiRoute.headers["Cache-Control"] === "no-store" && grindRoute.headers["Cache-Control"] === "no-store"],
     ["route-14", "Deployment workflow ships the API folder", () => includes(workflow, 'api_location: "api"')],
@@ -91,11 +112,14 @@ async function main() {
     ["route-16", "Function app uses Functions host version 2", () => hostJson.version === "2.0"],
     ["route-17", "Function package targets Node 20", () => packageJson.engines.node === "20.x"],
     ["route-18", "Proxy reads the target from Azure settings", () => includes(api, "process.env.GRIND_STATUS_URL")],
-    ["route-19", "Proxy validates target protocol", () => includes(api, 'target.protocol !== "https:"') && includes(api, 'target.protocol !== "http:"')],
-    ["route-20", "Proxy caps upstream response size", () => includes(api, "MAX_BYTES") && includes(api, "response was too large")],
-    ["route-21", "Proxy sets no-store response headers", () => includes(api, '"Cache-Control": "no-store"')],
-    ["route-22", "Proxy does not leak the private status host in repo files", () => !/20\.10\.44\.21|\/g\/Gy_|GRIND_STATUS_URL=https?:/.test(repoSource)],
-    ["route-23", "Package test runs the grinder route eval", () => includes(sitePackage.scripts.test, "evaluate-grind-route.js")],
+    ["route-19", "Proxy reads allowed GitHub users from Azure settings", () => includes(api, "process.env.GRIND_ALLOWED_GITHUB_USERS")],
+    ["route-20", "Proxy checks the Static Web Apps client principal", () => includes(api, "x-ms-client-principal") && includes(api, "identityProvider")],
+    ["route-21", "Proxy validates target protocol", () => includes(api, 'target.protocol !== "https:"') && includes(api, 'target.protocol !== "http:"')],
+    ["route-22", "Proxy caps upstream response size", () => includes(api, "MAX_BYTES") && includes(api, "response was too large")],
+    ["route-23", "Proxy sets no-store response headers", () => includes(api, '"Cache-Control": "no-store"')],
+    ["route-24", "Client shows a distinct denied state", () => includes(js, "setDenied") && includes(js, "Signed in, but this account is not allowed")],
+    ["route-25", "Proxy does not leak the private status host in repo files", () => !/20\.10\.44\.21|\/g\/Gy_|GRIND_STATUS_URL=https?:/.test(repoSource)],
+    ["route-26", "Package test runs the grinder route eval", () => includes(sitePackage.scripts.test, "evaluate-grind-route.js")],
   ];
 
   let successfulProxyResponse;
@@ -110,6 +134,24 @@ async function main() {
 
   criteria.push([
     "proxy-02",
+    "Proxy rejects missing client principals",
+    async () => {
+      const response = await callProxy("http://127.0.0.1/private-status", { principal: false });
+      return response.status === 401 && includes(response.body, "Sign in required");
+    },
+  ]);
+
+  criteria.push([
+    "proxy-03",
+    "Proxy rejects GitHub users outside the allowlist",
+    async () => {
+      const response = await callProxy("http://127.0.0.1/private-status", { userDetails: "someone-else" });
+      return response.status === 403 && includes(response.body, "Access denied");
+    },
+  ]);
+
+  criteria.push([
+    "proxy-04",
     "Proxy fails closed when target is not configured",
     async () => {
       const response = await callProxy(undefined);
@@ -118,7 +160,7 @@ async function main() {
   ]);
 
   criteria.push([
-    "proxy-03",
+    "proxy-05",
     "Proxy rejects non-HTTP targets",
     async () => {
       const response = await callProxy("file:///tmp/status.html");
@@ -131,7 +173,7 @@ async function main() {
     nonOkProxyResponse = await callProxy(target);
   });
   criteria.push([
-    "proxy-04",
+    "proxy-06",
     "Proxy hides non-2xx upstream bodies",
     () => nonOkProxyResponse.status === 502 && !includes(nonOkProxyResponse.body, "broken"),
   ]);

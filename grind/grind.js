@@ -52,6 +52,26 @@
     );
   }
 
+  function setDenied() {
+    if (refreshTimer) {
+      window.clearInterval(refreshTimer);
+      refreshTimer = null;
+    }
+    login.hidden = true;
+    logout.hidden = false;
+    refresh.hidden = false;
+    statusRegion.hidden = false;
+    setAccessState(
+      "Denied",
+      "Signed in, but this account is not allowed",
+      "Sign out and use the GitHub account on the grinder allowlist.",
+    );
+    statusTitle.textContent = "Access denied";
+    statusUpdated.textContent = "The private proxy rejected this GitHub account.";
+    frame.srcdoc =
+      "<!doctype html><html><body style=\"font-family: system-ui; padding: 24px; color: #241c17;\"><h1>Access denied</h1><p>This GitHub account is not allowed to view the grinder status.</p></body></html>";
+  }
+
   async function getSession() {
     const response = await fetch("/.auth/me", {
       cache: "no-store",
@@ -72,8 +92,13 @@
         credentials: "same-origin",
       });
 
-      if (response.status === 401 || response.status === 403) {
+      if (response.status === 401) {
         setSignedOut();
+        return;
+      }
+
+      if (response.status === 403) {
+        setDenied();
         return;
       }
 
