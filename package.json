@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "eval": "node scripts/evaluate-site.js",
-    "test": "node scripts/evaluate-site.js"
+    "eval": "node scripts/evaluate-site.js && node scripts/evaluate-grind-route.js",
+    "test": "node scripts/evaluate-site.js && node scripts/evaluate-grind-route.js"
   }
 }
