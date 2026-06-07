@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Atlas Grinder Status | Daniel Chu</title>
+    <meta
+      name="description"
+      content="Private Atlas grinder status pane."
+    />
+    <link rel="icon" href="../favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="grind-page">
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="Daniel Chu home">
+        <span class="brand-mark">DC</span>
+        <span>Daniel Chu</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="../portfolio.html">Work</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="grind-shell" data-grind-app>
+      <section class="grind-hero" aria-labelledby="grind-title">
+        <div class="grind-hero-copy">
+          <p class="lab-kicker">Private operations</p>
+          <h1 id="grind-title">Atlas Grinder Status</h1>
+          <p>
+            A protected view into the current Atlas issue grinder: queue depth,
+            active agents, stale runs, process conflicts, and the latest
+            automation event.
+          </p>
+          <div class="grind-actions" aria-label="Grinder actions">
+            <a
+              class="button"
+              href="/.auth/login/github?post_login_redirect_uri=/grind/"
+              data-login
+            >
+              Continue with passkey
+            </a>
+            <button class="button secondary" type="button" data-refresh hidden>
+              Refresh status
+            </button>
+            <a
+              class="button secondary"
+              href="/.auth/logout?post_logout_redirect_uri=/grind/"
+              data-logout
+              hidden
+            >
+              Sign out
+            </a>
+          </div>
+        </div>
+
+        <aside class="grind-auth-card" aria-live="polite">
+          <span data-auth-label>Checking access</span>
+          <strong data-auth-title>Verifying session</strong>
+          <p data-auth-copy>
+            This page uses Azure Static Web Apps authentication. Sign in with
+            GitHub and use your GitHub passkey when prompted.
+          </p>
+        </aside>
+      </section>
+
+      <section class="grind-status-panel" data-status-region hidden>
+        <div class="grind-status-toolbar">
+          <div>
+            <span>Status feed</span>
+            <strong data-status-title>Loading grinder pane</strong>
+          </div>
+          <p data-status-updated>Waiting for the private proxy.</p>
+        </div>
+        <iframe
+          class="grind-status-frame"
+          title="Atlas grinder status"
+          sandbox="allow-same-origin"
+          data-status-frame
+        ></iframe>
+      </section>
+
+      <noscript>
+        <section class="grind-status-panel">
+          <p>JavaScript is required to check your session and load the private grinder status.</p>
+        </section>
+      </noscript>
+    </main>
+
+    <script src="grind.js" defer></script>
+  </body>
+</html>
