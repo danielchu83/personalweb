@@ -83,7 +83,7 @@ async function main() {
     ["route-08", "Grind client strips upstream meta refresh", () => includes(js, "stripRefresh") && includes(js, "http-equiv")],
     ["route-09", "Grind client auto-refreshes every minute", () => includes(js, "60000")],
     ["route-10", "Grind client offers sign out", () => includes(html, "/.auth/logout")],
-    ["route-11", "Static config protects the API route", () => apiRoute && apiRoute.allowedRoles.includes("authenticated")],
+    ["route-11", "Static config restricts the API route to owner", () => apiRoute && apiRoute.allowedRoles.length === 1 && apiRoute.allowedRoles.includes("owner")],
     ["route-12", "Static config prevents indexing the private page", () => grindRoute && grindRoute.headers["X-Robots-Tag"] === "noindex, nofollow"],
     ["route-13", "Static config disables cache on private routes", () => apiRoute.headers["Cache-Control"] === "no-store" && grindRoute.headers["Cache-Control"] === "no-store"],
     ["route-14", "Deployment workflow ships the API folder", () => includes(workflow, 'api_location: "api"')],
