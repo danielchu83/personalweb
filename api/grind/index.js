@@ -50,7 +50,7 @@ function isAllowedPrincipal(principal) {
   return allowed.includes(user) || allowed.includes(`github:${user}`);
 }
 
-function fetchText(target) {
+function fetchText(target, proxySecret) {
   return new Promise((resolve, reject) => {
     const client = target.protocol === "https:" ? https : http;
     const request = client.get(
@@ -59,6 +59,7 @@ function fetchText(target) {
         headers: {
           "User-Agent": "danielchu-dev-grind-proxy/1.0",
           Accept: "text/html",
+          "X-Grind-Status-Secret": proxySecret,
         },
         timeout: TIMEOUT_MS,
       },
@@ -93,6 +94,7 @@ function fetchText(target) {
 
 module.exports = async function (context, req) {
   const targetValue = process.env.GRIND_STATUS_URL;
+  const proxySecret = process.env.GRIND_STATUS_PROXY_SECRET;
   const principal = decodePrincipal(req);
 
   if (!principal) {
@@ -116,6 +118,11 @@ module.exports = async function (context, req) {
     return;
   }
 
+  if (!proxySecret) {
+    context.res = response(503, htmlMessage("Grinder status proxy is not configured."));
+    return;
+  }
+
   let target;
   try {
     target = new URL(targetValue);
@@ -130,7 +137,7 @@ module.exports = async function (context, req) {
   }
 
   try {
-    const upstream = await fetchText(target);
+    const upstream = await fetchText(target, proxySecret);
     if (upstream.statusCode < 200 || upstream.statusCode >= 300) {
       context.res = response(502, htmlMessage("Grinder status upstream returned an error."));
       return;
