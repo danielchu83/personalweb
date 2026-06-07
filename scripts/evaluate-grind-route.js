@@ -18,8 +18,13 @@ function parseJson(file) {
   return JSON.parse(read(file));
 }
 
-async function withServer(statusCode, body, fn) {
+async function withServer(statusCode, body, fn, options = {}) {
   const server = http.createServer((req, res) => {
+    if (options.requireSecret && req.headers["x-grind-status-secret"] !== "test-secret") {
+      res.writeHead(403, { "Content-Type": "text/html; charset=utf-8" });
+      res.end("missing proxy secret");
+      return;
+    }
     res.writeHead(statusCode, { "Content-Type": "text/html; charset=utf-8" });
     res.end(body);
   });
@@ -47,12 +52,18 @@ function principalHeader(userDetails = "grind-owner", identityProvider = "github
 async function callProxy(target, options = {}) {
   const previous = process.env.GRIND_STATUS_URL;
   const previousAllowed = process.env.GRIND_ALLOWED_GITHUB_USERS;
+  const previousProxySecret = process.env.GRIND_STATUS_PROXY_SECRET;
   if (target === undefined) {
     delete process.env.GRIND_STATUS_URL;
   } else {
     process.env.GRIND_STATUS_URL = target;
   }
   process.env.GRIND_ALLOWED_GITHUB_USERS = options.allowedUsers || "grind-owner";
+  if (options.proxySecret === null) {
+    delete process.env.GRIND_STATUS_PROXY_SECRET;
+  } else {
+    process.env.GRIND_STATUS_PROXY_SECRET = options.proxySecret || "test-secret";
+  }
 
   try {
     const context = {};
@@ -73,6 +84,11 @@ async function callProxy(target, options = {}) {
       delete process.env.GRIND_ALLOWED_GITHUB_USERS;
     } else {
       process.env.GRIND_ALLOWED_GITHUB_USERS = previousAllowed;
+    }
+    if (previousProxySecret === undefined) {
+      delete process.env.GRIND_STATUS_PROXY_SECRET;
+    } else {
+      process.env.GRIND_STATUS_PROXY_SECRET = previousProxySecret;
     }
   }
 }
@@ -113,19 +129,21 @@ async function main() {
     ["route-17", "Function package targets Node 20", () => packageJson.engines.node === "20.x"],
     ["route-18", "Proxy reads the target from Azure settings", () => includes(api, "process.env.GRIND_STATUS_URL")],
     ["route-19", "Proxy reads allowed GitHub users from Azure settings", () => includes(api, "process.env.GRIND_ALLOWED_GITHUB_USERS")],
-    ["route-20", "Proxy checks the Static Web Apps client principal", () => includes(api, "x-ms-client-principal") && includes(api, "identityProvider")],
-    ["route-21", "Proxy validates target protocol", () => includes(api, 'target.protocol !== "https:"') && includes(api, 'target.protocol !== "http:"')],
-    ["route-22", "Proxy caps upstream response size", () => includes(api, "MAX_BYTES") && includes(api, "response was too large")],
-    ["route-23", "Proxy sets no-store response headers", () => includes(api, '"Cache-Control": "no-store"')],
-    ["route-24", "Client shows a distinct denied state", () => includes(js, "setDenied") && includes(js, "Signed in, but this account is not allowed")],
-    ["route-25", "Proxy does not leak the private status host in repo files", () => !/20\.10\.44\.21|\/g\/Gy_|GRIND_STATUS_URL=https?:/.test(repoSource)],
-    ["route-26", "Package test runs the grinder route eval", () => includes(sitePackage.scripts.test, "evaluate-grind-route.js")],
+    ["route-20", "Proxy reads the VM shared secret from Azure settings", () => includes(api, "process.env.GRIND_STATUS_PROXY_SECRET")],
+    ["route-21", "Proxy sends the shared secret as a backend-only header", () => includes(api, '"X-Grind-Status-Secret": proxySecret')],
+    ["route-22", "Proxy checks the Static Web Apps client principal", () => includes(api, "x-ms-client-principal") && includes(api, "identityProvider")],
+    ["route-23", "Proxy validates target protocol", () => includes(api, 'target.protocol !== "https:"') && includes(api, 'target.protocol !== "http:"')],
+    ["route-24", "Proxy caps upstream response size", () => includes(api, "MAX_BYTES") && includes(api, "response was too large")],
+    ["route-25", "Proxy sets no-store response headers", () => includes(api, '"Cache-Control": "no-store"')],
+    ["route-26", "Client shows a distinct denied state", () => includes(js, "setDenied") && includes(js, "Signed in, but this account is not allowed")],
+    ["route-27", "Proxy does not leak the private status host in repo files", () => !/20\.10\.44\.21|\/g\/Gy_|GRIND_STATUS_URL=https?:/.test(repoSource)],
+    ["route-28", "Package test runs the grinder route eval", () => includes(sitePackage.scripts.test, "evaluate-grind-route.js")],
   ];
 
   let successfulProxyResponse;
   await withServer(200, "<!doctype html><html><body>grinder ok</body></html>", async (target) => {
     successfulProxyResponse = await callProxy(target);
-  });
+  }, { requireSecret: true });
   criteria.push([
     "proxy-01",
     "Proxy returns successful upstream status HTML",
@@ -152,6 +170,15 @@ async function main() {
 
   criteria.push([
     "proxy-04",
+    "Proxy fails closed when backend secret is not configured",
+    async () => {
+      const response = await callProxy("http://127.0.0.1/private-status", { proxySecret: null });
+      return response.status === 503 && includes(response.body, "proxy is not configured");
+    },
+  ]);
+
+  criteria.push([
+    "proxy-05",
     "Proxy fails closed when target is not configured",
     async () => {
       const response = await callProxy(undefined);
@@ -160,7 +187,7 @@ async function main() {
   ]);
 
   criteria.push([
-    "proxy-05",
+    "proxy-06",
     "Proxy rejects non-HTTP targets",
     async () => {
       const response = await callProxy("file:///tmp/status.html");
@@ -173,7 +200,7 @@ async function main() {
     nonOkProxyResponse = await callProxy(target);
   });
   criteria.push([
-    "proxy-06",
+    "proxy-07",
     "Proxy hides non-2xx upstream bodies",
     () => nonOkProxyResponse.status === 502 && !includes(nonOkProxyResponse.body, "broken"),
   ]);
