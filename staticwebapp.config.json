@@ -50,7 +50,7 @@
     "apiRuntime": "node:20"
   },
   "forwardingGateway": {
-    "allowedForwardedHosts": ["www.danielchu.dev"]
+    "allowedForwardedHosts": ["danielchu.dev", "www.danielchu.dev"]
   },
   "mimeTypes": {
     ".ico": "image/x-icon",

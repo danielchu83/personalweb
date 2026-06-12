@@ -141,7 +141,14 @@ async function main() {
     ["route-29", "Static config pins the managed API runtime to Node 20", () => config.platform && config.platform.apiRuntime === "node:20"],
     ["route-30", "Deployment workflow skips rebuilding the prebuilt API package", () => includes(workflow, "skip_api_build: true")],
     ["route-31", "Deployment workflow uses a relative static app root", () => includes(workflow, 'app_location: "."')],
-    ["route-32", "Static config allows the Front Door www host", () => config.forwardingGateway && config.forwardingGateway.allowedForwardedHosts.includes("www.danielchu.dev")],
+    [
+      "route-32",
+      "Static config allows Front Door apex and www hosts",
+      () =>
+        config.forwardingGateway &&
+        config.forwardingGateway.allowedForwardedHosts.includes("danielchu.dev") &&
+        config.forwardingGateway.allowedForwardedHosts.includes("www.danielchu.dev"),
+    ],
   ];
 
   let successfulProxyResponse;
