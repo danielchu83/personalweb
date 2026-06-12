@@ -123,7 +123,7 @@ async function main() {
     ["route-11", "Static config requires GitHub authentication for the API route", () => apiRoute && apiRoute.allowedRoles.length === 1 && apiRoute.allowedRoles.includes("authenticated")],
     ["route-12", "Static config prevents indexing the private page", () => grindRoute && grindRoute.headers["X-Robots-Tag"] === "noindex, nofollow"],
     ["route-13", "Static config disables cache on private routes", () => apiRoute.headers["Cache-Control"] === "no-store" && grindRoute.headers["Cache-Control"] === "no-store"],
-    ["route-14", "Deployment workflow temporarily skips the managed API folder", () => includes(workflow, 'api_location: ""')],
+    ["route-14", "Deployment workflow ships the managed API folder", () => includes(workflow, 'api_location: "api"')],
     ["route-15", "Function trigger is anonymous because SWA handles auth", () => trigger && trigger.authLevel === "anonymous" && trigger.methods.includes("get")],
     ["route-16", "Function app uses Functions host version 2", () => hostJson.version === "2.0"],
     ["route-17", "Function package targets Node 20", () => packageJson.engines.node === "20.x"],
@@ -139,7 +139,7 @@ async function main() {
     ["route-27", "Proxy does not leak the private status host in repo files", () => !/20\.10\.44\.21|\/g\/Gy_|GRIND_STATUS_URL=https?:/.test(repoSource)],
     ["route-28", "Package test runs the grinder route eval", () => includes(sitePackage.scripts.test, "evaluate-grind-route.js")],
     ["route-29", "Static config pins the managed API runtime to Node 20", () => config.platform && config.platform.apiRuntime === "node:20"],
-    ["route-30", "Deployment workflow documents public-site-first API recovery", () => includes(workflow, "restore public static site first")],
+    ["route-30", "Deployment workflow skips rebuilding the prebuilt API package", () => includes(workflow, "skip_api_build: true")],
     ["route-31", "Deployment workflow uses a relative static app root", () => includes(workflow, 'app_location: "."')],
   ];
 
