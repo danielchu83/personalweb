@@ -113,6 +113,11 @@ async function main() {
     ["route-01", "Grind page has a private status title", () => includes(html, "Atlas Grinder Status")],
     ["route-02", "Grind page points sign-in at GitHub auth", () => includes(html, "/.auth/login/github")],
     ["route-03", "Grind page keeps the passkey path explicit", () => includes(html, "Continue with passkey")],
+    [
+      "route-03a",
+      "Grind sign-in returns to the canonical custom domain after mobile GitHub auth",
+      () => includes(html, "post_login_redirect_uri=https%3A%2F%2Fdanielchu.dev%2Fgrind%2F"),
+    ],
     ["route-04", "Grind page is marked noindex", () => includes(html, 'name="robots" content="noindex, nofollow"')],
     ["route-05", "Grind client checks the auth session", () => includes(js, 'fetch("/.auth/me"')],
     ["route-06", "Grind client calls only the local API proxy", () => includes(js, 'fetch("/api/grind"')],
