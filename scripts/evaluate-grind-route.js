@@ -149,6 +149,22 @@ async function main() {
         config.forwardingGateway.allowedForwardedHosts.includes("danielchu.dev") &&
         config.forwardingGateway.allowedForwardedHosts.includes("www.danielchu.dev"),
     ],
+    [
+      "route-33",
+      "Static config only accepts Azure Front Door backend traffic",
+      () =>
+        config.networking &&
+        config.networking.allowedIpRanges &&
+        config.networking.allowedIpRanges.includes("AzureFrontDoor.Backend"),
+    ],
+    [
+      "route-34",
+      "Static config requires the personalweb Front Door identifier",
+      () =>
+        config.forwardingGateway &&
+        config.forwardingGateway.requiredHeaders &&
+        config.forwardingGateway.requiredHeaders["X-Azure-FDID"] === "2ba5e320-ebfb-4092-9be4-daa4e925d5a8",
+    ],
   ];
 
   let successfulProxyResponse;
