@@ -49,15 +49,6 @@
   "platform": {
     "apiRuntime": "node:20"
   },
-  "networking": {
-    "allowedIpRanges": ["AzureFrontDoor.Backend"]
-  },
-  "forwardingGateway": {
-    "requiredHeaders": {
-      "X-Azure-FDID": "2ba5e320-ebfb-4092-9be4-daa4e925d5a8"
-    },
-    "allowedForwardedHosts": ["danielchu.dev", "www.danielchu.dev"]
-  },
   "mimeTypes": {
     ".ico": "image/x-icon",
     ".svg": "image/svg+xml"
