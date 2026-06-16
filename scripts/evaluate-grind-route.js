@@ -115,8 +115,8 @@ async function main() {
     ["route-03", "Grind page keeps the passkey path explicit", () => includes(html, "Continue with passkey")],
     [
       "route-03a",
-      "Grind sign-in returns to the canonical custom domain after mobile GitHub auth",
-      () => includes(html, "post_login_redirect_uri=https%3A%2F%2Fdanielchu.dev%2Fgrind%2F"),
+      "Grind sign-in returns to the same host after mobile GitHub auth",
+      () => includes(html, "post_login_redirect_uri=/grind/"),
     ],
     ["route-04", "Grind page is marked noindex", () => includes(html, 'name="robots" content="noindex, nofollow"')],
     ["route-05", "Grind client checks the auth session", () => includes(js, 'fetch("/.auth/me"')],
