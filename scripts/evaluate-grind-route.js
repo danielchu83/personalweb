@@ -146,6 +146,7 @@ async function main() {
       "Static config allows Front Door apex and www hosts",
       () =>
         config.forwardingGateway &&
+        config.forwardingGateway.allowedForwardedHosts.includes("personalweb-apex-dchu83-hpcbd7f3fjg4cddt.z01.azurefd.net") &&
         config.forwardingGateway.allowedForwardedHosts.includes("danielchu.dev") &&
         config.forwardingGateway.allowedForwardedHosts.includes("www.danielchu.dev"),
     ],

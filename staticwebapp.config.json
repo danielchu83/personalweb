@@ -50,7 +50,11 @@
     "apiRuntime": "node:20"
   },
   "forwardingGateway": {
-    "allowedForwardedHosts": ["danielchu.dev", "www.danielchu.dev"]
+    "allowedForwardedHosts": [
+      "personalweb-apex-dchu83-hpcbd7f3fjg4cddt.z01.azurefd.net",
+      "danielchu.dev",
+      "www.danielchu.dev"
+    ]
   },
   "mimeTypes": {
     ".ico": "image/x-icon",
