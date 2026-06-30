@@ -108,6 +108,7 @@ async function main() {
   const apiRoute = config.routes.find((route) => route.route === "/api/grind");
   const grindRoute = config.routes.find((route) => route.route === "/grind*");
   const trigger = functionJson.bindings.find((binding) => binding.type === "httpTrigger");
+  const forwardedHosts = config.forwardingGateway && config.forwardingGateway.allowedForwardedHosts;
 
   const criteria = [
     ["route-01", "Grind page has a private status title", () => includes(html, "Atlas Grinder Status")],
@@ -148,8 +149,12 @@ async function main() {
     ["route-31", "Deployment workflow uses a relative static app root", () => includes(workflow, 'app_location: "."')],
     [
       "route-32",
-      "Static config allows direct Static Web Apps auth fallback",
-      () => !config.networking && !config.forwardingGateway,
+      "Static config trusts Front Door forwarded hosts for auth redirects",
+      () =>
+        Array.isArray(forwardedHosts) &&
+        forwardedHosts.includes("danielchu.dev") &&
+        forwardedHosts.includes("www.danielchu.dev") &&
+        forwardedHosts.includes("personalweb-apex-dchu83-hpcbd7f3fjg4cddt.z01.azurefd.net"),
     ],
   ];
 
