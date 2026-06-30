@@ -46,6 +46,13 @@
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "X-Frame-Options": "DENY"
   },
+  "forwardingGateway": {
+    "allowedForwardedHosts": [
+      "danielchu.dev",
+      "www.danielchu.dev",
+      "personalweb-apex-dchu83-hpcbd7f3fjg4cddt.z01.azurefd.net"
+    ]
+  },
   "platform": {
     "apiRuntime": "node:20"
   },
